@@ -59,7 +59,7 @@ export const Route = createFileRoute("/")({
 function Logo({ className = "" }: { className?: string }) {
   return (
     <a href="#top" className={`flex items-center gap-2.5 ${className}`}>
-      <span className="grid h-9 w-9 place-items-center rounded-sm bg-primary text-primary-foreground">
+      <span className="grid h-9 w-9 place-items-center rounded-sm border border-[color:var(--gold)]/40 bg-primary text-[color:var(--gold)]">
         <span className="font-serif text-lg leading-none">R</span>
       </span>
       <span className="flex flex-col leading-tight">
@@ -96,7 +96,7 @@ function Nav() {
           <a href={PHONE_HREF} className="flex items-center gap-2 text-sm font-medium text-primary">
             <Phone className="h-4 w-4" /> {PHONE}
           </a>
-          <a href="#contact" className="rounded-sm bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">
+          <a href="#contact" className="rounded-sm bg-[color:var(--gold)] px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-primary transition-transform hover:-translate-y-0.5">
             Free Quote
           </a>
         </div>
@@ -116,7 +116,7 @@ function Nav() {
                 {label}
               </a>
             ))}
-            <a href="#contact" onClick={() => setOpen(false)} className="mt-3 rounded-sm bg-primary px-5 py-3 text-center text-sm font-medium text-primary-foreground">
+            <a href="#contact" onClick={() => setOpen(false)} className="mt-3 rounded-sm bg-[color:var(--gold)] px-5 py-3 text-center text-sm font-semibold uppercase tracking-wider text-primary">
               Request Free Quote
             </a>
           </div>
@@ -541,24 +541,25 @@ function Contact() {
           </p>
           <div className="mt-10 space-y-5">
             <a href={PHONE_HREF} className="flex items-start gap-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-sm bg-primary text-primary-foreground"><Phone className="h-4 w-4" /></span>
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-sm bg-[color:var(--gold)] text-primary"><Phone className="h-4 w-4" /></span>
               <span>
                 <div className="text-xs uppercase tracking-wider text-muted-foreground">Phone</div>
-                <div className="font-serif text-lg text-primary">{PHONE}</div>
+                <div className="font-serif text-lg text-primary-foreground">{PHONE}</div>
               </span>
             </a>
             <a href={`mailto:${EMAIL}`} className="flex items-start gap-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-sm bg-primary text-primary-foreground"><Mail className="h-4 w-4" /></span>
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-sm bg-[color:var(--gold)] text-primary"><Mail className="h-4 w-4" /></span>
               <span>
                 <div className="text-xs uppercase tracking-wider text-muted-foreground">Email</div>
-                <div className="font-serif text-lg text-primary">{EMAIL}</div>
+                <div className="font-serif text-lg text-primary-foreground">{EMAIL}</div>
               </span>
             </a>
             <div className="flex items-start gap-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-sm bg-primary text-primary-foreground"><MapPin className="h-4 w-4" /></span>
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-sm bg-[color:var(--gold)] text-primary"><MapPin className="h-4 w-4" /></span>
+
               <span>
                 <div className="text-xs uppercase tracking-wider text-muted-foreground">Service Area</div>
-                <div className="font-serif text-lg text-primary">All of California</div>
+                <div className="font-serif text-lg text-primary-foreground">All of California</div>
               </span>
             </div>
           </div>
@@ -603,7 +604,7 @@ function Contact() {
                   <textarea rows={4} className="mt-1.5 w-full rounded-sm border border-input bg-background px-3 py-2.5 text-sm" placeholder="Share any details, inscriptions or design ideas…" />
                 </div>
               </div>
-              <button type="submit" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-primary px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-primary-foreground transition-opacity hover:opacity-90">
+              <button type="submit" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[color:var(--gold)] px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-primary transition-transform hover:-translate-y-0.5">
                 Request Free Quote <ArrowRight className="h-4 w-4" />
               </button>
             </>
