@@ -579,7 +579,14 @@ function Contact() {
                 <div className="text-xs uppercase tracking-wider text-muted-foreground">Email</div>
                 <div className="font-serif text-lg text-primary-foreground">{EMAIL}</div>
               </span>
+            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="flex items-start gap-4">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[oklch(0.72_0.18_150)] text-white"><MessageCircle className="h-4 w-4" /></span>
+              <span>
+                <div className="text-xs uppercase tracking-wider text-muted-foreground">WhatsApp</div>
+                <div className="text-lg font-medium text-foreground">Chat with us instantly</div>
+              </span>
             </a>
+
             <div className="flex items-start gap-4">
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-sm bg-[color:var(--gold)] text-primary"><MapPin className="h-4 w-4" /></span>
 
