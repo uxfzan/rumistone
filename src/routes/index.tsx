@@ -217,7 +217,7 @@ function Services() {
       <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {services.map(({ icon: Icon, title, body }) => (
           <div key={title} className="group rounded-lg border border-border bg-card p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]">
-            <div className="mb-5 grid h-12 w-12 place-items-center rounded-sm bg-primary text-primary-foreground transition-colors group-hover:bg-[color:var(--gold)] group-hover:text-primary">
+            <div className="mb-5 grid h-12 w-12 place-items-center rounded-sm border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 text-[color:var(--gold)] transition-colors group-hover:bg-[color:var(--gold)] group-hover:text-primary">
               <Icon className="h-5 w-5" />
             </div>
             <h3 className="font-serif text-2xl text-foreground">{title}</h3>
@@ -353,7 +353,7 @@ function Gallery() {
             onClick={() => setActive(c)}
             className={`rounded-full border px-4 py-1.5 text-xs uppercase tracking-wider transition-colors ${
               active === c
-                ? "border-primary bg-primary text-primary-foreground"
+                ? "border-[color:var(--gold)] bg-[color:var(--gold)] text-primary"
                 : "border-border text-foreground/70 hover:border-primary/40"
             }`}
           >
