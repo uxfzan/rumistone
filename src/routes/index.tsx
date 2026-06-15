@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
-  Phone, Mail, MapPin, Check, Star, ArrowRight, Menu, X,
+  Phone, Mail, MapPin, Check, Star, ArrowRight, ArrowUpRight, Menu, X,
   Gem, Square, Mountain, Users, Armchair, Sparkles,
-  MessageSquare, PencilRuler, Hammer, Truck, ChevronDown,
+  MessageSquare, PencilRuler, Hammer, Truck, ChevronDown, MessageCircle,
 } from "lucide-react";
+
 
 import heroImg from "@/assets/hero-memorial.jpg";
 import gPicasso from "@/assets/granite-picasso-green.jpg";
