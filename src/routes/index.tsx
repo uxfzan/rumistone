@@ -63,7 +63,7 @@ function Logo({ className = "" }: { className?: string }) {
         <span className="font-serif text-lg leading-none">R</span>
       </span>
       <span className="flex flex-col leading-tight">
-        <span className="font-serif text-lg font-semibold text-primary">Rumi Stone</span>
+        <span className="font-serif text-lg font-semibold text-foreground">Rumi Stone</span>
         <span className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Memorial Craftsmen</span>
       </span>
     </a>
@@ -87,13 +87,13 @@ function Nav() {
         <Logo />
         <nav className="hidden items-center gap-8 lg:flex">
           {links.map(([label, href]) => (
-            <a key={href} href={href} className="text-sm text-foreground/75 transition-colors hover:text-primary">
+            <a key={href} href={href} className="text-sm text-foreground/75 transition-colors hover:text-[color:var(--gold)]">
               {label}
             </a>
           ))}
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
-          <a href={PHONE_HREF} className="flex items-center gap-2 text-sm font-medium text-primary">
+          <a href={PHONE_HREF} className="flex items-center gap-2 text-sm font-medium text-[color:var(--gold)]">
             <Phone className="h-4 w-4" /> {PHONE}
           </a>
           <a href="#contact" className="rounded-sm bg-[color:var(--gold)] px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-primary transition-transform hover:-translate-y-0.5">
@@ -195,7 +195,7 @@ function SectionHeader({ eyebrow, title, kicker }: { eyebrow: string; title: str
         {eyebrow}
         <span className="gold-divider" />
       </div>
-      <h2 className="font-serif text-3xl text-primary md:text-5xl">{title}</h2>
+      <h2 className="font-serif text-3xl text-foreground md:text-5xl">{title}</h2>
       {kicker && <p className="mt-4 text-base text-muted-foreground md:text-lg">{kicker}</p>}
     </div>
   );
@@ -220,7 +220,7 @@ function Services() {
             <div className="mb-5 grid h-12 w-12 place-items-center rounded-sm bg-primary text-primary-foreground transition-colors group-hover:bg-[color:var(--gold)] group-hover:text-primary">
               <Icon className="h-5 w-5" />
             </div>
-            <h3 className="font-serif text-2xl text-primary">{title}</h3>
+            <h3 className="font-serif text-2xl text-foreground">{title}</h3>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
           </div>
         ))}
@@ -257,7 +257,7 @@ function Granite() {
               </div>
               <div className="flex items-center justify-between gap-3 p-5">
                 <div>
-                  <h3 className="font-serif text-xl text-primary">{g.name}</h3>
+                  <h3 className="font-serif text-xl text-foreground">{g.name}</h3>
                   <p className="text-xs text-muted-foreground">{g.desc}</p>
                 </div>
                 <span className="text-[10px] uppercase tracking-[0.2em] text-[color:var(--gold)]">Polished</span>
@@ -284,7 +284,7 @@ function WhyUs() {
       <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
         {reasons.map((r) => (
           <div key={r.v} className="border-t border-[color:var(--gold)] pt-6">
-            <div className="font-serif text-4xl text-primary">{r.k}</div>
+            <div className="font-serif text-4xl text-foreground">{r.k}</div>
             <div className="mt-1 text-sm uppercase tracking-[0.2em] text-muted-foreground">{r.v}</div>
             <p className="mt-4 text-sm leading-relaxed text-foreground/70">{r.body}</p>
           </div>
@@ -397,7 +397,7 @@ function Testimonials() {
                 “{t.quote}”
               </blockquote>
               <figcaption className="mt-6 border-t border-border pt-4">
-                <div className="font-medium text-primary">{t.name}</div>
+                <div className="font-medium text-foreground">{t.name}</div>
                 <div className="text-xs uppercase tracking-wider text-muted-foreground">{t.city}</div>
               </figcaption>
             </figure>
@@ -425,8 +425,8 @@ function Process() {
             <div className="absolute -top-5 left-8 grid h-10 w-10 place-items-center rounded-full bg-[color:var(--gold)] font-serif text-lg text-primary">
               {i + 1}
             </div>
-            <Icon className="mt-2 h-7 w-7 text-primary" />
-            <h3 className="mt-4 font-serif text-xl text-primary">{title}</h3>
+            <Icon className="mt-2 h-7 w-7 text-[color:var(--gold)]" />
+            <h3 className="mt-4 font-serif text-xl text-foreground">{title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
           </div>
         ))}
@@ -508,8 +508,8 @@ function FAQ() {
                 onClick={() => setOpen(isOpen ? null : i)}
                 className="flex w-full items-center justify-between gap-6 py-6 text-left"
               >
-                <span className="font-serif text-lg text-primary md:text-xl">{f.q}</span>
-                <ChevronDown className={`h-5 w-5 shrink-0 text-primary transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                <span className="font-serif text-lg text-foreground md:text-xl">{f.q}</span>
+                <ChevronDown className={`h-5 w-5 shrink-0 text-[color:var(--gold)] transition-transform ${isOpen ? "rotate-180" : ""}`} />
               </button>
               {isOpen && (
                 <div className="pb-6 pr-10 text-sm leading-relaxed text-muted-foreground md:text-base">
@@ -533,7 +533,7 @@ function Contact() {
           <div className="mb-4 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
             <span className="gold-divider" /> Get In Touch
           </div>
-          <h2 className="font-serif text-3xl text-primary md:text-5xl">
+          <h2 className="font-serif text-3xl text-foreground md:text-5xl">
             Let's design a memorial that honors them.
           </h2>
           <p className="mt-5 text-muted-foreground">
@@ -575,13 +575,13 @@ function Contact() {
                 <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-[color:var(--gold)] text-primary">
                   <Check className="h-7 w-7" />
                 </div>
-                <h3 className="mt-5 font-serif text-2xl text-primary">Thank you</h3>
+                <h3 className="mt-5 font-serif text-2xl text-foreground">Thank you</h3>
                 <p className="mt-2 text-sm text-muted-foreground">We'll be in touch within one business day.</p>
               </div>
             </div>
           ) : (
             <>
-              <h3 className="font-serif text-2xl text-primary">Request a free quote</h3>
+              <h3 className="font-serif text-2xl text-foreground">Request a free quote</h3>
               <p className="mt-1 text-sm text-muted-foreground">All fields help us prepare an accurate estimate.</p>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <Field label="Name" name="name" required />
@@ -678,7 +678,7 @@ function Footer() {
 function StickyMobileBar() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-border bg-background/95 backdrop-blur lg:hidden">
-      <a href={PHONE_HREF} className="flex items-center justify-center gap-2 border-r border-border py-3.5 text-sm font-medium text-primary">
+      <a href={PHONE_HREF} className="flex items-center justify-center gap-2 border-r border-border py-3.5 text-sm font-medium text-[color:var(--gold)]">
         <Phone className="h-4 w-4" /> Call Us
       </a>
       <a href="#contact" className="flex items-center justify-center gap-2 bg-[color:var(--gold)] py-3.5 text-sm font-semibold uppercase tracking-wider text-primary">
