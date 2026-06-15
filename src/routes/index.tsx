@@ -62,13 +62,13 @@ export const Route = createFileRoute("/")({
 
 function Logo({ className = "" }: { className?: string }) {
   return (
-    <a href="#top" className={`flex items-center gap-2.5 ${className}`}>
-      <span className="grid h-9 w-9 place-items-center rounded-sm border border-[color:var(--gold)]/40 bg-primary text-[color:var(--gold)]">
-        <span className="font-serif text-lg leading-none">R</span>
+    <a href="#top" className={`group flex items-center gap-3 ${className}`}>
+      <span className="relative grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-[oklch(0.92_0.1_88)] to-[oklch(0.65_0.16_50)] text-primary shadow-[var(--shadow-glow)]">
+        <span className="font-display text-xl leading-none italic">R</span>
       </span>
       <span className="flex flex-col leading-tight">
-        <span className="font-serif text-lg font-semibold text-foreground">Rumi Stone</span>
-        <span className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Memorial Craftsmen</span>
+        <span className="text-base font-semibold tracking-tight text-foreground">Rumi Stone</span>
+        <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground">Memorial Atelier</span>
       </span>
     </a>
   );
@@ -82,47 +82,51 @@ function Nav() {
     ["Gallery", "#gallery"],
     ["Process", "#process"],
     ["About", "#about"],
-    ["FAQ", "#faq"],
     ["Contact", "#contact"],
   ];
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
-      <div className="container-px mx-auto flex h-18 max-w-7xl items-center justify-between py-3">
+    <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full glass px-4 py-2.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.5)]">
         <Logo />
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {links.map(([label, href]) => (
-            <a key={href} href={href} className="text-sm text-foreground/75 transition-colors hover:text-[color:var(--gold)]">
+            <a key={href} href={href} className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground">
               {label}
             </a>
           ))}
         </nav>
-        <div className="hidden items-center gap-3 lg:flex">
-          <a href={PHONE_HREF} className="flex items-center gap-2 text-sm font-medium text-[color:var(--gold)]">
-            <Phone className="h-4 w-4" /> {PHONE}
+        <div className="hidden items-center gap-2 lg:flex">
+          <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="flex h-10 items-center gap-2 rounded-full border border-[oklch(0.72_0.18_150)]/40 bg-[oklch(0.72_0.18_150)]/10 px-4 text-xs font-semibold text-[oklch(0.85_0.18_150)] transition-colors hover:bg-[oklch(0.72_0.18_150)]/20">
+            <MessageCircle className="h-4 w-4" /> WhatsApp
           </a>
-          <a href="#contact" className="rounded-sm bg-[color:var(--gold)] px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-primary transition-transform hover:-translate-y-0.5">
-            Free Quote
+          <a href="#contact" className="group flex h-10 items-center gap-1.5 rounded-full bg-foreground px-5 text-xs font-semibold text-background transition-transform hover:-translate-y-0.5">
+            Free Quote <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen(!open)}
-          className="grid h-10 w-10 place-items-center rounded-sm border border-border lg:hidden"
+          className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 lg:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
       {open && (
-        <div className="border-t border-border bg-background lg:hidden">
-          <div className="container-px mx-auto flex max-w-7xl flex-col gap-1 py-4">
+        <div className="mx-auto mt-2 max-w-6xl rounded-3xl glass p-4 lg:hidden">
+          <div className="flex flex-col gap-1">
             {links.map(([label, href]) => (
-              <a key={href} href={href} onClick={() => setOpen(false)} className="py-2 text-base text-foreground/80">
+              <a key={href} href={href} onClick={() => setOpen(false)} className="rounded-2xl px-3 py-2.5 text-base font-medium text-foreground/85 hover:bg-white/5">
                 {label}
               </a>
             ))}
-            <a href="#contact" onClick={() => setOpen(false)} className="mt-3 rounded-sm bg-[color:var(--gold)] px-5 py-3 text-center text-sm font-semibold uppercase tracking-wider text-primary">
-              Request Free Quote
-            </a>
+            <div className="mt-2 grid grid-cols-2 gap-2">
+              <a href={WHATSAPP_HREF} target="_blank" rel="noopener" onClick={() => setOpen(false)} className="flex items-center justify-center gap-2 rounded-full border border-[oklch(0.72_0.18_150)]/40 bg-[oklch(0.72_0.18_150)]/15 px-4 py-3 text-xs font-semibold text-[oklch(0.85_0.18_150)]">
+                <MessageCircle className="h-4 w-4" /> WhatsApp
+              </a>
+              <a href="#contact" onClick={() => setOpen(false)} className="rounded-full bg-foreground px-5 py-3 text-center text-xs font-semibold text-background">
+                Free Quote
+              </a>
+            </div>
           </div>
         </div>
       )}
@@ -132,78 +136,96 @@ function Nav() {
 
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden">
-      <div className="absolute inset-0">
-        <img src={heroImg} alt="Polished granite memorial headstone in a serene cemetery" className="h-full w-full object-cover" width={1920} height={1280} />
-        <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
+    <section id="top" className="relative isolate overflow-hidden pt-32 pb-20 md:pt-44 md:pb-32 lg:pt-52 lg:pb-44">
+      {/* Layered gradient mesh background */}
+      <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
+      <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-mesh)" }} />
+      {/* Subtle stone image, very faded */}
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.18] mix-blend-luminosity">
+        <img src={heroImg} alt="" className="h-full w-full object-cover" width={1920} height={1280} />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
       </div>
-      <div className="container-px relative mx-auto max-w-7xl py-24 md:py-36 lg:py-44">
-        <div className="max-w-3xl text-primary-foreground">
-          <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs uppercase tracking-[0.25em] backdrop-blur">
-            <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--gold)]" />
-            Family-Owned · Est. California
+      {/* Floating glow orbs */}
+      <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-[oklch(0.45_0.18_290)/0.25] blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-40 right-0 -z-10 h-[500px] w-[500px] rounded-full bg-[oklch(0.78_0.14_80)/0.18] blur-3xl" />
+
+      <div className="container-px mx-auto max-w-6xl">
+        <div className="mx-auto flex flex-col items-center text-center">
+          <div className="mb-7 inline-flex items-center gap-2.5 rounded-full glass px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-foreground/75">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--gold)] opacity-60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[color:var(--gold)]" />
+            </span>
+            Family Atelier · Est. California
           </div>
-          <h1 className="font-serif text-4xl leading-[1.05] md:text-6xl lg:text-7xl">
-            Custom Memorial<br />
-            Headstones <span className="italic text-[color:var(--gold)]">&</span> Monuments
+
+          <h1 className="max-w-5xl text-[2.5rem] leading-[1] tracking-[-0.04em] sm:text-6xl md:text-7xl lg:text-[5.5rem]">
+            <span className="text-gradient-light">Memorials,</span>
+            <br />
+            <span className="font-display italic text-gradient-gold">beautifully</span>
+            <span className="text-gradient-light"> remembered.</span>
           </h1>
-          <p className="mt-6 max-w-xl font-serif text-xl italic text-white/85 md:text-2xl">
-            Personalized. Memorable. Affordable.
-          </p>
-          <p className="mt-4 max-w-xl text-base text-white/75 md:text-lg">
-            Hand-crafted granite memorials that honor your loved one's story — designed with you, installed at any cemetery in California.
+
+          <p className="mt-7 max-w-xl text-base leading-relaxed text-foreground/65 md:text-lg">
+            Hand-crafted granite headstones and monuments — designed with you and installed at any cemetery in California.
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-3">
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-sm bg-[color:var(--gold)] px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-primary transition-transform hover:-translate-y-0.5">
-              Get a Free Quote <ArrowRight className="h-4 w-4" />
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-4 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5">
+              Get a Free Quote
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
-            <a href="#gallery" className="inline-flex items-center gap-2 rounded-sm border border-white/40 bg-white/5 px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-white backdrop-blur transition-colors hover:bg-white/15">
-              View Memorial Gallery
+            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.72_0.18_150)]/40 bg-[oklch(0.72_0.18_150)]/10 px-7 py-4 text-sm font-semibold text-[oklch(0.85_0.18_150)] backdrop-blur transition-colors hover:bg-[oklch(0.72_0.18_150)]/20">
+              <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
+            </a>
+            <a href="#gallery" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-7 py-4 text-sm font-semibold text-foreground/85 backdrop-blur transition-colors hover:bg-white/5">
+              View Gallery
             </a>
           </div>
 
-          <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-4 md:grid-cols-4">
-            {[
-              ["10+", "Years Experience"],
-              ["1000+", "Memorials Created"],
-              ["All", "CA Cemeteries"],
-              ["Statewide", "Delivery"],
-            ].map(([k, v]) => (
-              <div key={v} className="border-l border-white/30 pl-4">
-                <div className="font-serif text-2xl text-[color:var(--gold)] md:text-3xl">{k}</div>
-                <div className="text-xs uppercase tracking-wider text-white/75">{v}</div>
-              </div>
-            ))}
+          {/* Pricing pill */}
+          <div className="mt-8 inline-flex items-center gap-2 text-xs text-foreground/55">
+            <Sparkles className="h-3.5 w-3.5 text-[color:var(--gold)]" />
+            <span className="text-gradient-gold font-semibold">30–40% below</span>
+            <span>traditional cemetery pricing</span>
           </div>
         </div>
-      </div>
 
-      <div className="relative bg-primary text-primary-foreground">
-        <div className="container-px mx-auto flex max-w-7xl flex-col items-center justify-center gap-2 py-4 text-center sm:flex-row sm:gap-4">
-          <Sparkles className="h-4 w-4 text-[color:var(--gold)]" />
-          <p className="text-sm font-medium tracking-wide md:text-base">
-            <span className="font-serif italic text-[color:var(--gold)]">30%–40% below</span> traditional cemetery pricing
-          </p>
+        {/* Trust stats — Apple style horizontal rule */}
+        <div className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-3xl glass md:grid-cols-4">
+          {[
+            ["10+", "Years Crafting"],
+            ["1000+", "Memorials Made"],
+            ["All", "CA Cemeteries"],
+            ["Statewide", "Delivery"],
+          ].map(([k, v]) => (
+            <div key={v} className="bg-background/40 p-6 text-center md:p-8">
+              <div className="font-display text-3xl italic text-gradient-gold md:text-4xl">{k}</div>
+              <div className="mt-1 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">{v}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-function SectionHeader({ eyebrow, title, kicker }: { eyebrow: string; title: string; kicker?: string }) {
+function SectionHeader({ eyebrow, title, accent, kicker }: { eyebrow: string; title: string; accent?: string; kicker?: string }) {
   return (
     <div className="mx-auto max-w-2xl text-center">
-      <div className="mb-4 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-        <span className="gold-divider" />
+      <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-foreground/65">
+        <span className="h-1 w-1 rounded-full bg-[color:var(--gold)]" />
         {eyebrow}
-        <span className="gold-divider" />
       </div>
-      <h2 className="font-serif text-3xl text-foreground md:text-5xl">{title}</h2>
-      {kicker && <p className="mt-4 text-base text-muted-foreground md:text-lg">{kicker}</p>}
+      <h2 className="text-balance text-3xl tracking-[-0.035em] text-foreground md:text-5xl lg:text-[3.5rem] lg:leading-[1.05]">
+        {title}{" "}
+        {accent && <span className="font-display italic text-gradient-gold">{accent}</span>}
+      </h2>
+      {kicker && <p className="mt-5 text-base text-foreground/60 md:text-lg">{kicker}</p>}
     </div>
   );
 }
+
 
 const services = [
   { icon: Gem, title: "Custom Headstones", body: "Personalized granite memorials crafted with care and precision." },
