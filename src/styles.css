@@ -50,37 +50,41 @@
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(0.995 0.003 80);
-  --foreground: oklch(0.18 0.04 260);
-  --ink: oklch(0.18 0.04 260);
-  --cream: oklch(0.97 0.012 80);
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.04 260);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.04 260);
+  /* Deep, premium dark palette */
+  --background: oklch(0.16 0.018 260);
+  --foreground: oklch(0.94 0.012 80);
+  --ink: oklch(0.94 0.012 80);
+  --cream: oklch(0.21 0.022 260);
 
-  --primary: oklch(0.24 0.06 260);
-  --primary-foreground: oklch(0.985 0.005 80);
+  --card: oklch(0.205 0.022 260);
+  --card-foreground: oklch(0.94 0.012 80);
+  --popover: oklch(0.205 0.022 260);
+  --popover-foreground: oklch(0.94 0.012 80);
 
-  --secondary: oklch(0.955 0.012 80);
-  --secondary-foreground: oklch(0.24 0.06 260);
+  /* Primary now reads as warm gold for CTAs/accents on dark */
+  --primary: oklch(0.78 0.13 78);
+  --primary-foreground: oklch(0.14 0.02 260);
 
-  --muted: oklch(0.955 0.012 80);
-  --muted-foreground: oklch(0.48 0.02 260);
+  --secondary: oklch(0.24 0.025 260);
+  --secondary-foreground: oklch(0.94 0.012 80);
 
-  --accent: oklch(0.93 0.04 80);
-  --accent-foreground: oklch(0.24 0.06 260);
+  --muted: oklch(0.24 0.025 260);
+  --muted-foreground: oklch(0.72 0.018 80);
 
-  --gold: oklch(0.72 0.12 75);
+  --accent: oklch(0.28 0.04 80);
+  --accent-foreground: oklch(0.94 0.012 80);
 
-  --destructive: oklch(0.55 0.22 27);
-  --destructive-foreground: oklch(0.985 0 0);
+  --gold: oklch(0.82 0.14 80);
 
-  --border: oklch(0.9 0.012 80);
-  --input: oklch(0.9 0.012 80);
-  --ring: oklch(0.55 0.05 260);
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  --border: oklch(0.32 0.02 260 / 60%);
+  --input: oklch(0.32 0.02 260 / 80%);
+  --ring: oklch(0.78 0.13 78);
 }
+
 
 @layer base {
   * {
