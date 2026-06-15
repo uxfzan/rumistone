@@ -23,7 +23,10 @@ import aboutImg from "@/assets/about-craftsman.jpg";
 
 const PHONE = "(510) 555-0142";
 const PHONE_HREF = "tel:+15105550142";
+const WHATSAPP_NUMBER = "15105550142";
+const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi Rumi Stone, I'd like a quote for a memorial.")}`;
 const EMAIL = "hello@rumistone.com";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
