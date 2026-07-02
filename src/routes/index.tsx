@@ -142,22 +142,22 @@ function Nav() {
 
 function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden pt-32 pb-20 md:pt-44 md:pb-32 lg:pt-52 lg:pb-44">
-      {/* Layered gradient mesh background */}
+    <section id="top" className="relative isolate overflow-hidden pt-32 pb-24 md:pt-44 md:pb-32 lg:pt-52 lg:pb-40">
+      {/* Layered warm gradient mesh */}
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-mesh)" }} />
-      {/* Subtle stone image, very faded */}
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.18] mix-blend-luminosity">
-        <img src={heroImg} alt="" className="h-full w-full object-cover" width={1920} height={1280} />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
+      {/* Very soft, blurred image wash */}
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.14]">
+        <img src={heroImg} alt="" className="h-full w-full object-cover blur-2xl scale-110" width={1920} height={1280} />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
       </div>
-      {/* Floating glow orbs */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-[oklch(0.45_0.18_290)/0.25] blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-40 right-0 -z-10 h-[500px] w-[500px] rounded-full bg-[oklch(0.78_0.14_80)/0.18] blur-3xl" />
+      {/* Soft comforting orbs */}
+      <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-[oklch(0.82_0.08_235/0.35)] blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-40 right-0 -z-10 h-[500px] w-[500px] rounded-full bg-[oklch(0.9_0.05_65/0.35)] blur-3xl" />
 
       <div className="container-px mx-auto max-w-6xl">
         <div className="mx-auto flex flex-col items-center text-center">
-          <div className="mb-7 inline-flex items-center gap-2.5 rounded-full glass px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-foreground/75">
+          <div data-reveal className="reveal mb-8 inline-flex items-center gap-2.5 rounded-full glass px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.24em] text-foreground/75 shadow-[var(--shadow-xs)]">
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--gold)] opacity-60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[color:var(--gold)]" />
@@ -165,49 +165,47 @@ function Hero() {
             Family Atelier · Est. California
           </div>
 
-          <h1 className="max-w-5xl text-[2.5rem] leading-[1] tracking-[-0.04em] sm:text-6xl md:text-7xl lg:text-[5.5rem]">
-            <span className="text-gradient-light">Memorials,</span>
-            <br />
-            <span className="font-display italic text-gradient-gold">beautifully</span>
-            <span className="text-gradient-light"> remembered.</span>
+          <h1 data-reveal data-reveal-delay="80" className="reveal max-w-5xl text-balance">
+            <span className="text-gradient-light">Memorials,</span>{" "}
+            <span className="italic text-gradient-gold">beautifully</span>{" "}
+            <span className="text-gradient-light">remembered.</span>
           </h1>
 
-          <p className="mt-7 max-w-xl text-base leading-relaxed text-foreground/65 md:text-lg">
+          <p data-reveal data-reveal-delay="180" className="reveal mt-7 max-w-xl text-[17px] leading-[1.7] text-foreground/65 md:text-lg">
             Hand-crafted granite headstones and monuments — designed with you and installed at any cemetery in California.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-4 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5">
+          <div data-reveal data-reveal-delay="260" className="reveal mt-10 flex flex-wrap items-center justify-center gap-3">
+            <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-4 text-[13px] font-semibold tracking-wide text-background shadow-[0_12px_30px_-12px_oklch(0.2_0.02_250/0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-14px_oklch(0.2_0.02_250/0.6)]">
               Get a Free Quote
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
-            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.72_0.18_150)]/40 bg-[oklch(0.72_0.18_150)]/10 px-7 py-4 text-sm font-semibold text-[oklch(0.85_0.18_150)] backdrop-blur transition-colors hover:bg-[oklch(0.72_0.18_150)]/20">
-              <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
+            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" aria-label="Chat on WhatsApp" className="btn-whatsapp inline-flex items-center gap-2 rounded-full px-7 py-4 text-[13px] font-semibold tracking-wide">
+              <MessageCircle className="h-4 w-4" strokeWidth={2.4} /> Chat on WhatsApp
             </a>
-            <a href="#gallery" className="inline-flex items-center gap-2 rounded-full border border-border bg-white/60 px-7 py-4 text-sm font-semibold text-foreground/85 backdrop-blur transition-colors hover:bg-white">
+            <a href="#gallery" className="inline-flex items-center gap-2 rounded-full border border-border bg-white/70 px-7 py-4 text-[13px] font-semibold tracking-wide text-foreground/85 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-[var(--shadow-soft)]">
               View Gallery
             </a>
           </div>
 
-          {/* Pricing pill */}
-          <div className="mt-8 inline-flex items-center gap-2 text-xs text-foreground/55">
+          <div data-reveal data-reveal-delay="360" className="reveal mt-8 inline-flex items-center gap-2 text-xs text-foreground/60">
             <Sparkles className="h-3.5 w-3.5 text-[color:var(--gold)]" />
             <span className="text-gradient-gold font-semibold">30–40% below</span>
             <span>traditional cemetery pricing</span>
           </div>
         </div>
 
-        {/* Trust stats — Apple style horizontal rule */}
-        <div className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-3xl glass md:grid-cols-4">
+        {/* Trust stats */}
+        <div data-reveal data-reveal-delay="440" className="reveal mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-3xl glass-strong shadow-[var(--shadow-elegant)] md:grid-cols-4">
           {[
             ["10+", "Years Crafting"],
             ["1000+", "Memorials Made"],
             ["All", "CA Cemeteries"],
             ["Statewide", "Delivery"],
           ].map(([k, v]) => (
-            <div key={v} className="bg-background/40 p-6 text-center md:p-8">
-              <div className="font-display text-3xl italic text-gradient-gold md:text-4xl">{k}</div>
-              <div className="mt-1 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">{v}</div>
+            <div key={v} className="bg-white/60 p-6 text-center transition-colors duration-300 hover:bg-white md:p-8">
+              <div className="font-serif text-4xl italic text-gradient-gold md:text-[2.75rem]">{k}</div>
+              <div className="mt-1.5 text-[10px] uppercase tracking-[0.28em] text-muted-foreground">{v}</div>
             </div>
           ))}
         </div>
@@ -219,15 +217,15 @@ function Hero() {
 function SectionHeader({ eyebrow, title, accent, kicker }: { eyebrow: string; title: string; accent?: string; kicker?: string }) {
   return (
     <div className="mx-auto max-w-2xl text-center">
-      <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-white px-3.5 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-foreground/70 shadow-[var(--shadow-soft)]">
+      <div data-reveal className="reveal mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3.5 py-1 text-[11px] font-medium uppercase tracking-[0.24em] text-foreground/70 shadow-[var(--shadow-xs)] backdrop-blur">
         <span className="h-1 w-1 rounded-full bg-[color:var(--gold)]" />
         {eyebrow}
       </div>
-      <h2 className="text-balance text-3xl tracking-[-0.035em] text-foreground md:text-5xl lg:text-[3.5rem] lg:leading-[1.05]">
+      <h2 data-reveal data-reveal-delay="80" className="reveal text-balance text-foreground">
         {title}{" "}
-        {accent && <span className="font-display italic text-gradient-gold">{accent}</span>}
+        {accent && <span className="italic text-gradient-gold">{accent}</span>}
       </h2>
-      {kicker && <p className="mt-5 text-base text-foreground/60 md:text-lg">{kicker}</p>}
+      {kicker && <p data-reveal data-reveal-delay="160" className="reveal mt-5 text-[15px] leading-[1.7] text-foreground/60 md:text-lg">{kicker}</p>}
     </div>
   );
 }
