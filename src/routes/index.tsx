@@ -245,13 +245,22 @@ function Services() {
     <section id="services" className="container-px mx-auto max-w-7xl py-24 md:py-32">
       <SectionHeader eyebrow="Our Services" title="Memorials Crafted For Every Tribute" kicker="From a single flat marker to a family monument — every piece is designed, carved and finished by our own artisans." />
       <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {services.map(({ icon: Icon, title, body }) => (
-          <div key={title} className="group rounded-lg border border-border bg-card p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]">
-            <div className="mb-5 grid h-12 w-12 place-items-center rounded-sm border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 text-[color:var(--gold)] transition-colors group-hover:bg-[color:var(--gold)] group-hover:text-primary">
-              <Icon className="h-5 w-5" />
+        {services.map(({ icon: Icon, title, body }, i) => (
+          <div
+            key={title}
+            data-reveal
+            data-reveal-delay={i * 60}
+            className="reveal surface-card surface-card-hover group relative overflow-hidden rounded-2xl p-8"
+          >
+            <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[oklch(0.85_0.08_235/0.25)] opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="mb-6 grid h-12 w-12 place-items-center rounded-xl border border-[color:var(--gold)]/25 bg-[linear-gradient(135deg,oklch(0.95_0.03_235),oklch(0.9_0.05_235))] text-[color:var(--gold)] shadow-[0_6px_16px_-8px_oklch(0.55_0.12_240/0.4)] transition-all duration-500 group-hover:scale-105 group-hover:bg-[color:var(--gold)] group-hover:text-white">
+              <Icon className="h-5 w-5" strokeWidth={1.75} />
             </div>
-            <h3 className="font-serif text-2xl text-foreground">{title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
+            <h3 className="text-[1.4rem] text-foreground">{title}</h3>
+            <p className="mt-3 text-[14.5px] leading-[1.7] text-muted-foreground">{body}</p>
+            <div className="mt-6 inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-[color:var(--gold)] opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              Learn more <ArrowRight className="h-3 w-3" />
+            </div>
           </div>
         ))}
       </div>
@@ -274,23 +283,29 @@ function Granite() {
       <div className="container-px mx-auto max-w-7xl">
         <SectionHeader eyebrow="Granite Collection" title="Premium Stone, Hand-Selected" kicker="Each slab is reviewed for color depth, grain consistency and structural integrity before it enters our workshop." />
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {granites.map((g) => (
-            <div key={g.name} className="group overflow-hidden rounded-lg bg-card shadow-[var(--shadow-soft)]">
-              <div className="relative aspect-[4/3] overflow-hidden">
+          {granites.map((g, i) => (
+            <div
+              key={g.name}
+              data-reveal
+              data-reveal-delay={i * 60}
+              className="reveal surface-card surface-card-hover group overflow-hidden rounded-2xl"
+            >
+              <div className="img-zoom relative aspect-[4/3]">
                 {g.img ? (
-                  <img src={g.img} alt={`${g.name} granite sample`} loading="lazy" width={800} height={600} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img src={g.img} alt={`${g.name} granite sample`} loading="lazy" width={800} height={600} className="h-full w-full object-cover" />
                 ) : (
-                  <div className="grid h-full w-full place-items-center bg-primary text-primary-foreground">
+                  <div className="grid h-full w-full place-items-center bg-[linear-gradient(135deg,oklch(0.32_0.055_250),oklch(0.22_0.03_250))] text-primary-foreground">
                     <Gem className="h-10 w-10 text-[color:var(--gold)]" />
                   </div>
                 )}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </div>
-              <div className="flex items-center justify-between gap-3 p-5">
+              <div className="flex items-center justify-between gap-3 p-6">
                 <div>
-                  <h3 className="font-serif text-xl text-foreground">{g.name}</h3>
-                  <p className="text-xs text-muted-foreground">{g.desc}</p>
+                  <h3 className="text-[1.2rem] text-foreground">{g.name}</h3>
+                  <p className="mt-1 text-[13px] text-muted-foreground">{g.desc}</p>
                 </div>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-[color:var(--gold)]">Polished</span>
+                <span className="rounded-full border border-[color:var(--gold)]/25 bg-[color:var(--gold)]/8 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-[color:var(--gold)]">Polished</span>
               </div>
             </div>
           ))}
