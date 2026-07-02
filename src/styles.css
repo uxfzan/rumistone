@@ -35,62 +35,69 @@
   --color-cream: var(--cream);
   --color-ink: var(--ink);
 
-  --font-serif: "Instrument Serif", "Cormorant Garamond", "Times New Roman", serif;
-  --font-sans: "Inter", system-ui, -apple-system, "SF Pro Display", sans-serif;
+  --font-serif: "Fraunces", "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: "Inter Tight", "Inter", system-ui, -apple-system, sans-serif;
 
-  --shadow-soft: 0 6px 24px -12px color-mix(in oklab, oklch(0.45 0.05 240) 22%, transparent);
-  --shadow-elegant: 0 24px 60px -28px color-mix(in oklab, oklch(0.45 0.05 240) 28%, transparent);
-  --shadow-glow: 0 0 60px -10px color-mix(in oklab, var(--gold) 35%, transparent);
+  --shadow-xs: 0 1px 2px oklch(0.22 0.02 250 / 0.05);
+  --shadow-soft:
+    0 1px 2px oklch(0.22 0.02 250 / 0.04),
+    0 8px 24px -12px oklch(0.22 0.02 250 / 0.10);
+  --shadow-elegant:
+    0 1px 2px oklch(0.22 0.02 250 / 0.05),
+    0 12px 28px -14px oklch(0.22 0.02 250 / 0.16),
+    0 32px 64px -32px oklch(0.22 0.02 250 / 0.18);
+  --shadow-lifted:
+    0 2px 4px oklch(0.22 0.02 250 / 0.05),
+    0 20px 50px -20px oklch(0.22 0.02 250 / 0.24);
+  --shadow-glow: 0 0 60px -10px color-mix(in oklab, var(--gold) 40%, transparent);
 
   --gradient-hero:
-    radial-gradient(ellipse at 15% 0%, oklch(0.94 0.03 235 / 0.7) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 20%, oklch(0.95 0.02 70 / 0.55) 0%, transparent 50%),
-    linear-gradient(180deg, oklch(0.99 0.005 80) 0%, oklch(0.97 0.008 80) 100%);
-  --gradient-gold: linear-gradient(135deg, oklch(0.62 0.11 235), oklch(0.5 0.13 250));
+    radial-gradient(ellipse at 12% -10%, oklch(0.93 0.045 235 / 0.75) 0%, transparent 55%),
+    radial-gradient(ellipse at 88% 10%, oklch(0.96 0.03 65 / 0.7) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, oklch(0.94 0.03 80 / 0.6) 0%, transparent 60%),
+    linear-gradient(180deg, oklch(0.995 0.004 85) 0%, oklch(0.97 0.008 85) 100%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.52 0.13 245), oklch(0.6 0.11 235) 55%, oklch(0.7 0.08 220));
   --gradient-mesh:
-    radial-gradient(circle at 20% 30%, oklch(0.86 0.06 235 / 0.35), transparent 45%),
-    radial-gradient(circle at 80% 70%, oklch(0.92 0.04 70 / 0.35), transparent 50%);
+    radial-gradient(circle at 20% 30%, oklch(0.85 0.06 235 / 0.35), transparent 45%),
+    radial-gradient(circle at 80% 70%, oklch(0.92 0.045 65 / 0.35), transparent 50%);
 }
 
 
 :root {
-  --radius: 0.75rem;
+  --radius: 0.875rem;
 
-  /* Warm, comforting light palette — ivory + soft blue */
-  --background: oklch(0.985 0.006 85);          /* warm ivory */
-  --foreground: oklch(0.22 0.02 250);            /* deep ink-blue */
-  --ink: oklch(0.22 0.02 250);
-  --cream: oklch(0.96 0.012 80);                 /* alt section beige */
+  --background: oklch(0.985 0.006 85);
+  --foreground: oklch(0.2 0.022 250);
+  --ink: oklch(0.16 0.02 250);
+  --cream: oklch(0.965 0.014 82);
 
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.02 250);
+  --card-foreground: oklch(0.2 0.022 250);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.02 250);
+  --popover-foreground: oklch(0.2 0.022 250);
 
-  /* Primary = calm slate blue for contrast sections */
-  --primary: oklch(0.35 0.055 250);
-  --primary-foreground: oklch(0.985 0.006 85);
+  --primary: oklch(0.32 0.055 250);
+  --primary-foreground: oklch(0.99 0.005 85);
 
-  --secondary: oklch(0.94 0.014 80);
-  --secondary-foreground: oklch(0.28 0.03 250);
+  --secondary: oklch(0.945 0.014 80);
+  --secondary-foreground: oklch(0.26 0.03 250);
 
   --muted: oklch(0.94 0.012 80);
-  --muted-foreground: oklch(0.48 0.02 250);
+  --muted-foreground: oklch(0.5 0.02 250);
 
   --accent: oklch(0.9 0.04 235);
-  --accent-foreground: oklch(0.28 0.05 250);
+  --accent-foreground: oklch(0.26 0.05 250);
 
-  /* Kept the --gold token name to avoid churn — now a soft, comforting blue */
-  --gold: oklch(0.6 0.11 235);
+  /* Signature soft-blue accent (kept as --gold token to avoid churn) */
+  --gold: oklch(0.55 0.12 240);
 
   --destructive: oklch(0.58 0.22 27);
   --destructive-foreground: oklch(0.98 0 0);
 
-  --border: oklch(0.22 0.02 250 / 10%);
+  --border: oklch(0.22 0.02 250 / 8%);
   --input: oklch(0.22 0.02 250 / 14%);
-  --ring: oklch(0.6 0.11 235);
+  --ring: oklch(0.55 0.12 240);
 }
-
 
 
 @layer base {
@@ -104,30 +111,53 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11", "cv02";
     -webkit-font-smoothing: antialiased;
-    font-feature-settings: "ss01", "cv11";
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
-  h1, h2, h3, h4 {
-    font-family: var(--font-sans);
-    letter-spacing: -0.03em;
-    font-weight: 600;
-  }
-  .font-display {
+
+  /* Fluid, elegant type scale */
+  h1, .h1 {
     font-family: var(--font-serif);
-    letter-spacing: -0.015em;
     font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    font-size: clamp(2.75rem, 6.2vw, 5.75rem);
+    font-optical-sizing: auto;
   }
+  h2, .h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+  }
+  h3, .h3 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    font-size: clamp(1.35rem, 1.6vw, 1.65rem);
+  }
+  p { line-height: 1.7; }
+
+  ::selection { background: color-mix(in oklab, var(--gold) 30%, transparent); color: var(--foreground); }
 }
 
+/* Fraunces optical sizing for serif headings */
+.font-serif, h1, h2, h3, h4 { font-optical-sizing: auto; }
+
+
 @utility text-gradient-gold {
-  background: linear-gradient(135deg, oklch(0.55 0.13 245), oklch(0.62 0.11 235) 60%, oklch(0.68 0.09 220));
+  background: linear-gradient(135deg, oklch(0.4 0.09 250), oklch(0.55 0.12 240) 55%, oklch(0.68 0.09 220));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 @utility text-gradient-light {
-  background: linear-gradient(180deg, oklch(0.28 0.03 250) 0%, oklch(0.4 0.035 250) 100%);
+  background: linear-gradient(180deg, oklch(0.22 0.03 250) 0%, oklch(0.35 0.04 250) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -135,11 +165,30 @@
 
 @utility glass {
   background: oklch(1 0 0 / 0.72);
-  backdrop-filter: blur(20px) saturate(140%);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(22px) saturate(160%);
   border: 1px solid oklch(0.22 0.02 250 / 0.08);
 }
+@utility glass-strong {
+  background: oklch(1 0 0 / 0.86);
+  backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid oklch(0.22 0.02 250 / 0.1);
+}
 
+@utility surface-card {
+  background: linear-gradient(180deg, oklch(1 0 0) 0%, oklch(0.99 0.005 85) 100%);
+  border: 1px solid oklch(0.22 0.02 250 / 0.07);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+              box-shadow 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+              border-color 0.3s ease;
+}
+@utility surface-card-hover {
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elegant);
+    border-color: color-mix(in oklab, var(--gold) 30%, transparent);
+  }
+}
 
 @utility gold-divider {
   display: inline-block;
@@ -152,4 +201,54 @@
   padding-inline: 1.25rem;
   @media (min-width: 768px) { padding-inline: 2.5rem; }
   @media (min-width: 1280px) { padding-inline: 4rem; }
+}
+
+/* Scroll reveal — driven by data-reveal + IntersectionObserver hook */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+              transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+}
+[data-revealed="true"] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal, [data-revealed] { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* Image hover */
+@utility img-zoom {
+  overflow: hidden;
+  & img {
+    transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.6s ease;
+  }
+  &:hover img {
+    transform: scale(1.06);
+    filter: saturate(1.05);
+  }
+}
+
+/* WhatsApp brand */
+@utility btn-whatsapp {
+  background: linear-gradient(180deg, oklch(0.68 0.17 150) 0%, oklch(0.58 0.16 152) 100%);
+  color: oklch(0.99 0 0);
+  border: 1px solid oklch(0.5 0.15 152 / 0.4);
+  box-shadow:
+    0 1px 0 oklch(1 0 0 / 0.35) inset,
+    0 10px 28px -12px oklch(0.5 0.16 152 / 0.55);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 1px 0 oklch(1 0 0 / 0.4) inset,
+      0 18px 36px -14px oklch(0.5 0.16 152 / 0.7);
+    filter: brightness(1.03);
+  }
+  &:focus-visible {
+    outline: 2px solid oklch(0.68 0.17 150);
+    outline-offset: 3px;
+  }
 }

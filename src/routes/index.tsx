@@ -5,6 +5,8 @@ import {
   Gem, Square, Mountain, Users, Armchair, Sparkles,
   MessageSquare, PencilRuler, Hammer, Truck, ChevronDown, MessageCircle,
 } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+
 
 
 import heroImg from "@/assets/hero-memorial.jpg";
@@ -63,12 +65,12 @@ export const Route = createFileRoute("/")({
 function Logo({ className = "" }: { className?: string }) {
   return (
     <a href="#top" className={`group flex items-center gap-3 ${className}`}>
-      <span className="relative grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-[oklch(0.92_0.1_88)] to-[oklch(0.65_0.16_50)] text-primary shadow-[var(--shadow-glow)]">
-        <span className="font-display text-xl leading-none italic">R</span>
+      <span className="relative grid h-10 w-10 place-items-center rounded-full bg-[linear-gradient(135deg,oklch(0.55_0.12_240),oklch(0.35_0.09_250))] text-white shadow-[0_8px_24px_-8px_oklch(0.35_0.09_250/0.55)] ring-1 ring-white/30 transition-transform duration-500 group-hover:scale-105">
+        <span className="font-serif text-xl leading-none italic tracking-tight">R</span>
       </span>
       <span className="flex flex-col leading-tight">
-        <span className="text-base font-semibold tracking-tight text-foreground">Rumi Stone</span>
-        <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground">Memorial Atelier</span>
+        <span className="text-[15px] font-semibold tracking-tight text-foreground">Rumi Stone</span>
+        <span className="text-[10px] uppercase tracking-[0.32em] text-muted-foreground">Memorial Atelier</span>
       </span>
     </a>
   );
@@ -86,27 +88,31 @@ function Nav() {
   ];
   return (
     <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4">
-      <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full glass px-4 py-2.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.5)]">
+      <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full glass-strong px-4 py-2.5 shadow-[0_10px_40px_-16px_oklch(0.22_0.02_250/0.25)]">
         <Logo />
         <nav className="hidden items-center gap-7 lg:flex">
           {links.map(([label, href]) => (
-            <a key={href} href={href} className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground">
+            <a
+              key={href}
+              href={href}
+              className="relative text-[13px] font-medium tracking-wide text-foreground/70 transition-colors hover:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-[color:var(--gold)] after:transition-transform after:duration-500 hover:after:origin-left hover:after:scale-x-100"
+            >
               {label}
             </a>
           ))}
         </nav>
         <div className="hidden items-center gap-2 lg:flex">
-          <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="flex h-10 items-center gap-2 rounded-full border border-[oklch(0.72_0.18_150)]/40 bg-[oklch(0.72_0.18_150)]/10 px-4 text-xs font-semibold text-[oklch(0.85_0.18_150)] transition-colors hover:bg-[oklch(0.72_0.18_150)]/20">
-            <MessageCircle className="h-4 w-4" /> WhatsApp
+          <a href={WHATSAPP_HREF} target="_blank" rel="noopener" aria-label="Chat on WhatsApp" className="btn-whatsapp inline-flex h-10 items-center gap-2 rounded-full px-4 text-[12px] font-semibold tracking-wide">
+            <MessageCircle className="h-4 w-4" strokeWidth={2.4} /> WhatsApp
           </a>
-          <a href="#contact" className="group flex h-10 items-center gap-1.5 rounded-full bg-foreground px-5 text-xs font-semibold text-background transition-transform hover:-translate-y-0.5">
-            Free Quote <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          <a href="#contact" className="group inline-flex h-10 items-center gap-1.5 rounded-full bg-foreground px-5 text-[12px] font-semibold tracking-wide text-background shadow-[0_8px_20px_-8px_oklch(0.2_0.02_250/0.5)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_28px_-10px_oklch(0.2_0.02_250/0.55)]">
+            Free Quote <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen(!open)}
-          className="grid h-10 w-10 place-items-center rounded-full border border-border bg-white text-foreground lg:hidden"
+          className="grid h-10 w-10 place-items-center rounded-full border border-border bg-white text-foreground shadow-[var(--shadow-xs)] lg:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -120,10 +126,10 @@ function Nav() {
               </a>
             ))}
             <div className="mt-2 grid grid-cols-2 gap-2">
-              <a href={WHATSAPP_HREF} target="_blank" rel="noopener" onClick={() => setOpen(false)} className="flex items-center justify-center gap-2 rounded-full border border-[oklch(0.72_0.18_150)]/40 bg-[oklch(0.72_0.18_150)]/15 px-4 py-3 text-xs font-semibold text-[oklch(0.85_0.18_150)]">
-                <MessageCircle className="h-4 w-4" /> WhatsApp
+              <a href={WHATSAPP_HREF} target="_blank" rel="noopener" onClick={() => setOpen(false)} className="btn-whatsapp flex items-center justify-center gap-2 rounded-full px-4 py-3 text-xs font-semibold">
+                <MessageCircle className="h-4 w-4" strokeWidth={2.4} /> WhatsApp
               </a>
-              <a href="#contact" onClick={() => setOpen(false)} className="rounded-full bg-foreground px-5 py-3 text-center text-xs font-semibold text-background">
+              <a href="#contact" onClick={() => setOpen(false)} className="rounded-full bg-foreground px-5 py-3 text-center text-xs font-semibold text-background shadow-[var(--shadow-soft)]">
                 Free Quote
               </a>
             </div>
@@ -136,22 +142,22 @@ function Nav() {
 
 function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden pt-32 pb-20 md:pt-44 md:pb-32 lg:pt-52 lg:pb-44">
-      {/* Layered gradient mesh background */}
+    <section id="top" className="relative isolate overflow-hidden pt-32 pb-24 md:pt-44 md:pb-32 lg:pt-52 lg:pb-40">
+      {/* Layered warm gradient mesh */}
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-mesh)" }} />
-      {/* Subtle stone image, very faded */}
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.18] mix-blend-luminosity">
-        <img src={heroImg} alt="" className="h-full w-full object-cover" width={1920} height={1280} />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
+      {/* Very soft, blurred image wash */}
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.14]">
+        <img src={heroImg} alt="" className="h-full w-full object-cover blur-2xl scale-110" width={1920} height={1280} />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
       </div>
-      {/* Floating glow orbs */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-[oklch(0.45_0.18_290)/0.25] blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-40 right-0 -z-10 h-[500px] w-[500px] rounded-full bg-[oklch(0.78_0.14_80)/0.18] blur-3xl" />
+      {/* Soft comforting orbs */}
+      <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-[oklch(0.82_0.08_235/0.35)] blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-40 right-0 -z-10 h-[500px] w-[500px] rounded-full bg-[oklch(0.9_0.05_65/0.35)] blur-3xl" />
 
       <div className="container-px mx-auto max-w-6xl">
         <div className="mx-auto flex flex-col items-center text-center">
-          <div className="mb-7 inline-flex items-center gap-2.5 rounded-full glass px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-foreground/75">
+          <div data-reveal className="reveal mb-8 inline-flex items-center gap-2.5 rounded-full glass px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.24em] text-foreground/75 shadow-[var(--shadow-xs)]">
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--gold)] opacity-60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[color:var(--gold)]" />
@@ -159,49 +165,47 @@ function Hero() {
             Family Atelier · Est. California
           </div>
 
-          <h1 className="max-w-5xl text-[2.5rem] leading-[1] tracking-[-0.04em] sm:text-6xl md:text-7xl lg:text-[5.5rem]">
-            <span className="text-gradient-light">Memorials,</span>
-            <br />
-            <span className="font-display italic text-gradient-gold">beautifully</span>
-            <span className="text-gradient-light"> remembered.</span>
+          <h1 data-reveal data-reveal-delay="80" className="reveal max-w-5xl text-balance">
+            <span className="text-gradient-light">Memorials,</span>{" "}
+            <span className="italic text-gradient-gold">beautifully</span>{" "}
+            <span className="text-gradient-light">remembered.</span>
           </h1>
 
-          <p className="mt-7 max-w-xl text-base leading-relaxed text-foreground/65 md:text-lg">
+          <p data-reveal data-reveal-delay="180" className="reveal mt-7 max-w-xl text-[17px] leading-[1.7] text-foreground/65 md:text-lg">
             Hand-crafted granite headstones and monuments — designed with you and installed at any cemetery in California.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-4 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5">
+          <div data-reveal data-reveal-delay="260" className="reveal mt-10 flex flex-wrap items-center justify-center gap-3">
+            <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-4 text-[13px] font-semibold tracking-wide text-background shadow-[0_12px_30px_-12px_oklch(0.2_0.02_250/0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-14px_oklch(0.2_0.02_250/0.6)]">
               Get a Free Quote
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
-            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.72_0.18_150)]/40 bg-[oklch(0.72_0.18_150)]/10 px-7 py-4 text-sm font-semibold text-[oklch(0.85_0.18_150)] backdrop-blur transition-colors hover:bg-[oklch(0.72_0.18_150)]/20">
-              <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
+            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" aria-label="Chat on WhatsApp" className="btn-whatsapp inline-flex items-center gap-2 rounded-full px-7 py-4 text-[13px] font-semibold tracking-wide">
+              <MessageCircle className="h-4 w-4" strokeWidth={2.4} /> Chat on WhatsApp
             </a>
-            <a href="#gallery" className="inline-flex items-center gap-2 rounded-full border border-border bg-white/60 px-7 py-4 text-sm font-semibold text-foreground/85 backdrop-blur transition-colors hover:bg-white">
+            <a href="#gallery" className="inline-flex items-center gap-2 rounded-full border border-border bg-white/70 px-7 py-4 text-[13px] font-semibold tracking-wide text-foreground/85 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-[var(--shadow-soft)]">
               View Gallery
             </a>
           </div>
 
-          {/* Pricing pill */}
-          <div className="mt-8 inline-flex items-center gap-2 text-xs text-foreground/55">
+          <div data-reveal data-reveal-delay="360" className="reveal mt-8 inline-flex items-center gap-2 text-xs text-foreground/60">
             <Sparkles className="h-3.5 w-3.5 text-[color:var(--gold)]" />
             <span className="text-gradient-gold font-semibold">30–40% below</span>
             <span>traditional cemetery pricing</span>
           </div>
         </div>
 
-        {/* Trust stats — Apple style horizontal rule */}
-        <div className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-3xl glass md:grid-cols-4">
+        {/* Trust stats */}
+        <div data-reveal data-reveal-delay="440" className="reveal mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-3xl glass-strong shadow-[var(--shadow-elegant)] md:grid-cols-4">
           {[
             ["10+", "Years Crafting"],
             ["1000+", "Memorials Made"],
             ["All", "CA Cemeteries"],
             ["Statewide", "Delivery"],
           ].map(([k, v]) => (
-            <div key={v} className="bg-background/40 p-6 text-center md:p-8">
-              <div className="font-display text-3xl italic text-gradient-gold md:text-4xl">{k}</div>
-              <div className="mt-1 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">{v}</div>
+            <div key={v} className="bg-white/60 p-6 text-center transition-colors duration-300 hover:bg-white md:p-8">
+              <div className="font-serif text-4xl italic text-gradient-gold md:text-[2.75rem]">{k}</div>
+              <div className="mt-1.5 text-[10px] uppercase tracking-[0.28em] text-muted-foreground">{v}</div>
             </div>
           ))}
         </div>
@@ -213,15 +217,15 @@ function Hero() {
 function SectionHeader({ eyebrow, title, accent, kicker }: { eyebrow: string; title: string; accent?: string; kicker?: string }) {
   return (
     <div className="mx-auto max-w-2xl text-center">
-      <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-white px-3.5 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-foreground/70 shadow-[var(--shadow-soft)]">
+      <div data-reveal className="reveal mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3.5 py-1 text-[11px] font-medium uppercase tracking-[0.24em] text-foreground/70 shadow-[var(--shadow-xs)] backdrop-blur">
         <span className="h-1 w-1 rounded-full bg-[color:var(--gold)]" />
         {eyebrow}
       </div>
-      <h2 className="text-balance text-3xl tracking-[-0.035em] text-foreground md:text-5xl lg:text-[3.5rem] lg:leading-[1.05]">
+      <h2 data-reveal data-reveal-delay="80" className="reveal text-balance text-foreground">
         {title}{" "}
-        {accent && <span className="font-display italic text-gradient-gold">{accent}</span>}
+        {accent && <span className="italic text-gradient-gold">{accent}</span>}
       </h2>
-      {kicker && <p className="mt-5 text-base text-foreground/60 md:text-lg">{kicker}</p>}
+      {kicker && <p data-reveal data-reveal-delay="160" className="reveal mt-5 text-[15px] leading-[1.7] text-foreground/60 md:text-lg">{kicker}</p>}
     </div>
   );
 }
@@ -241,13 +245,22 @@ function Services() {
     <section id="services" className="container-px mx-auto max-w-7xl py-24 md:py-32">
       <SectionHeader eyebrow="Our Services" title="Memorials Crafted For Every Tribute" kicker="From a single flat marker to a family monument — every piece is designed, carved and finished by our own artisans." />
       <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {services.map(({ icon: Icon, title, body }) => (
-          <div key={title} className="group rounded-lg border border-border bg-card p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]">
-            <div className="mb-5 grid h-12 w-12 place-items-center rounded-sm border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 text-[color:var(--gold)] transition-colors group-hover:bg-[color:var(--gold)] group-hover:text-primary">
-              <Icon className="h-5 w-5" />
+        {services.map(({ icon: Icon, title, body }, i) => (
+          <div
+            key={title}
+            data-reveal
+            data-reveal-delay={i * 60}
+            className="reveal surface-card surface-card-hover group relative overflow-hidden rounded-2xl p-8"
+          >
+            <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[oklch(0.85_0.08_235/0.25)] opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="mb-6 grid h-12 w-12 place-items-center rounded-xl border border-[color:var(--gold)]/25 bg-[linear-gradient(135deg,oklch(0.95_0.03_235),oklch(0.9_0.05_235))] text-[color:var(--gold)] shadow-[0_6px_16px_-8px_oklch(0.55_0.12_240/0.4)] transition-all duration-500 group-hover:scale-105 group-hover:bg-[color:var(--gold)] group-hover:text-white">
+              <Icon className="h-5 w-5" strokeWidth={1.75} />
             </div>
-            <h3 className="font-serif text-2xl text-foreground">{title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
+            <h3 className="text-[1.4rem] text-foreground">{title}</h3>
+            <p className="mt-3 text-[14.5px] leading-[1.7] text-muted-foreground">{body}</p>
+            <div className="mt-6 inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-[color:var(--gold)] opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              Learn more <ArrowRight className="h-3 w-3" />
+            </div>
           </div>
         ))}
       </div>
@@ -270,23 +283,29 @@ function Granite() {
       <div className="container-px mx-auto max-w-7xl">
         <SectionHeader eyebrow="Granite Collection" title="Premium Stone, Hand-Selected" kicker="Each slab is reviewed for color depth, grain consistency and structural integrity before it enters our workshop." />
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {granites.map((g) => (
-            <div key={g.name} className="group overflow-hidden rounded-lg bg-card shadow-[var(--shadow-soft)]">
-              <div className="relative aspect-[4/3] overflow-hidden">
+          {granites.map((g, i) => (
+            <div
+              key={g.name}
+              data-reveal
+              data-reveal-delay={i * 60}
+              className="reveal surface-card surface-card-hover group overflow-hidden rounded-2xl"
+            >
+              <div className="img-zoom relative aspect-[4/3]">
                 {g.img ? (
-                  <img src={g.img} alt={`${g.name} granite sample`} loading="lazy" width={800} height={600} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img src={g.img} alt={`${g.name} granite sample`} loading="lazy" width={800} height={600} className="h-full w-full object-cover" />
                 ) : (
-                  <div className="grid h-full w-full place-items-center bg-primary text-primary-foreground">
+                  <div className="grid h-full w-full place-items-center bg-[linear-gradient(135deg,oklch(0.32_0.055_250),oklch(0.22_0.03_250))] text-primary-foreground">
                     <Gem className="h-10 w-10 text-[color:var(--gold)]" />
                   </div>
                 )}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </div>
-              <div className="flex items-center justify-between gap-3 p-5">
+              <div className="flex items-center justify-between gap-3 p-6">
                 <div>
-                  <h3 className="font-serif text-xl text-foreground">{g.name}</h3>
-                  <p className="text-xs text-muted-foreground">{g.desc}</p>
+                  <h3 className="text-[1.2rem] text-foreground">{g.name}</h3>
+                  <p className="mt-1 text-[13px] text-muted-foreground">{g.desc}</p>
                 </div>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-[color:var(--gold)]">Polished</span>
+                <span className="rounded-full border border-[color:var(--gold)]/25 bg-[color:var(--gold)]/8 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-[color:var(--gold)]">Polished</span>
               </div>
             </div>
           ))}
@@ -308,11 +327,13 @@ function WhyUs() {
     <section className="container-px mx-auto max-w-7xl py-24 md:py-32">
       <SectionHeader eyebrow="Why Rumi Stone" title="The Care Of Family. The Skill Of Master Craftsmen." />
       <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {reasons.map((r) => (
-          <div key={r.v} className="border-t border-[color:var(--gold)] pt-6">
-            <div className="font-serif text-4xl text-foreground">{r.k}</div>
-            <div className="mt-1 text-sm uppercase tracking-[0.2em] text-muted-foreground">{r.v}</div>
-            <p className="mt-4 text-sm leading-relaxed text-foreground/70">{r.body}</p>
+        {reasons.map((r, i) => (
+          <div key={r.v} data-reveal data-reveal-delay={i * 70} className="reveal relative pt-8">
+            <span className="absolute left-0 top-0 h-px w-12 bg-[color:var(--gold)]" />
+            <span className="absolute left-0 top-0 h-px w-0 bg-foreground/60 transition-all duration-700 group-hover:w-12" />
+            <div className="font-serif text-[2.5rem] leading-none tracking-tight text-foreground">{r.k}</div>
+            <div className="mt-2 text-[11px] uppercase tracking-[0.24em] text-muted-foreground">{r.v}</div>
+            <p className="mt-4 text-[14.5px] leading-[1.7] text-foreground/70">{r.body}</p>
           </div>
         ))}
       </div>
@@ -322,24 +343,25 @@ function WhyUs() {
 
 function About() {
   return (
-    <section id="about" className="bg-primary text-primary-foreground py-24 md:py-32">
+    <section id="about" className="relative overflow-hidden bg-[linear-gradient(180deg,oklch(0.28_0.045_250),oklch(0.2_0.03_250))] text-primary-foreground py-24 md:py-32">
+      <div className="pointer-events-none absolute -top-32 -left-32 h-[500px] w-[500px] rounded-full bg-[oklch(0.55_0.12_240/0.25)] blur-3xl" />
       <div className="container-px mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
-        <div className="relative">
-          <img src={aboutImg} alt="Stonemason crafting a memorial in the Rumi Stone workshop" loading="lazy" width={1400} height={1000} className="rounded-lg object-cover shadow-[var(--shadow-elegant)]" />
-          <div className="absolute -bottom-6 -right-6 hidden rounded-lg bg-[color:var(--gold)] p-6 text-primary md:block">
+        <div data-reveal className="reveal relative img-zoom">
+          <img src={aboutImg} alt="Stonemason crafting a memorial in the Rumi Stone workshop" loading="lazy" width={1400} height={1000} className="rounded-2xl object-cover shadow-[var(--shadow-elegant)] ring-1 ring-white/10" />
+          <div className="absolute -bottom-6 -right-6 hidden rounded-2xl border border-white/15 bg-[linear-gradient(180deg,oklch(0.6_0.11_235),oklch(0.5_0.12_245))] p-6 text-white shadow-[0_20px_50px_-20px_oklch(0.2_0.03_250/0.6)] md:block">
             <div className="font-serif text-4xl leading-none">1000+</div>
-            <div className="mt-1 text-xs uppercase tracking-[0.2em]">Memorials</div>
+            <div className="mt-1 text-[11px] uppercase tracking-[0.24em] opacity-90">Memorials</div>
           </div>
         </div>
-        <div>
-          <div className="mb-4 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[color:var(--gold)]">
+        <div data-reveal data-reveal-delay="120" className="reveal">
+          <div className="mb-4 flex items-center gap-3 text-[11px] uppercase tracking-[0.32em] text-[color:var(--gold)]">
             <span className="inline-block h-px w-10 bg-[color:var(--gold)]" />
             About Rumi Stone
           </div>
-          <h2 className="font-serif text-3xl leading-tight md:text-5xl">
+          <h2 className="text-primary-foreground">
             Crafting memories that last <span className="italic text-[color:var(--gold)]">generations</span>.
           </h2>
-          <div className="mt-6 space-y-5 text-white/80">
+          <div className="mt-6 space-y-5 text-[15.5px] leading-[1.75] text-white/80">
             <p>
               At Rumi Stone, we understand that a memorial is more than stone — it is a lasting tribute to a loved one's life. Our skilled craftsmen combine traditional monument-making techniques with modern artistry to honor each individual with dignity and grace.
             </p>
@@ -347,8 +369,8 @@ function About() {
               As a family-owned business, we work closely with every family we serve. Every monument tells a unique story and preserves cherished memories for generations to come.
             </p>
           </div>
-          <a href="#contact" className="mt-8 inline-flex items-center gap-2 border-b border-[color:var(--gold)] pb-1 text-sm font-medium uppercase tracking-wider text-[color:var(--gold)]">
-            Learn more about us <ArrowRight className="h-4 w-4" />
+          <a href="#contact" className="group mt-8 inline-flex items-center gap-2 border-b border-[color:var(--gold)] pb-1 text-[12px] font-medium uppercase tracking-[0.2em] text-[color:var(--gold)]">
+            Learn more about us <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         </div>
       </div>
@@ -377,23 +399,29 @@ function Gallery() {
           <button
             key={c}
             onClick={() => setActive(c)}
-            className={`rounded-full border px-4 py-1.5 text-xs uppercase tracking-wider transition-colors ${
+            className={`rounded-full border px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${
               active === c
-                ? "border-[color:var(--gold)] bg-[color:var(--gold)] text-primary"
-                : "border-border text-foreground/70 hover:border-primary/40"
+                ? "border-transparent bg-foreground text-background shadow-[var(--shadow-soft)]"
+                : "border-border bg-white/70 text-foreground/70 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-white hover:text-foreground"
             }`}
           >
             {c}
           </button>
         ))}
       </div>
-      <div className="mt-10 grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((g) => (
-          <figure key={g.label} className={`group relative overflow-hidden rounded-lg ${g.span}`}>
-            <img src={g.src} alt={g.label} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/85 via-primary/30 to-transparent p-4 text-primary-foreground">
-              <div className="text-[10px] uppercase tracking-[0.25em] text-[color:var(--gold)]">{g.cat}</div>
-              <div className="font-serif text-lg">{g.label}</div>
+      <div className="mt-12 grid auto-rows-[240px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {filtered.map((g, i) => (
+          <figure
+            key={g.label}
+            data-reveal
+            data-reveal-delay={i * 60}
+            className={`reveal img-zoom group relative overflow-hidden rounded-2xl ring-1 ring-black/5 shadow-[var(--shadow-soft)] transition-shadow duration-500 hover:shadow-[var(--shadow-lifted)] ${g.span}`}
+          >
+            <img src={g.src} alt={g.label} loading="lazy" className="h-full w-full object-cover" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.16_0.02_250/0.85)] via-[oklch(0.16_0.02_250/0.15)] to-transparent" />
+            <figcaption className="absolute inset-x-0 bottom-0 translate-y-2 p-5 text-white opacity-90 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              <div className="text-[10px] uppercase tracking-[0.28em] text-[color:var(--gold)]">{g.cat}</div>
+              <div className="font-serif text-xl">{g.label}</div>
             </figcaption>
           </figure>
         ))}
@@ -414,17 +442,23 @@ function Testimonials() {
       <div className="container-px mx-auto max-w-7xl">
         <SectionHeader eyebrow="Family Stories" title="Trusted By Families Across California" />
         <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure key={t.name} className="flex h-full flex-col rounded-lg border border-border bg-card p-8 shadow-[var(--shadow-soft)]">
+          {testimonials.map((t, i) => (
+            <figure
+              key={t.name}
+              data-reveal
+              data-reveal-delay={i * 100}
+              className="reveal surface-card surface-card-hover relative flex h-full flex-col rounded-2xl p-8"
+            >
+              <span className="absolute -top-4 left-8 font-serif text-6xl italic leading-none text-[color:var(--gold)]/40">“</span>
               <div className="flex gap-1 text-[color:var(--gold)]">
                 {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
               </div>
-              <blockquote className="mt-5 flex-1 font-serif text-lg italic leading-relaxed text-foreground/85">
-                “{t.quote}”
+              <blockquote className="mt-5 flex-1 font-serif text-[1.15rem] leading-[1.6] text-foreground/85">
+                {t.quote}
               </blockquote>
-              <figcaption className="mt-6 border-t border-border pt-4">
-                <div className="font-medium text-foreground">{t.name}</div>
-                <div className="text-xs uppercase tracking-wider text-muted-foreground">{t.city}</div>
+              <figcaption className="mt-6 border-t border-border pt-5">
+                <div className="text-[14px] font-semibold tracking-tight text-foreground">{t.name}</div>
+                <div className="mt-0.5 text-[10px] uppercase tracking-[0.24em] text-muted-foreground">{t.city}</div>
               </figcaption>
             </figure>
           ))}
@@ -447,13 +481,18 @@ function Process() {
       <SectionHeader eyebrow="Our Process" title="Four Thoughtful Steps" kicker="A guided experience from your first conversation to the moment the memorial is set in place." />
       <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {steps.map(({ icon: Icon, title, body }, i) => (
-          <div key={title} className="relative rounded-lg border border-border bg-card p-8">
-            <div className="absolute -top-5 left-8 grid h-10 w-10 place-items-center rounded-full bg-[color:var(--gold)] font-serif text-lg text-primary">
+          <div
+            key={title}
+            data-reveal
+            data-reveal-delay={i * 80}
+            className="reveal surface-card surface-card-hover relative rounded-2xl p-8 pt-10"
+          >
+            <div className="absolute -top-5 left-8 grid h-11 w-11 place-items-center rounded-full bg-[linear-gradient(135deg,oklch(0.6_0.11_235),oklch(0.42_0.1_248))] font-serif text-lg text-white shadow-[0_8px_20px_-8px_oklch(0.42_0.1_248/0.5)] ring-4 ring-background">
               {i + 1}
             </div>
-            <Icon className="mt-2 h-7 w-7 text-[color:var(--gold)]" />
-            <h3 className="mt-4 font-serif text-xl text-foreground">{title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
+            <Icon className="h-7 w-7 text-[color:var(--gold)]" strokeWidth={1.6} />
+            <h3 className="mt-4 text-[1.25rem] text-foreground">{title}</h3>
+            <p className="mt-2 text-[14.5px] leading-[1.7] text-muted-foreground">{body}</p>
           </div>
         ))}
       </div>
@@ -465,28 +504,29 @@ const cities = ["San Francisco", "Oakland", "San Jose", "Hayward", "Fremont", "S
 
 function Coverage() {
   return (
-    <section className="bg-primary text-primary-foreground py-24 md:py-32">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,oklch(0.28_0.045_250),oklch(0.2_0.03_250))] text-primary-foreground py-24 md:py-32">
+      <div className="pointer-events-none absolute -top-24 right-0 h-[500px] w-[500px] rounded-full bg-[oklch(0.55_0.12_240/0.25)] blur-3xl" />
       <div className="container-px mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.1fr,1fr]">
-        <div>
-          <div className="mb-4 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[color:var(--gold)]">
+        <div data-reveal className="reveal">
+          <div className="mb-4 flex items-center gap-3 text-[11px] uppercase tracking-[0.32em] text-[color:var(--gold)]">
             <span className="inline-block h-px w-10 bg-[color:var(--gold)]" /> Coverage Area
           </div>
-          <h2 className="font-serif text-3xl leading-tight md:text-5xl">
+          <h2 className="text-primary-foreground">
             We work with <span className="italic text-[color:var(--gold)]">every cemetery</span> in California.
           </h2>
-          <p className="mt-5 max-w-lg text-white/75">
+          <p className="mt-5 max-w-lg text-[15.5px] leading-[1.75] text-white/75">
             From the Bay Area to the Central Valley and down to Los Angeles — our team handles permitting, delivery and installation at any California cemetery.
           </p>
-          <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3">
+          <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3">
             {cities.map((c) => (
-              <div key={c} className="flex items-center gap-2 text-sm text-white/85">
+              <div key={c} className="flex items-center gap-2 text-[14px] text-white/85 transition-colors duration-300 hover:text-white">
                 <MapPin className="h-4 w-4 text-[color:var(--gold)]" /> {c}
               </div>
             ))}
           </div>
         </div>
-        <div className="relative">
-          <div className="aspect-[4/5] rounded-lg border border-white/15 bg-white/[0.04] p-6 backdrop-blur">
+        <div data-reveal data-reveal-delay="120" className="reveal relative">
+          <div className="aspect-[4/5] rounded-3xl border border-white/15 bg-white/[0.05] p-6 shadow-[var(--shadow-elegant)] backdrop-blur">
             <svg viewBox="0 0 200 320" className="h-full w-full" xmlns="http://www.w3.org/2000/svg" aria-label="Stylized map of California">
               <path
                 d="M55 10 L72 8 L80 22 L92 30 L100 50 L96 72 L108 90 L120 110 L128 134 L140 160 L156 188 L168 220 L172 248 L160 274 L138 296 L112 308 L88 304 L78 282 L70 256 L58 230 L46 200 L40 170 L36 138 L42 108 L48 78 L50 48 Z"
@@ -499,8 +539,10 @@ function Coverage() {
                 [135, 230], [150, 260], [115, 290],
               ].map(([x, y], i) => (
                 <g key={i}>
-                  <circle cx={x} cy={y} r="3" fill="var(--gold)" />
-                  <circle cx={x} cy={y} r="8" fill="var(--gold)" opacity="0.15" />
+                  <circle cx={x} cy={y} r="3" fill="var(--gold)">
+                    <animate attributeName="r" values="3;5;3" dur="2.4s" begin={`${i * 0.25}s`} repeatCount="indefinite" />
+                  </circle>
+                  <circle cx={x} cy={y} r="10" fill="var(--gold)" opacity="0.15" />
                 </g>
               ))}
             </svg>
@@ -525,23 +567,27 @@ function FAQ() {
   return (
     <section id="faq" className="container-px mx-auto max-w-4xl py-24 md:py-32">
       <SectionHeader eyebrow="Questions" title="Frequently Asked" />
-      <div className="mt-12 divide-y divide-border border-y border-border">
+      <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-soft)]">
         {faqs.map((f, i) => {
           const isOpen = open === i;
           return (
-            <div key={f.q}>
+            <div key={f.q} className={i > 0 ? "border-t border-border" : ""}>
               <button
                 onClick={() => setOpen(isOpen ? null : i)}
-                className="flex w-full items-center justify-between gap-6 py-6 text-left"
+                className="flex w-full items-center justify-between gap-6 px-6 py-6 text-left transition-colors hover:bg-black/[0.02] md:px-8"
               >
-                <span className="font-serif text-lg text-foreground md:text-xl">{f.q}</span>
-                <ChevronDown className={`h-5 w-5 shrink-0 text-[color:var(--gold)] transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                <span className="font-serif text-[1.15rem] text-foreground md:text-[1.3rem]">{f.q}</span>
+                <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border bg-white transition-transform duration-500 ${isOpen ? "rotate-180 border-[color:var(--gold)]/50 bg-[color:var(--gold)]/10" : ""}`}>
+                  <ChevronDown className="h-4 w-4 text-[color:var(--gold)]" />
+                </span>
               </button>
-              {isOpen && (
-                <div className="pb-6 pr-10 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  {f.a}
+              <div className={`grid overflow-hidden transition-[grid-template-rows] duration-500 ease-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+                <div className="min-h-0">
+                  <div className="px-6 pb-6 pr-16 text-[14.5px] leading-[1.75] text-muted-foreground md:px-8 md:text-[15.5px]">
+                    {f.a}
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
           );
         })}
@@ -580,12 +626,11 @@ function Contact() {
                 <div className="font-serif text-lg text-foreground">{EMAIL}</div>
               </span>
             </a>
-            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="flex items-start gap-4">
-
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[oklch(0.72_0.18_150)] text-white"><MessageCircle className="h-4 w-4" /></span>
+            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="group flex items-start gap-4">
+              <span className="btn-whatsapp grid h-11 w-11 shrink-0 place-items-center rounded-xl transition-transform duration-300 group-hover:scale-105"><MessageCircle className="h-4 w-4" strokeWidth={2.4} /></span>
               <span>
-                <div className="text-xs uppercase tracking-wider text-muted-foreground">WhatsApp</div>
-                <div className="text-lg font-medium text-foreground">Chat with us instantly</div>
+                <div className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">WhatsApp</div>
+                <div className="text-[17px] font-medium text-foreground">Chat with us instantly</div>
               </span>
             </a>
 
@@ -602,8 +647,9 @@ function Contact() {
 
         <form
           onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-          className="rounded-lg border border-border bg-card p-7 shadow-[var(--shadow-elegant)] md:p-10"
+          className="relative rounded-2xl border border-border bg-card p-7 shadow-[var(--shadow-elegant)] md:p-10"
         >
+          <div className="pointer-events-none absolute -inset-px rounded-2xl bg-[linear-gradient(140deg,oklch(0.55_0.12_240/0.15),transparent_40%)]" />
           {sent ? (
             <div className="grid h-full place-items-center py-12 text-center">
               <div>
@@ -651,13 +697,13 @@ function Contact() {
 }
 
 function Label({ children }: { children: React.ReactNode }) {
-  return <span className="text-xs uppercase tracking-wider text-muted-foreground">{children}</span>;
+  return <span className="text-[10px] font-medium uppercase tracking-[0.24em] text-muted-foreground">{children}</span>;
 }
 function Field({ label, name, type = "text", required }: { label: string; name: string; type?: string; required?: boolean }) {
   return (
     <label className="block">
       <Label>{label}{required && " *"}</Label>
-      <input name={name} type={type} required={required} className="mt-1.5 w-full rounded-sm border border-input bg-background px-3 py-2.5 text-sm focus:border-primary focus:outline-none" />
+      <input name={name} type={type} required={required} className="mt-1.5 w-full rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm transition-all duration-200 focus:border-[color:var(--gold)] focus:outline-none focus:ring-4 focus:ring-[color:var(--gold)]/15" />
     </label>
   );
 }
@@ -713,14 +759,14 @@ function Footer() {
 function StickyMobileBar() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 px-4 pb-4 lg:hidden">
-      <div className="grid grid-cols-3 gap-2 rounded-full glass p-1.5 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)]">
-        <a href={PHONE_HREF} className="flex items-center justify-center gap-2 rounded-full py-3 text-xs font-semibold text-foreground/85">
-          <Phone className="h-4 w-4" /> Call
+      <div className="grid grid-cols-3 gap-1.5 rounded-full glass-strong p-1.5 shadow-[0_18px_50px_-16px_oklch(0.22_0.02_250/0.4)]">
+        <a href={PHONE_HREF} aria-label="Call us" className="flex items-center justify-center gap-2 rounded-full py-3 text-xs font-semibold text-foreground/85 transition-colors hover:bg-black/5">
+          <Phone className="h-4 w-4" strokeWidth={2} /> Call
         </a>
-        <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="flex items-center justify-center gap-2 rounded-full bg-[oklch(0.72_0.18_150)]/15 py-3 text-xs font-semibold text-[oklch(0.85_0.18_150)]">
-          <MessageCircle className="h-4 w-4" /> Chat
+        <a href={WHATSAPP_HREF} target="_blank" rel="noopener" aria-label="Chat on WhatsApp" className="btn-whatsapp flex items-center justify-center gap-2 rounded-full py-3 text-xs font-semibold">
+          <MessageCircle className="h-4 w-4" strokeWidth={2.4} /> Chat
         </a>
-        <a href="#contact" className="flex items-center justify-center gap-1 rounded-full bg-foreground py-3 text-xs font-semibold text-background">
+        <a href="#contact" className="flex items-center justify-center gap-1 rounded-full bg-foreground py-3 text-xs font-semibold text-background shadow-[0_6px_16px_-6px_oklch(0.2_0.02_250/0.55)]">
           Quote <ArrowUpRight className="h-3.5 w-3.5" />
         </a>
       </div>
@@ -735,10 +781,10 @@ function WhatsAppFloat() {
       target="_blank"
       rel="noopener"
       aria-label="Chat on WhatsApp"
-      className="group fixed bottom-24 right-5 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-[oklch(0.72_0.18_150)] text-white shadow-[0_10px_40px_-10px_oklch(0.72_0.18_150)] transition-transform hover:scale-110 lg:flex lg:bottom-6"
+      className="btn-whatsapp group fixed bottom-24 right-5 z-40 hidden h-14 w-14 items-center justify-center rounded-full lg:flex lg:bottom-6"
     >
-      <MessageCircle className="h-6 w-6" />
-      <span className="absolute right-full mr-3 hidden whitespace-nowrap rounded-full glass px-3 py-1.5 text-xs font-medium text-foreground group-hover:block">
+      <MessageCircle className="h-6 w-6" strokeWidth={2.2} />
+      <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-full bg-foreground px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-background opacity-0 shadow-[var(--shadow-soft)] transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100">
         Chat on WhatsApp
       </span>
     </a>
@@ -746,6 +792,7 @@ function WhatsAppFloat() {
 }
 
 function Index() {
+  useScrollReveal();
   return (
     <div className="min-h-screen bg-background pb-24 lg:pb-0">
       <Nav />
