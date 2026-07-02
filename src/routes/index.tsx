@@ -5,6 +5,8 @@ import {
   Gem, Square, Mountain, Users, Armchair, Sparkles,
   MessageSquare, PencilRuler, Hammer, Truck, ChevronDown, MessageCircle,
 } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+
 
 
 import heroImg from "@/assets/hero-memorial.jpg";
@@ -63,12 +65,12 @@ export const Route = createFileRoute("/")({
 function Logo({ className = "" }: { className?: string }) {
   return (
     <a href="#top" className={`group flex items-center gap-3 ${className}`}>
-      <span className="relative grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-[oklch(0.92_0.1_88)] to-[oklch(0.65_0.16_50)] text-primary shadow-[var(--shadow-glow)]">
-        <span className="font-display text-xl leading-none italic">R</span>
+      <span className="relative grid h-10 w-10 place-items-center rounded-full bg-[linear-gradient(135deg,oklch(0.55_0.12_240),oklch(0.35_0.09_250))] text-white shadow-[0_8px_24px_-8px_oklch(0.35_0.09_250/0.55)] ring-1 ring-white/30 transition-transform duration-500 group-hover:scale-105">
+        <span className="font-serif text-xl leading-none italic tracking-tight">R</span>
       </span>
       <span className="flex flex-col leading-tight">
-        <span className="text-base font-semibold tracking-tight text-foreground">Rumi Stone</span>
-        <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground">Memorial Atelier</span>
+        <span className="text-[15px] font-semibold tracking-tight text-foreground">Rumi Stone</span>
+        <span className="text-[10px] uppercase tracking-[0.32em] text-muted-foreground">Memorial Atelier</span>
       </span>
     </a>
   );
@@ -86,27 +88,31 @@ function Nav() {
   ];
   return (
     <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4">
-      <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full glass px-4 py-2.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.5)]">
+      <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full glass-strong px-4 py-2.5 shadow-[0_10px_40px_-16px_oklch(0.22_0.02_250/0.25)]">
         <Logo />
         <nav className="hidden items-center gap-7 lg:flex">
           {links.map(([label, href]) => (
-            <a key={href} href={href} className="text-sm font-medium text-foreground/70 transition-colors hover:text-foreground">
+            <a
+              key={href}
+              href={href}
+              className="relative text-[13px] font-medium tracking-wide text-foreground/70 transition-colors hover:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-[color:var(--gold)] after:transition-transform after:duration-500 hover:after:origin-left hover:after:scale-x-100"
+            >
               {label}
             </a>
           ))}
         </nav>
         <div className="hidden items-center gap-2 lg:flex">
-          <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="flex h-10 items-center gap-2 rounded-full border border-[oklch(0.72_0.18_150)]/40 bg-[oklch(0.72_0.18_150)]/10 px-4 text-xs font-semibold text-[oklch(0.85_0.18_150)] transition-colors hover:bg-[oklch(0.72_0.18_150)]/20">
-            <MessageCircle className="h-4 w-4" /> WhatsApp
+          <a href={WHATSAPP_HREF} target="_blank" rel="noopener" aria-label="Chat on WhatsApp" className="btn-whatsapp inline-flex h-10 items-center gap-2 rounded-full px-4 text-[12px] font-semibold tracking-wide">
+            <MessageCircle className="h-4 w-4" strokeWidth={2.4} /> WhatsApp
           </a>
-          <a href="#contact" className="group flex h-10 items-center gap-1.5 rounded-full bg-foreground px-5 text-xs font-semibold text-background transition-transform hover:-translate-y-0.5">
-            Free Quote <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          <a href="#contact" className="group inline-flex h-10 items-center gap-1.5 rounded-full bg-foreground px-5 text-[12px] font-semibold tracking-wide text-background shadow-[0_8px_20px_-8px_oklch(0.2_0.02_250/0.5)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_28px_-10px_oklch(0.2_0.02_250/0.55)]">
+            Free Quote <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen(!open)}
-          className="grid h-10 w-10 place-items-center rounded-full border border-border bg-white text-foreground lg:hidden"
+          className="grid h-10 w-10 place-items-center rounded-full border border-border bg-white text-foreground shadow-[var(--shadow-xs)] lg:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -120,10 +126,10 @@ function Nav() {
               </a>
             ))}
             <div className="mt-2 grid grid-cols-2 gap-2">
-              <a href={WHATSAPP_HREF} target="_blank" rel="noopener" onClick={() => setOpen(false)} className="flex items-center justify-center gap-2 rounded-full border border-[oklch(0.72_0.18_150)]/40 bg-[oklch(0.72_0.18_150)]/15 px-4 py-3 text-xs font-semibold text-[oklch(0.85_0.18_150)]">
-                <MessageCircle className="h-4 w-4" /> WhatsApp
+              <a href={WHATSAPP_HREF} target="_blank" rel="noopener" onClick={() => setOpen(false)} className="btn-whatsapp flex items-center justify-center gap-2 rounded-full px-4 py-3 text-xs font-semibold">
+                <MessageCircle className="h-4 w-4" strokeWidth={2.4} /> WhatsApp
               </a>
-              <a href="#contact" onClick={() => setOpen(false)} className="rounded-full bg-foreground px-5 py-3 text-center text-xs font-semibold text-background">
+              <a href="#contact" onClick={() => setOpen(false)} className="rounded-full bg-foreground px-5 py-3 text-center text-xs font-semibold text-background shadow-[var(--shadow-soft)]">
                 Free Quote
               </a>
             </div>
