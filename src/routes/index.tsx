@@ -504,28 +504,29 @@ const cities = ["San Francisco", "Oakland", "San Jose", "Hayward", "Fremont", "S
 
 function Coverage() {
   return (
-    <section className="bg-primary text-primary-foreground py-24 md:py-32">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,oklch(0.28_0.045_250),oklch(0.2_0.03_250))] text-primary-foreground py-24 md:py-32">
+      <div className="pointer-events-none absolute -top-24 right-0 h-[500px] w-[500px] rounded-full bg-[oklch(0.55_0.12_240/0.25)] blur-3xl" />
       <div className="container-px mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.1fr,1fr]">
-        <div>
-          <div className="mb-4 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[color:var(--gold)]">
+        <div data-reveal className="reveal">
+          <div className="mb-4 flex items-center gap-3 text-[11px] uppercase tracking-[0.32em] text-[color:var(--gold)]">
             <span className="inline-block h-px w-10 bg-[color:var(--gold)]" /> Coverage Area
           </div>
-          <h2 className="font-serif text-3xl leading-tight md:text-5xl">
+          <h2 className="text-primary-foreground">
             We work with <span className="italic text-[color:var(--gold)]">every cemetery</span> in California.
           </h2>
-          <p className="mt-5 max-w-lg text-white/75">
+          <p className="mt-5 max-w-lg text-[15.5px] leading-[1.75] text-white/75">
             From the Bay Area to the Central Valley and down to Los Angeles — our team handles permitting, delivery and installation at any California cemetery.
           </p>
-          <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3">
+          <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3">
             {cities.map((c) => (
-              <div key={c} className="flex items-center gap-2 text-sm text-white/85">
+              <div key={c} className="flex items-center gap-2 text-[14px] text-white/85 transition-colors duration-300 hover:text-white">
                 <MapPin className="h-4 w-4 text-[color:var(--gold)]" /> {c}
               </div>
             ))}
           </div>
         </div>
-        <div className="relative">
-          <div className="aspect-[4/5] rounded-lg border border-white/15 bg-white/[0.04] p-6 backdrop-blur">
+        <div data-reveal data-reveal-delay="120" className="reveal relative">
+          <div className="aspect-[4/5] rounded-3xl border border-white/15 bg-white/[0.05] p-6 shadow-[var(--shadow-elegant)] backdrop-blur">
             <svg viewBox="0 0 200 320" className="h-full w-full" xmlns="http://www.w3.org/2000/svg" aria-label="Stylized map of California">
               <path
                 d="M55 10 L72 8 L80 22 L92 30 L100 50 L96 72 L108 90 L120 110 L128 134 L140 160 L156 188 L168 220 L172 248 L160 274 L138 296 L112 308 L88 304 L78 282 L70 256 L58 230 L46 200 L40 170 L36 138 L42 108 L48 78 L50 48 Z"
@@ -538,8 +539,10 @@ function Coverage() {
                 [135, 230], [150, 260], [115, 290],
               ].map(([x, y], i) => (
                 <g key={i}>
-                  <circle cx={x} cy={y} r="3" fill="var(--gold)" />
-                  <circle cx={x} cy={y} r="8" fill="var(--gold)" opacity="0.15" />
+                  <circle cx={x} cy={y} r="3" fill="var(--gold)">
+                    <animate attributeName="r" values="3;5;3" dur="2.4s" begin={`${i * 0.25}s`} repeatCount="indefinite" />
+                  </circle>
+                  <circle cx={x} cy={y} r="10" fill="var(--gold)" opacity="0.15" />
                 </g>
               ))}
             </svg>
@@ -564,23 +567,27 @@ function FAQ() {
   return (
     <section id="faq" className="container-px mx-auto max-w-4xl py-24 md:py-32">
       <SectionHeader eyebrow="Questions" title="Frequently Asked" />
-      <div className="mt-12 divide-y divide-border border-y border-border">
+      <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-soft)]">
         {faqs.map((f, i) => {
           const isOpen = open === i;
           return (
-            <div key={f.q}>
+            <div key={f.q} className={i > 0 ? "border-t border-border" : ""}>
               <button
                 onClick={() => setOpen(isOpen ? null : i)}
-                className="flex w-full items-center justify-between gap-6 py-6 text-left"
+                className="flex w-full items-center justify-between gap-6 px-6 py-6 text-left transition-colors hover:bg-black/[0.02] md:px-8"
               >
-                <span className="font-serif text-lg text-foreground md:text-xl">{f.q}</span>
-                <ChevronDown className={`h-5 w-5 shrink-0 text-[color:var(--gold)] transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                <span className="font-serif text-[1.15rem] text-foreground md:text-[1.3rem]">{f.q}</span>
+                <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border bg-white transition-transform duration-500 ${isOpen ? "rotate-180 border-[color:var(--gold)]/50 bg-[color:var(--gold)]/10" : ""}`}>
+                  <ChevronDown className="h-4 w-4 text-[color:var(--gold)]" />
+                </span>
               </button>
-              {isOpen && (
-                <div className="pb-6 pr-10 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  {f.a}
+              <div className={`grid overflow-hidden transition-[grid-template-rows] duration-500 ease-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+                <div className="min-h-0">
+                  <div className="px-6 pb-6 pr-16 text-[14.5px] leading-[1.75] text-muted-foreground md:px-8 md:text-[15.5px]">
+                    {f.a}
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
           );
         })}
@@ -619,12 +626,11 @@ function Contact() {
                 <div className="font-serif text-lg text-foreground">{EMAIL}</div>
               </span>
             </a>
-            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="flex items-start gap-4">
-
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[oklch(0.72_0.18_150)] text-white"><MessageCircle className="h-4 w-4" /></span>
+            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="group flex items-start gap-4">
+              <span className="btn-whatsapp grid h-11 w-11 shrink-0 place-items-center rounded-xl transition-transform duration-300 group-hover:scale-105"><MessageCircle className="h-4 w-4" strokeWidth={2.4} /></span>
               <span>
-                <div className="text-xs uppercase tracking-wider text-muted-foreground">WhatsApp</div>
-                <div className="text-lg font-medium text-foreground">Chat with us instantly</div>
+                <div className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">WhatsApp</div>
+                <div className="text-[17px] font-medium text-foreground">Chat with us instantly</div>
               </span>
             </a>
 
@@ -641,8 +647,9 @@ function Contact() {
 
         <form
           onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-          className="rounded-lg border border-border bg-card p-7 shadow-[var(--shadow-elegant)] md:p-10"
+          className="relative rounded-2xl border border-border bg-card p-7 shadow-[var(--shadow-elegant)] md:p-10"
         >
+          <div className="pointer-events-none absolute -inset-px rounded-2xl bg-[linear-gradient(140deg,oklch(0.55_0.12_240/0.15),transparent_40%)]" />
           {sent ? (
             <div className="grid h-full place-items-center py-12 text-center">
               <div>
@@ -690,13 +697,13 @@ function Contact() {
 }
 
 function Label({ children }: { children: React.ReactNode }) {
-  return <span className="text-xs uppercase tracking-wider text-muted-foreground">{children}</span>;
+  return <span className="text-[10px] font-medium uppercase tracking-[0.24em] text-muted-foreground">{children}</span>;
 }
 function Field({ label, name, type = "text", required }: { label: string; name: string; type?: string; required?: boolean }) {
   return (
     <label className="block">
       <Label>{label}{required && " *"}</Label>
-      <input name={name} type={type} required={required} className="mt-1.5 w-full rounded-sm border border-input bg-background px-3 py-2.5 text-sm focus:border-primary focus:outline-none" />
+      <input name={name} type={type} required={required} className="mt-1.5 w-full rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm transition-all duration-200 focus:border-[color:var(--gold)] focus:outline-none focus:ring-4 focus:ring-[color:var(--gold)]/15" />
     </label>
   );
 }
@@ -752,14 +759,14 @@ function Footer() {
 function StickyMobileBar() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 px-4 pb-4 lg:hidden">
-      <div className="grid grid-cols-3 gap-2 rounded-full glass p-1.5 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)]">
-        <a href={PHONE_HREF} className="flex items-center justify-center gap-2 rounded-full py-3 text-xs font-semibold text-foreground/85">
-          <Phone className="h-4 w-4" /> Call
+      <div className="grid grid-cols-3 gap-1.5 rounded-full glass-strong p-1.5 shadow-[0_18px_50px_-16px_oklch(0.22_0.02_250/0.4)]">
+        <a href={PHONE_HREF} aria-label="Call us" className="flex items-center justify-center gap-2 rounded-full py-3 text-xs font-semibold text-foreground/85 transition-colors hover:bg-black/5">
+          <Phone className="h-4 w-4" strokeWidth={2} /> Call
         </a>
-        <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="flex items-center justify-center gap-2 rounded-full bg-[oklch(0.72_0.18_150)]/15 py-3 text-xs font-semibold text-[oklch(0.85_0.18_150)]">
-          <MessageCircle className="h-4 w-4" /> Chat
+        <a href={WHATSAPP_HREF} target="_blank" rel="noopener" aria-label="Chat on WhatsApp" className="btn-whatsapp flex items-center justify-center gap-2 rounded-full py-3 text-xs font-semibold">
+          <MessageCircle className="h-4 w-4" strokeWidth={2.4} /> Chat
         </a>
-        <a href="#contact" className="flex items-center justify-center gap-1 rounded-full bg-foreground py-3 text-xs font-semibold text-background">
+        <a href="#contact" className="flex items-center justify-center gap-1 rounded-full bg-foreground py-3 text-xs font-semibold text-background shadow-[0_6px_16px_-6px_oklch(0.2_0.02_250/0.55)]">
           Quote <ArrowUpRight className="h-3.5 w-3.5" />
         </a>
       </div>
@@ -774,10 +781,10 @@ function WhatsAppFloat() {
       target="_blank"
       rel="noopener"
       aria-label="Chat on WhatsApp"
-      className="group fixed bottom-24 right-5 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-[oklch(0.72_0.18_150)] text-white shadow-[0_10px_40px_-10px_oklch(0.72_0.18_150)] transition-transform hover:scale-110 lg:flex lg:bottom-6"
+      className="btn-whatsapp group fixed bottom-24 right-5 z-40 hidden h-14 w-14 items-center justify-center rounded-full lg:flex lg:bottom-6"
     >
-      <MessageCircle className="h-6 w-6" />
-      <span className="absolute right-full mr-3 hidden whitespace-nowrap rounded-full glass px-3 py-1.5 text-xs font-medium text-foreground group-hover:block">
+      <MessageCircle className="h-6 w-6" strokeWidth={2.2} />
+      <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-full bg-foreground px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-background opacity-0 shadow-[var(--shadow-soft)] transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100">
         Chat on WhatsApp
       </span>
     </a>
@@ -785,6 +792,7 @@ function WhatsAppFloat() {
 }
 
 function Index() {
+  useScrollReveal();
   return (
     <div className="min-h-screen bg-background pb-24 lg:pb-0">
       <Nav />
