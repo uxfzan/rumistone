@@ -106,7 +106,7 @@ function Nav() {
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen(!open)}
-          className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 lg:hidden"
+          className="grid h-10 w-10 place-items-center rounded-full border border-border bg-white text-foreground lg:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -115,7 +115,7 @@ function Nav() {
         <div className="mx-auto mt-2 max-w-6xl rounded-3xl glass p-4 lg:hidden">
           <div className="flex flex-col gap-1">
             {links.map(([label, href]) => (
-              <a key={href} href={href} onClick={() => setOpen(false)} className="rounded-2xl px-3 py-2.5 text-base font-medium text-foreground/85 hover:bg-white/5">
+              <a key={href} href={href} onClick={() => setOpen(false)} className="rounded-2xl px-3 py-2.5 text-base font-medium text-foreground/85 hover:bg-black/5">
                 {label}
               </a>
             ))}
@@ -178,7 +178,7 @@ function Hero() {
             <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.72_0.18_150)]/40 bg-[oklch(0.72_0.18_150)]/10 px-7 py-4 text-sm font-semibold text-[oklch(0.85_0.18_150)] backdrop-blur transition-colors hover:bg-[oklch(0.72_0.18_150)]/20">
               <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
             </a>
-            <a href="#gallery" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-7 py-4 text-sm font-semibold text-foreground/85 backdrop-blur transition-colors hover:bg-white/5">
+            <a href="#gallery" className="inline-flex items-center gap-2 rounded-full border border-border bg-white/60 px-7 py-4 text-sm font-semibold text-foreground/85 backdrop-blur transition-colors hover:bg-white">
               View Gallery
             </a>
           </div>
@@ -213,7 +213,7 @@ function Hero() {
 function SectionHeader({ eyebrow, title, accent, kicker }: { eyebrow: string; title: string; accent?: string; kicker?: string }) {
   return (
     <div className="mx-auto max-w-2xl text-center">
-      <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-foreground/65">
+      <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-white px-3.5 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-foreground/70 shadow-[var(--shadow-soft)]">
         <span className="h-1 w-1 rounded-full bg-[color:var(--gold)]" />
         {eyebrow}
       </div>
@@ -570,14 +570,14 @@ function Contact() {
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-sm bg-[color:var(--gold)] text-primary"><Phone className="h-4 w-4" /></span>
               <span>
                 <div className="text-xs uppercase tracking-wider text-muted-foreground">Phone</div>
-                <div className="font-serif text-lg text-primary-foreground">{PHONE}</div>
+                <div className="font-serif text-lg text-foreground">{PHONE}</div>
               </span>
             </a>
             <a href={`mailto:${EMAIL}`} className="flex items-start gap-4">
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-sm bg-[color:var(--gold)] text-primary"><Mail className="h-4 w-4" /></span>
               <span>
                 <div className="text-xs uppercase tracking-wider text-muted-foreground">Email</div>
-                <div className="font-serif text-lg text-primary-foreground">{EMAIL}</div>
+                <div className="font-serif text-lg text-foreground">{EMAIL}</div>
               </span>
             </a>
             <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="flex items-start gap-4">
@@ -594,7 +594,7 @@ function Contact() {
 
               <span>
                 <div className="text-xs uppercase tracking-wider text-muted-foreground">Service Area</div>
-                <div className="font-serif text-lg text-primary-foreground">All of California</div>
+                <div className="font-serif text-lg text-foreground">All of California</div>
               </span>
             </div>
           </div>
@@ -639,7 +639,7 @@ function Contact() {
                   <textarea rows={4} className="mt-1.5 w-full rounded-sm border border-input bg-background px-3 py-2.5 text-sm" placeholder="Share any details, inscriptions or design ideas…" />
                 </div>
               </div>
-              <button type="submit" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[color:var(--gold)] px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-primary transition-transform hover:-translate-y-0.5">
+              <button type="submit" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-foreground px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-background transition-transform hover:-translate-y-0.5">
                 Request Free Quote <ArrowRight className="h-4 w-4" />
               </button>
             </>
