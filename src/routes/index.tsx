@@ -327,11 +327,13 @@ function WhyUs() {
     <section className="container-px mx-auto max-w-7xl py-24 md:py-32">
       <SectionHeader eyebrow="Why Rumi Stone" title="The Care Of Family. The Skill Of Master Craftsmen." />
       <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {reasons.map((r) => (
-          <div key={r.v} className="border-t border-[color:var(--gold)] pt-6">
-            <div className="font-serif text-4xl text-foreground">{r.k}</div>
-            <div className="mt-1 text-sm uppercase tracking-[0.2em] text-muted-foreground">{r.v}</div>
-            <p className="mt-4 text-sm leading-relaxed text-foreground/70">{r.body}</p>
+        {reasons.map((r, i) => (
+          <div key={r.v} data-reveal data-reveal-delay={i * 70} className="reveal relative pt-8">
+            <span className="absolute left-0 top-0 h-px w-12 bg-[color:var(--gold)]" />
+            <span className="absolute left-0 top-0 h-px w-0 bg-foreground/60 transition-all duration-700 group-hover:w-12" />
+            <div className="font-serif text-[2.5rem] leading-none tracking-tight text-foreground">{r.k}</div>
+            <div className="mt-2 text-[11px] uppercase tracking-[0.24em] text-muted-foreground">{r.v}</div>
+            <p className="mt-4 text-[14.5px] leading-[1.7] text-foreground/70">{r.body}</p>
           </div>
         ))}
       </div>
@@ -341,24 +343,25 @@ function WhyUs() {
 
 function About() {
   return (
-    <section id="about" className="bg-primary text-primary-foreground py-24 md:py-32">
+    <section id="about" className="relative overflow-hidden bg-[linear-gradient(180deg,oklch(0.28_0.045_250),oklch(0.2_0.03_250))] text-primary-foreground py-24 md:py-32">
+      <div className="pointer-events-none absolute -top-32 -left-32 h-[500px] w-[500px] rounded-full bg-[oklch(0.55_0.12_240/0.25)] blur-3xl" />
       <div className="container-px mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-20">
-        <div className="relative">
-          <img src={aboutImg} alt="Stonemason crafting a memorial in the Rumi Stone workshop" loading="lazy" width={1400} height={1000} className="rounded-lg object-cover shadow-[var(--shadow-elegant)]" />
-          <div className="absolute -bottom-6 -right-6 hidden rounded-lg bg-[color:var(--gold)] p-6 text-primary md:block">
+        <div data-reveal className="reveal relative img-zoom">
+          <img src={aboutImg} alt="Stonemason crafting a memorial in the Rumi Stone workshop" loading="lazy" width={1400} height={1000} className="rounded-2xl object-cover shadow-[var(--shadow-elegant)] ring-1 ring-white/10" />
+          <div className="absolute -bottom-6 -right-6 hidden rounded-2xl border border-white/15 bg-[linear-gradient(180deg,oklch(0.6_0.11_235),oklch(0.5_0.12_245))] p-6 text-white shadow-[0_20px_50px_-20px_oklch(0.2_0.03_250/0.6)] md:block">
             <div className="font-serif text-4xl leading-none">1000+</div>
-            <div className="mt-1 text-xs uppercase tracking-[0.2em]">Memorials</div>
+            <div className="mt-1 text-[11px] uppercase tracking-[0.24em] opacity-90">Memorials</div>
           </div>
         </div>
-        <div>
-          <div className="mb-4 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[color:var(--gold)]">
+        <div data-reveal data-reveal-delay="120" className="reveal">
+          <div className="mb-4 flex items-center gap-3 text-[11px] uppercase tracking-[0.32em] text-[color:var(--gold)]">
             <span className="inline-block h-px w-10 bg-[color:var(--gold)]" />
             About Rumi Stone
           </div>
-          <h2 className="font-serif text-3xl leading-tight md:text-5xl">
+          <h2 className="text-primary-foreground">
             Crafting memories that last <span className="italic text-[color:var(--gold)]">generations</span>.
           </h2>
-          <div className="mt-6 space-y-5 text-white/80">
+          <div className="mt-6 space-y-5 text-[15.5px] leading-[1.75] text-white/80">
             <p>
               At Rumi Stone, we understand that a memorial is more than stone — it is a lasting tribute to a loved one's life. Our skilled craftsmen combine traditional monument-making techniques with modern artistry to honor each individual with dignity and grace.
             </p>
@@ -366,8 +369,8 @@ function About() {
               As a family-owned business, we work closely with every family we serve. Every monument tells a unique story and preserves cherished memories for generations to come.
             </p>
           </div>
-          <a href="#contact" className="mt-8 inline-flex items-center gap-2 border-b border-[color:var(--gold)] pb-1 text-sm font-medium uppercase tracking-wider text-[color:var(--gold)]">
-            Learn more about us <ArrowRight className="h-4 w-4" />
+          <a href="#contact" className="group mt-8 inline-flex items-center gap-2 border-b border-[color:var(--gold)] pb-1 text-[12px] font-medium uppercase tracking-[0.2em] text-[color:var(--gold)]">
+            Learn more about us <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         </div>
       </div>
@@ -396,23 +399,29 @@ function Gallery() {
           <button
             key={c}
             onClick={() => setActive(c)}
-            className={`rounded-full border px-4 py-1.5 text-xs uppercase tracking-wider transition-colors ${
+            className={`rounded-full border px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.2em] transition-all duration-300 ${
               active === c
-                ? "border-[color:var(--gold)] bg-[color:var(--gold)] text-primary"
-                : "border-border text-foreground/70 hover:border-primary/40"
+                ? "border-transparent bg-foreground text-background shadow-[var(--shadow-soft)]"
+                : "border-border bg-white/70 text-foreground/70 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-white hover:text-foreground"
             }`}
           >
             {c}
           </button>
         ))}
       </div>
-      <div className="mt-10 grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((g) => (
-          <figure key={g.label} className={`group relative overflow-hidden rounded-lg ${g.span}`}>
-            <img src={g.src} alt={g.label} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/85 via-primary/30 to-transparent p-4 text-primary-foreground">
-              <div className="text-[10px] uppercase tracking-[0.25em] text-[color:var(--gold)]">{g.cat}</div>
-              <div className="font-serif text-lg">{g.label}</div>
+      <div className="mt-12 grid auto-rows-[240px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {filtered.map((g, i) => (
+          <figure
+            key={g.label}
+            data-reveal
+            data-reveal-delay={i * 60}
+            className={`reveal img-zoom group relative overflow-hidden rounded-2xl ring-1 ring-black/5 shadow-[var(--shadow-soft)] transition-shadow duration-500 hover:shadow-[var(--shadow-lifted)] ${g.span}`}
+          >
+            <img src={g.src} alt={g.label} loading="lazy" className="h-full w-full object-cover" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[oklch(0.16_0.02_250/0.85)] via-[oklch(0.16_0.02_250/0.15)] to-transparent" />
+            <figcaption className="absolute inset-x-0 bottom-0 translate-y-2 p-5 text-white opacity-90 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              <div className="text-[10px] uppercase tracking-[0.28em] text-[color:var(--gold)]">{g.cat}</div>
+              <div className="font-serif text-xl">{g.label}</div>
             </figcaption>
           </figure>
         ))}
@@ -433,17 +442,23 @@ function Testimonials() {
       <div className="container-px mx-auto max-w-7xl">
         <SectionHeader eyebrow="Family Stories" title="Trusted By Families Across California" />
         <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure key={t.name} className="flex h-full flex-col rounded-lg border border-border bg-card p-8 shadow-[var(--shadow-soft)]">
+          {testimonials.map((t, i) => (
+            <figure
+              key={t.name}
+              data-reveal
+              data-reveal-delay={i * 100}
+              className="reveal surface-card surface-card-hover relative flex h-full flex-col rounded-2xl p-8"
+            >
+              <span className="absolute -top-4 left-8 font-serif text-6xl italic leading-none text-[color:var(--gold)]/40">“</span>
               <div className="flex gap-1 text-[color:var(--gold)]">
                 {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
               </div>
-              <blockquote className="mt-5 flex-1 font-serif text-lg italic leading-relaxed text-foreground/85">
-                “{t.quote}”
+              <blockquote className="mt-5 flex-1 font-serif text-[1.15rem] leading-[1.6] text-foreground/85">
+                {t.quote}
               </blockquote>
-              <figcaption className="mt-6 border-t border-border pt-4">
-                <div className="font-medium text-foreground">{t.name}</div>
-                <div className="text-xs uppercase tracking-wider text-muted-foreground">{t.city}</div>
+              <figcaption className="mt-6 border-t border-border pt-5">
+                <div className="text-[14px] font-semibold tracking-tight text-foreground">{t.name}</div>
+                <div className="mt-0.5 text-[10px] uppercase tracking-[0.24em] text-muted-foreground">{t.city}</div>
               </figcaption>
             </figure>
           ))}
@@ -466,13 +481,18 @@ function Process() {
       <SectionHeader eyebrow="Our Process" title="Four Thoughtful Steps" kicker="A guided experience from your first conversation to the moment the memorial is set in place." />
       <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {steps.map(({ icon: Icon, title, body }, i) => (
-          <div key={title} className="relative rounded-lg border border-border bg-card p-8">
-            <div className="absolute -top-5 left-8 grid h-10 w-10 place-items-center rounded-full bg-[color:var(--gold)] font-serif text-lg text-primary">
+          <div
+            key={title}
+            data-reveal
+            data-reveal-delay={i * 80}
+            className="reveal surface-card surface-card-hover relative rounded-2xl p-8 pt-10"
+          >
+            <div className="absolute -top-5 left-8 grid h-11 w-11 place-items-center rounded-full bg-[linear-gradient(135deg,oklch(0.6_0.11_235),oklch(0.42_0.1_248))] font-serif text-lg text-white shadow-[0_8px_20px_-8px_oklch(0.42_0.1_248/0.5)] ring-4 ring-background">
               {i + 1}
             </div>
-            <Icon className="mt-2 h-7 w-7 text-[color:var(--gold)]" />
-            <h3 className="mt-4 font-serif text-xl text-foreground">{title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
+            <Icon className="h-7 w-7 text-[color:var(--gold)]" strokeWidth={1.6} />
+            <h3 className="mt-4 text-[1.25rem] text-foreground">{title}</h3>
+            <p className="mt-2 text-[14.5px] leading-[1.7] text-muted-foreground">{body}</p>
           </div>
         ))}
       </div>
