@@ -492,7 +492,7 @@ function Coverage() {
   return (
     <section className="relative overflow-hidden bg-[linear-gradient(180deg,oklch(0.28_0.045_250),oklch(0.2_0.03_250))] text-primary-foreground py-24 md:py-32">
       <div className="pointer-events-none absolute -top-24 right-0 h-[500px] w-[500px] rounded-full bg-[oklch(0.55_0.12_240/0.25)] blur-3xl" />
-      <div className="container-px mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.1fr,1fr]">
+      <div className="container-px mx-auto max-w-7xl">
         <div data-reveal className="reveal">
           <div className="mb-4 flex items-center gap-3 text-[11px] uppercase tracking-[0.32em] text-[color:var(--gold)]">
             <span className="inline-block h-px w-10 bg-[color:var(--gold)]" /> Coverage Area
@@ -509,29 +509,6 @@ function Coverage() {
                 <MapPin className="h-4 w-4 text-[color:var(--gold)]" /> {c}
               </div>
             ))}
-          </div>
-        </div>
-        <div data-reveal data-reveal-delay="120" className="reveal relative">
-          <div className="aspect-[4/5] rounded-3xl border border-white/15 bg-white/[0.05] p-6 shadow-[var(--shadow-elegant)] backdrop-blur">
-            <svg viewBox="0 0 200 320" className="h-full w-full" xmlns="http://www.w3.org/2000/svg" aria-label="Stylized map of California">
-              <path
-                d="M55 10 L72 8 L80 22 L92 30 L100 50 L96 72 L108 90 L120 110 L128 134 L140 160 L156 188 L168 220 L172 248 L160 274 L138 296 L112 308 L88 304 L78 282 L70 256 L58 230 L46 200 L40 170 L36 138 L42 108 L48 78 L50 48 Z"
-                fill="oklch(0.32 0.06 260)"
-                stroke="var(--gold)"
-                strokeWidth="1"
-              />
-              {[
-                [70, 70], [78, 100], [90, 140], [100, 175], [120, 200],
-                [135, 230], [150, 260], [115, 290],
-              ].map(([x, y], i) => (
-                <g key={i}>
-                  <circle cx={x} cy={y} r="3" fill="var(--gold)">
-                    <animate attributeName="r" values="3;5;3" dur="2.4s" begin={`${i * 0.25}s`} repeatCount="indefinite" />
-                  </circle>
-                  <circle cx={x} cy={y} r="10" fill="var(--gold)" opacity="0.15" />
-                </g>
-              ))}
-            </svg>
           </div>
         </div>
       </div>
