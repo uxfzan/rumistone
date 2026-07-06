@@ -465,7 +465,7 @@ function Process() {
   return (
     <section id="process" className="container-px mx-auto max-w-7xl py-24 md:py-32">
       <SectionHeader eyebrow="Our Process" title="Three Thoughtful Steps" kicker="A guided experience from your first conversation to the finished memorial." />
-      <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-16 grid gap-9 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
         {steps.map(({ icon: Icon, title, body }, i) => (
           <div
             key={title}
