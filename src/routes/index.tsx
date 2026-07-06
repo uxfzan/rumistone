@@ -2,8 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   Phone, Mail, MapPin, Check, Star, ArrowRight, ArrowUpRight, Menu, X,
-  Gem, Square, Mountain, Users, Armchair, Sparkles,
-  MessageSquare, PencilRuler, Hammer, Truck, ChevronDown, MessageCircle,
+  Gem, Square, Mountain, Armchair, Sparkles,
+  MessageSquare, PencilRuler, Hammer, ChevronDown, MessageCircle,
+
 } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
@@ -17,10 +18,7 @@ import gIndia from "@/assets/granite-india-red.jpg";
 import gGray from "@/assets/granite-gray.jpg";
 import galUpright from "@/assets/gallery-upright.jpg";
 import galFlat from "@/assets/gallery-flat.jpg";
-import galBench from "@/assets/gallery-bench.jpg";
 import galCompanion from "@/assets/gallery-companion.jpg";
-import galReligious from "@/assets/gallery-religious.jpg";
-import galEngraving from "@/assets/gallery-engraving.jpg";
 import aboutImg from "@/assets/about-craftsman.jpg";
 
 const PHONE = "(510) 555-0142";
@@ -180,7 +178,7 @@ function Hero() {
               Get a Free Quote
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
-            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" aria-label="Chat on WhatsApp" className="btn-whatsapp inline-flex items-center gap-2 rounded-full px-7 py-4 text-[13px] font-semibold tracking-wide">
+            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" aria-label="Chat on WhatsApp" className="btn-whatsapp hidden md:inline-flex items-center gap-2 rounded-full px-7 py-4 text-[13px] font-semibold tracking-wide">
               <MessageCircle className="h-4 w-4" strokeWidth={2.4} /> Chat on WhatsApp
             </a>
             <a href="#gallery" className="inline-flex items-center gap-2 rounded-full border border-border bg-white/70 px-7 py-4 text-[13px] font-semibold tracking-wide text-foreground/85 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-[var(--shadow-soft)]">
@@ -188,11 +186,6 @@ function Hero() {
             </a>
           </div>
 
-          <div data-reveal data-reveal-delay="360" className="reveal mt-8 inline-flex items-center gap-2 text-xs text-foreground/60">
-            <Sparkles className="h-3.5 w-3.5 text-[color:var(--gold)]" />
-            <span className="text-gradient-gold font-semibold">30–40% below</span>
-            <span>traditional cemetery pricing</span>
-          </div>
         </div>
 
         {/* Trust stats */}
@@ -232,12 +225,9 @@ function SectionHeader({ eyebrow, title, accent, kicker }: { eyebrow: string; ti
 
 
 const services = [
-  { icon: Gem, title: "Custom Headstones", body: "Personalized granite memorials crafted with care and precision." },
   { icon: Square, title: "Flat Grave Markers", body: "Elegant cemetery markers available in a range of granite colors." },
   { icon: Mountain, title: "Upright Monuments", body: "Traditional upright memorials with timeless silhouettes." },
-  { icon: Users, title: "Companion Headstones", body: "Memorials thoughtfully designed for couples and families." },
   { icon: Armchair, title: "Memorial Benches", body: "Beautiful, functional granite seating for reflection." },
-  { icon: PencilRuler, title: "Custom Engraving", body: "Photos, artwork, religious symbols and meaningful inscriptions." },
 ];
 
 function Services() {
@@ -381,12 +371,9 @@ function About() {
 const gallery = [
   { src: galUpright, cat: "Upright", label: "Arched Upright Monument", span: "row-span-2" },
   { src: galFlat, cat: "Flat", label: "Flat Granite Marker", span: "" },
-  { src: galCompanion, cat: "Companion", label: "Companion Headstone", span: "" },
-  { src: galReligious, cat: "Religious", label: "Cross-Carved Memorial", span: "row-span-2" },
-  { src: galEngraving, cat: "Engraving", label: "Hand Engraving Detail", span: "" },
-  { src: galBench, cat: "Bench", label: "Granite Memorial Bench", span: "" },
+  { src: galCompanion, cat: "Companion", label: "Companion Headstone", span: "row-span-2" },
 ];
-const galleryCats = ["All", "Upright", "Flat", "Companion", "Religious", "Bench", "Engraving"];
+const galleryCats = ["All", "Upright", "Flat", "Companion"];
 
 function Gallery() {
   const [active, setActive] = useState("All");
@@ -472,14 +459,13 @@ const steps = [
   { icon: MessageSquare, title: "Consultation", body: "We discuss your design preferences and cemetery requirements." },
   { icon: PencilRuler, title: "Design Approval", body: "Receive a digital proof and approve every detail." },
   { icon: Hammer, title: "Production", body: "Expert stone crafting, sandblasting and engraving begins." },
-  { icon: Truck, title: "Installation", body: "Professional delivery and on-site installation at the cemetery." },
 ];
 
 function Process() {
   return (
     <section id="process" className="container-px mx-auto max-w-7xl py-24 md:py-32">
-      <SectionHeader eyebrow="Our Process" title="Four Thoughtful Steps" kicker="A guided experience from your first conversation to the moment the memorial is set in place." />
-      <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <SectionHeader eyebrow="Our Process" title="Three Thoughtful Steps" kicker="A guided experience from your first conversation to the finished memorial." />
+      <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {steps.map(({ icon: Icon, title, body }, i) => (
           <div
             key={title}
@@ -756,24 +742,6 @@ function Footer() {
   );
 }
 
-function StickyMobileBar() {
-  return (
-    <div className="fixed inset-x-0 bottom-0 z-40 px-4 pb-4 lg:hidden">
-      <div className="grid grid-cols-3 gap-1.5 rounded-full glass-strong p-1.5 shadow-[0_18px_50px_-16px_oklch(0.22_0.02_250/0.4)]">
-        <a href={PHONE_HREF} aria-label="Call us" className="flex items-center justify-center gap-2 rounded-full py-3 text-xs font-semibold text-foreground/85 transition-colors hover:bg-black/5">
-          <Phone className="h-4 w-4" strokeWidth={2} /> Call
-        </a>
-        <a href={WHATSAPP_HREF} target="_blank" rel="noopener" aria-label="Chat on WhatsApp" className="btn-whatsapp flex items-center justify-center gap-2 rounded-full py-3 text-xs font-semibold">
-          <MessageCircle className="h-4 w-4" strokeWidth={2.4} /> Chat
-        </a>
-        <a href="#contact" className="flex items-center justify-center gap-1 rounded-full bg-foreground py-3 text-xs font-semibold text-background shadow-[0_6px_16px_-6px_oklch(0.2_0.02_250/0.55)]">
-          Quote <ArrowUpRight className="h-3.5 w-3.5" />
-        </a>
-      </div>
-    </div>
-  );
-}
-
 function WhatsAppFloat() {
   return (
     <a
@@ -781,10 +749,10 @@ function WhatsAppFloat() {
       target="_blank"
       rel="noopener"
       aria-label="Chat on WhatsApp"
-      className="btn-whatsapp group fixed bottom-24 right-5 z-40 hidden h-14 w-14 items-center justify-center rounded-full lg:flex lg:bottom-6"
+      className="btn-whatsapp group fixed bottom-6 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full"
     >
       <MessageCircle className="h-6 w-6" strokeWidth={2.2} />
-      <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-full bg-foreground px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-background opacity-0 shadow-[var(--shadow-soft)] transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100">
+      <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-full bg-foreground px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-background opacity-0 shadow-[var(--shadow-soft)] transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100 lg:block">
         Chat on WhatsApp
       </span>
     </a>
@@ -794,7 +762,7 @@ function WhatsAppFloat() {
 function Index() {
   useScrollReveal();
   return (
-    <div className="min-h-screen bg-background pb-24 lg:pb-0">
+    <div className="min-h-screen bg-background">
       <Nav />
       <main>
         <Hero />
@@ -810,7 +778,6 @@ function Index() {
         <Contact />
       </main>
       <Footer />
-      <StickyMobileBar />
       <WhatsAppFloat />
     </div>
   );
