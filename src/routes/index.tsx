@@ -459,14 +459,13 @@ const steps = [
   { icon: MessageSquare, title: "Consultation", body: "We discuss your design preferences and cemetery requirements." },
   { icon: PencilRuler, title: "Design Approval", body: "Receive a digital proof and approve every detail." },
   { icon: Hammer, title: "Production", body: "Expert stone crafting, sandblasting and engraving begins." },
-  { icon: Truck, title: "Installation", body: "Professional delivery and on-site installation at the cemetery." },
 ];
 
 function Process() {
   return (
     <section id="process" className="container-px mx-auto max-w-7xl py-24 md:py-32">
-      <SectionHeader eyebrow="Our Process" title="Four Thoughtful Steps" kicker="A guided experience from your first conversation to the moment the memorial is set in place." />
-      <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <SectionHeader eyebrow="Our Process" title="Three Thoughtful Steps" kicker="A guided experience from your first conversation to the finished memorial." />
+      <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {steps.map(({ icon: Icon, title, body }, i) => (
           <div
             key={title}
