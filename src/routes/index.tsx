@@ -762,7 +762,7 @@ function WhatsAppFloat() {
 function Index() {
   useScrollReveal();
   return (
-    <div className="min-h-screen bg-background pb-24 lg:pb-0">
+    <div className="min-h-screen bg-background">
       <Nav />
       <main>
         <Hero />
@@ -778,7 +778,6 @@ function Index() {
         <Contact />
       </main>
       <Footer />
-      <StickyMobileBar />
       <WhatsAppFloat />
     </div>
   );
