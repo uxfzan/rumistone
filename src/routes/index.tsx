@@ -2,8 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   Phone, Mail, MapPin, Check, Star, ArrowRight, ArrowUpRight, Menu, X,
-  Gem, Square, Mountain, Users, Armchair, Sparkles,
-  MessageSquare, PencilRuler, Hammer, Truck, ChevronDown, MessageCircle,
+  Gem, Square, Mountain, Armchair, Sparkles,
+  MessageSquare, PencilRuler, Hammer, ChevronDown, MessageCircle,
+
 } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
@@ -17,10 +18,7 @@ import gIndia from "@/assets/granite-india-red.jpg";
 import gGray from "@/assets/granite-gray.jpg";
 import galUpright from "@/assets/gallery-upright.jpg";
 import galFlat from "@/assets/gallery-flat.jpg";
-import galBench from "@/assets/gallery-bench.jpg";
 import galCompanion from "@/assets/gallery-companion.jpg";
-import galReligious from "@/assets/gallery-religious.jpg";
-import galEngraving from "@/assets/gallery-engraving.jpg";
 import aboutImg from "@/assets/about-craftsman.jpg";
 
 const PHONE = "(510) 555-0142";
@@ -180,7 +178,7 @@ function Hero() {
               Get a Free Quote
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
-            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" aria-label="Chat on WhatsApp" className="btn-whatsapp inline-flex items-center gap-2 rounded-full px-7 py-4 text-[13px] font-semibold tracking-wide">
+            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" aria-label="Chat on WhatsApp" className="btn-whatsapp hidden md:inline-flex items-center gap-2 rounded-full px-7 py-4 text-[13px] font-semibold tracking-wide">
               <MessageCircle className="h-4 w-4" strokeWidth={2.4} /> Chat on WhatsApp
             </a>
             <a href="#gallery" className="inline-flex items-center gap-2 rounded-full border border-border bg-white/70 px-7 py-4 text-[13px] font-semibold tracking-wide text-foreground/85 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-[var(--shadow-soft)]">
@@ -188,11 +186,6 @@ function Hero() {
             </a>
           </div>
 
-          <div data-reveal data-reveal-delay="360" className="reveal mt-8 inline-flex items-center gap-2 text-xs text-foreground/60">
-            <Sparkles className="h-3.5 w-3.5 text-[color:var(--gold)]" />
-            <span className="text-gradient-gold font-semibold">30–40% below</span>
-            <span>traditional cemetery pricing</span>
-          </div>
         </div>
 
         {/* Trust stats */}
@@ -232,12 +225,9 @@ function SectionHeader({ eyebrow, title, accent, kicker }: { eyebrow: string; ti
 
 
 const services = [
-  { icon: Gem, title: "Custom Headstones", body: "Personalized granite memorials crafted with care and precision." },
   { icon: Square, title: "Flat Grave Markers", body: "Elegant cemetery markers available in a range of granite colors." },
   { icon: Mountain, title: "Upright Monuments", body: "Traditional upright memorials with timeless silhouettes." },
-  { icon: Users, title: "Companion Headstones", body: "Memorials thoughtfully designed for couples and families." },
   { icon: Armchair, title: "Memorial Benches", body: "Beautiful, functional granite seating for reflection." },
-  { icon: PencilRuler, title: "Custom Engraving", body: "Photos, artwork, religious symbols and meaningful inscriptions." },
 ];
 
 function Services() {
@@ -381,12 +371,9 @@ function About() {
 const gallery = [
   { src: galUpright, cat: "Upright", label: "Arched Upright Monument", span: "row-span-2" },
   { src: galFlat, cat: "Flat", label: "Flat Granite Marker", span: "" },
-  { src: galCompanion, cat: "Companion", label: "Companion Headstone", span: "" },
-  { src: galReligious, cat: "Religious", label: "Cross-Carved Memorial", span: "row-span-2" },
-  { src: galEngraving, cat: "Engraving", label: "Hand Engraving Detail", span: "" },
-  { src: galBench, cat: "Bench", label: "Granite Memorial Bench", span: "" },
+  { src: galCompanion, cat: "Companion", label: "Companion Headstone", span: "row-span-2" },
 ];
-const galleryCats = ["All", "Upright", "Flat", "Companion", "Religious", "Bench", "Engraving"];
+const galleryCats = ["All", "Upright", "Flat", "Companion"];
 
 function Gallery() {
   const [active, setActive] = useState("All");
