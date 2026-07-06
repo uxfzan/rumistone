@@ -742,24 +742,6 @@ function Footer() {
   );
 }
 
-function StickyMobileBar() {
-  return (
-    <div className="fixed inset-x-0 bottom-0 z-40 px-4 pb-4 lg:hidden">
-      <div className="grid grid-cols-3 gap-1.5 rounded-full glass-strong p-1.5 shadow-[0_18px_50px_-16px_oklch(0.22_0.02_250/0.4)]">
-        <a href={PHONE_HREF} aria-label="Call us" className="flex items-center justify-center gap-2 rounded-full py-3 text-xs font-semibold text-foreground/85 transition-colors hover:bg-black/5">
-          <Phone className="h-4 w-4" strokeWidth={2} /> Call
-        </a>
-        <a href={WHATSAPP_HREF} target="_blank" rel="noopener" aria-label="Chat on WhatsApp" className="btn-whatsapp flex items-center justify-center gap-2 rounded-full py-3 text-xs font-semibold">
-          <MessageCircle className="h-4 w-4" strokeWidth={2.4} /> Chat
-        </a>
-        <a href="#contact" className="flex items-center justify-center gap-1 rounded-full bg-foreground py-3 text-xs font-semibold text-background shadow-[0_6px_16px_-6px_oklch(0.2_0.02_250/0.55)]">
-          Quote <ArrowUpRight className="h-3.5 w-3.5" />
-        </a>
-      </div>
-    </div>
-  );
-}
-
 function WhatsAppFloat() {
   return (
     <a
@@ -767,10 +749,10 @@ function WhatsAppFloat() {
       target="_blank"
       rel="noopener"
       aria-label="Chat on WhatsApp"
-      className="btn-whatsapp group fixed bottom-24 right-5 z-40 hidden h-14 w-14 items-center justify-center rounded-full lg:flex lg:bottom-6"
+      className="btn-whatsapp group fixed bottom-6 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full"
     >
       <MessageCircle className="h-6 w-6" strokeWidth={2.2} />
-      <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-full bg-foreground px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-background opacity-0 shadow-[var(--shadow-soft)] transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100">
+      <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-full bg-foreground px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-background opacity-0 shadow-[var(--shadow-soft)] transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100 lg:block">
         Chat on WhatsApp
       </span>
     </a>
