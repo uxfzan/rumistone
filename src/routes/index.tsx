@@ -575,35 +575,33 @@ function Contact() {
           <p className="mt-5 text-muted-foreground">
             Share a few details and we'll respond within one business day with pricing and next steps. No pressure — just a conversation.
           </p>
-          <div className="mt-10 space-y-5">
-            <a href={PHONE_HREF} className="flex items-start gap-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-sm bg-[color:var(--gold)] text-primary"><Phone className="h-4 w-4" /></span>
+          <div className="mt-10 space-y-3">
+            <a href={PHONE_HREF} className="group flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-elegant)]">
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground shadow-sm transition-transform duration-300 group-hover:scale-105"><Phone className="h-5 w-5" strokeWidth={2.2} /></span>
               <span>
-                <div className="text-xs uppercase tracking-wider text-muted-foreground">Phone</div>
-                <div className="font-serif text-lg text-foreground">{PHONE}</div>
+                <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/60">Phone</div>
+                <div className="mt-0.5 text-[17px] font-semibold text-foreground">{PHONE}</div>
               </span>
             </a>
-            <a href={`mailto:${EMAIL}`} className="flex items-start gap-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-sm bg-[color:var(--gold)] text-primary"><Mail className="h-4 w-4" /></span>
+            <a href={`mailto:${EMAIL}`} className="group flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:border-primary/40 hover:shadow-[var(--shadow-elegant)]">
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground shadow-sm transition-transform duration-300 group-hover:scale-105"><Mail className="h-5 w-5" strokeWidth={2.2} /></span>
               <span>
-                <div className="text-xs uppercase tracking-wider text-muted-foreground">Email</div>
-                <div className="font-serif text-lg text-foreground">{EMAIL}</div>
+                <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/60">Email</div>
+                <div className="mt-0.5 text-[17px] font-semibold text-foreground">{EMAIL}</div>
               </span>
             </a>
-            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="group flex items-start gap-4">
-              <span className="btn-whatsapp grid h-11 w-11 shrink-0 place-items-center rounded-xl transition-transform duration-300 group-hover:scale-105"><MessageCircle className="h-4 w-4" strokeWidth={2.4} /></span>
+            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" className="group flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:border-[color:var(--wa-green,#25D366)]/50 hover:shadow-[var(--shadow-elegant)]">
+              <span className="btn-whatsapp grid h-12 w-12 shrink-0 place-items-center rounded-lg shadow-sm transition-transform duration-300 group-hover:scale-105"><MessageCircle className="h-5 w-5" strokeWidth={2.4} /></span>
               <span>
-                <div className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">WhatsApp</div>
-                <div className="text-[17px] font-medium text-foreground">Chat with us instantly</div>
+                <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/60">WhatsApp</div>
+                <div className="mt-0.5 text-[17px] font-semibold text-foreground">Chat with us instantly</div>
               </span>
             </a>
-
-            <div className="flex items-start gap-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-sm bg-[color:var(--gold)] text-primary"><MapPin className="h-4 w-4" /></span>
-
+            <div className="flex items-center gap-4 rounded-xl border border-border bg-card p-4">
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground shadow-sm"><MapPin className="h-5 w-5" strokeWidth={2.2} /></span>
               <span>
-                <div className="text-xs uppercase tracking-wider text-muted-foreground">Service Area</div>
-                <div className="font-serif text-lg text-foreground">All of California</div>
+                <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/60">Service Area</div>
+                <div className="mt-0.5 text-[17px] font-semibold text-foreground">All of California</div>
               </span>
             </div>
           </div>
