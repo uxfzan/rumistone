@@ -259,12 +259,15 @@ function Services() {
 }
 
 const granites = [
-  { name: "Picasso Green", img: gPicasso, desc: "Deep emerald with mineral movement" },
-  { name: "Galaxy Black", img: gGalaxy, desc: "Jet black with silver flecks" },
-  { name: "Bahama Blue", img: gBahama, desc: "Cool blue with crystalline grain" },
-  { name: "India Red", img: gIndia, desc: "Rich red with black inclusions" },
-  { name: "Gray Granite", img: gGray, desc: "Classic speckled neutral" },
-  { name: "Custom Colors", img: null, desc: "Sourced to match your vision" },
+  { name: "Absolute Black Granite", img: gGalaxy, desc: "A timeless favorite in California, Absolute Black Granite offers unmatched contrast and clarity for engraving. Its deep, polished finish makes portraits, lettering, and artwork stand out beautifully." },
+  { name: "India Red Granite", img: gIndia, desc: "India Red Granite delivers a bold, vibrant memorial with rich red tones that symbolize strength and love. Families choose this color for its striking appearance and long-lasting durability." },
+  { name: "Bahama Blue Granite", img: gBahama, desc: "Bahama Blue Granite features elegant blue and lavender waves that create a premium, artistic memorial. This color is ideal for families seeking a unique and visually stunning tribute." },
+  { name: "Autumn Rose (Pink) Granite", img: null, gradient: "linear-gradient(135deg,#c48a8a,#e8c4c4)", desc: "Autumn Rose Granite offers warm pink tones that bring softness and beauty to any headstone or marker. It's a popular choice for flat markers and traditional memorial designs." },
+  { name: "Standard Gray Granite", img: gGray, desc: "Gray Granite is the most traditional and widely accepted memorial stone in California cemeteries. Its clean, classic look and excellent durability make it a reliable choice for any style of engraving." },
+  { name: "Blue Pearl Granite", img: null, gradient: "linear-gradient(135deg,#4a6a8a,#8faec8)", desc: "Blue Pearl Granite shines with metallic blue crystals that reflect light beautifully. This premium stone is perfect for upright monuments and modern memorial designs." },
+  { name: "Paradiso Granite", img: null, gradient: "linear-gradient(135deg,#7a6a8a,#a89ab8)", desc: "Paradiso Granite showcases flowing purple and gray patterns that create a sophisticated, artistic memorial. Its natural movement makes every stone truly one-of-a-kind." },
+  { name: "Himalayan Blue Granite", img: null, gradient: "linear-gradient(135deg,#5a7a8a,#9ab0b8)", desc: "Himalayan Blue Granite blends blue, brown, and gray tones in a dramatic wave pattern. Families choose this color for its bold character and excellent engraving contrast." },
+  { name: "Tropical Green Granite", img: gPicasso, desc: "Tropical Green Granite offers deep green and black textures that create a unique, eye-catching memorial. It's a standout choice for families wanting something different from traditional colors." },
 ];
 
 function Granite() {
@@ -284,18 +287,18 @@ function Granite() {
                 {g.img ? (
                   <img src={g.img} alt={`${g.name} granite sample`} loading="lazy" width={800} height={600} className="h-full w-full object-cover" />
                 ) : (
-                  <div className="grid h-full w-full place-items-center bg-[linear-gradient(135deg,oklch(0.32_0.055_250),oklch(0.22_0.03_250))] text-primary-foreground">
-                    <Gem className="h-10 w-10 text-[color:var(--gold)]" />
+                  <div className="grid h-full w-full place-items-center" style={{ background: g.gradient }}>
+                    <Gem className="h-10 w-10 text-white/40" />
                   </div>
                 )}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </div>
-              <div className="flex items-center justify-between gap-3 p-6">
-                <div>
+              <div className="p-6">
+                <div className="flex items-center justify-between gap-3">
                   <h3 className="text-[1.2rem] text-foreground">{g.name}</h3>
-                  <p className="mt-1 text-[13px] text-muted-foreground">{g.desc}</p>
+                  <span className="shrink-0 rounded-full border border-[color:var(--gold)]/25 bg-[color:var(--gold)]/8 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-[color:var(--gold)]">Polished</span>
                 </div>
-                <span className="rounded-full border border-[color:var(--gold)]/25 bg-[color:var(--gold)]/8 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-[color:var(--gold)]">Polished</span>
+                <p className="mt-2 text-[13px] leading-[1.7] text-muted-foreground">{g.desc}</p>
               </div>
             </div>
           ))}
