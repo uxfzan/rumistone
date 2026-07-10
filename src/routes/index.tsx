@@ -289,13 +289,7 @@ function Granite() {
               className="reveal surface-card surface-card-hover group overflow-hidden rounded-2xl"
             >
               <div className="img-zoom relative aspect-[4/3]">
-                {g.img ? (
-                  <img src={g.img} alt={`${g.name} granite sample`} loading="lazy" width={800} height={600} className="h-full w-full object-cover" />
-                ) : (
-                  <div className="grid h-full w-full place-items-center" style={{ background: g.gradient }}>
-                    <Gem className="h-10 w-10 text-white/40" />
-                  </div>
-                )}
+                <img src={g.img} alt={`${g.name} granite sample`} loading="lazy" width={800} height={600} className="h-full w-full object-cover" />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </div>
               <div className="p-6">
