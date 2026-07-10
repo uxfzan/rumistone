@@ -272,7 +272,6 @@ const granites = [
   { name: "Paradiso Granite", img: gParadiso.url, desc: "Paradiso Granite showcases flowing purple and gray patterns that create a sophisticated, artistic memorial. Its natural movement makes every stone truly one-of-a-kind." },
   { name: "Himalayan Blue Granite", img: gHimalayan.url, desc: "Himalayan Blue Granite blends blue, brown, and gray tones in a dramatic wave pattern. Families choose this color for its bold character and excellent engraving contrast." },
   { name: "Tropical Green Granite", img: gPicasso, desc: "Tropical Green Granite offers deep green and black textures that create a unique, eye-catching memorial. It's a standout choice for families wanting something different from traditional colors." },
-  { name: "Tropical Green Granite", img: gPicasso, desc: "Tropical Green Granite offers deep green and black textures that create a unique, eye-catching memorial. It's a standout choice for families wanting something different from traditional colors." },
 ];
 
 function Granite() {
