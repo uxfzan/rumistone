@@ -16,6 +16,10 @@ import gGalaxy from "@/assets/granite-galaxy-black.jpg";
 import gBahama from "@/assets/granite-bahama-blue.jpg";
 import gIndia from "@/assets/granite-india-red.jpg";
 import gGray from "@/assets/granite-gray.jpg";
+import gHimalayan from "@/assets/himalayan-blue.png.asset.json";
+import gParadiso from "@/assets/paradiso.png.asset.json";
+import gBluePearl from "@/assets/blue-pearl.png.asset.json";
+import gAutumnRose from "@/assets/autumn-rose.png.asset.json";
 import galUpright from "@/assets/gallery-upright.jpg";
 import galFlat from "@/assets/gallery-flat.jpg";
 import galCompanion from "@/assets/gallery-companion.jpg";
@@ -262,11 +266,12 @@ const granites = [
   { name: "Absolute Black Granite", img: gGalaxy, desc: "A timeless favorite in California, Absolute Black Granite offers unmatched contrast and clarity for engraving. Its deep, polished finish makes portraits, lettering, and artwork stand out beautifully." },
   { name: "India Red Granite", img: gIndia, desc: "India Red Granite delivers a bold, vibrant memorial with rich red tones that symbolize strength and love. Families choose this color for its striking appearance and long-lasting durability." },
   { name: "Bahama Blue Granite", img: gBahama, desc: "Bahama Blue Granite features elegant blue and lavender waves that create a premium, artistic memorial. This color is ideal for families seeking a unique and visually stunning tribute." },
-  { name: "Autumn Rose (Pink) Granite", img: null, gradient: "linear-gradient(135deg,#c48a8a,#e8c4c4)", desc: "Autumn Rose Granite offers warm pink tones that bring softness and beauty to any headstone or marker. It's a popular choice for flat markers and traditional memorial designs." },
+  { name: "Autumn Rose (Pink) Granite", img: gAutumnRose.url, desc: "Autumn Rose Granite offers warm pink tones that bring softness and beauty to any headstone or marker. It's a popular choice for flat markers and traditional memorial designs." },
   { name: "Standard Gray Granite", img: gGray, desc: "Gray Granite is the most traditional and widely accepted memorial stone in California cemeteries. Its clean, classic look and excellent durability make it a reliable choice for any style of engraving." },
-  { name: "Blue Pearl Granite", img: null, gradient: "linear-gradient(135deg,#4a6a8a,#8faec8)", desc: "Blue Pearl Granite shines with metallic blue crystals that reflect light beautifully. This premium stone is perfect for upright monuments and modern memorial designs." },
-  { name: "Paradiso Granite", img: null, gradient: "linear-gradient(135deg,#7a6a8a,#a89ab8)", desc: "Paradiso Granite showcases flowing purple and gray patterns that create a sophisticated, artistic memorial. Its natural movement makes every stone truly one-of-a-kind." },
-  { name: "Himalayan Blue Granite", img: null, gradient: "linear-gradient(135deg,#5a7a8a,#9ab0b8)", desc: "Himalayan Blue Granite blends blue, brown, and gray tones in a dramatic wave pattern. Families choose this color for its bold character and excellent engraving contrast." },
+  { name: "Blue Pearl Granite", img: gBluePearl.url, desc: "Blue Pearl Granite shines with metallic blue crystals that reflect light beautifully. This premium stone is perfect for upright monuments and modern memorial designs." },
+  { name: "Paradiso Granite", img: gParadiso.url, desc: "Paradiso Granite showcases flowing purple and gray patterns that create a sophisticated, artistic memorial. Its natural movement makes every stone truly one-of-a-kind." },
+  { name: "Himalayan Blue Granite", img: gHimalayan.url, desc: "Himalayan Blue Granite blends blue, brown, and gray tones in a dramatic wave pattern. Families choose this color for its bold character and excellent engraving contrast." },
+  { name: "Tropical Green Granite", img: gPicasso, desc: "Tropical Green Granite offers deep green and black textures that create a unique, eye-catching memorial. It's a standout choice for families wanting something different from traditional colors." },
   { name: "Tropical Green Granite", img: gPicasso, desc: "Tropical Green Granite offers deep green and black textures that create a unique, eye-catching memorial. It's a standout choice for families wanting something different from traditional colors." },
 ];
 
@@ -284,13 +289,7 @@ function Granite() {
               className="reveal surface-card surface-card-hover group overflow-hidden rounded-2xl"
             >
               <div className="img-zoom relative aspect-[4/3]">
-                {g.img ? (
-                  <img src={g.img} alt={`${g.name} granite sample`} loading="lazy" width={800} height={600} className="h-full w-full object-cover" />
-                ) : (
-                  <div className="grid h-full w-full place-items-center" style={{ background: g.gradient }}>
-                    <Gem className="h-10 w-10 text-white/40" />
-                  </div>
-                )}
+                <img src={g.img} alt={`${g.name} granite sample`} loading="lazy" width={800} height={600} className="h-full w-full object-cover" />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </div>
               <div className="p-6">
