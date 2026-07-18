@@ -289,15 +289,6 @@ export function QuoteCTA({
 
 export function SiteShell({ children }: { children: ReactNode }) {
   useScrollReveal();
-  // Scroll to top when route changes
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
-  if (typeof window !== "undefined") {
-    // best-effort; no-op during SSR
-    queueMicrotask(() => {
-      // handled by TanStack Router scrollRestoration if enabled, but ensure top on nav
-    });
-  }
-  void pathname;
   return (
     <div className="min-h-screen bg-background">
       <Nav />
