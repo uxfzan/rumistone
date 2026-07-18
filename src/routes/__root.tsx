@@ -77,17 +77,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Rumi Stone — Custom Memorial Headstones & Monuments in California" },
-      { name: "description", content: "Family-owned memorial headstones, grave markers and monuments crafted in premium granite. Serving every cemetery in California with delivery and installation." },
       { name: "author", content: "Rumi Stone" },
-      { property: "og:title", content: "Rumi Stone — Custom Memorial Headstones & Monuments in California" },
-      { property: "og:description", content: "Family-owned memorial headstones, grave markers and monuments crafted in premium granite. Serving every cemetery in California with delivery and installation." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Rumi Stone" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Rumi Stone — Custom Memorial Headstones & Monuments in California" },
-      { name: "twitter:description", content: "Family-owned memorial headstones, grave markers and monuments crafted in premium granite. Serving every cemetery in California with delivery and installation." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8da04ad0-d296-4b7c-bdbe-57e50dd0a8e7/id-preview-7eec0433--d27e51e0-a7b2-4a30-81a1-227fd5843763.lovable.app-1782975373863.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8da04ad0-d296-4b7c-bdbe-57e50dd0a8e7/id-preview-7eec0433--d27e51e0-a7b2-4a30-81a1-227fd5843763.lovable.app-1782975373863.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

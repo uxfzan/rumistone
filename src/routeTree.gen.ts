@@ -9,8 +9,62 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ThankYouRouteImport } from './routes/thank-you'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as QuoteRouteImport } from './routes/quote'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as HeadstonesMarkersRouteImport } from './routes/headstones-markers'
+import { Route as GraniteColorsRouteImport } from './routes/granite-colors'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ThankYouRoute = ThankYouRouteImport.update({
+  id: '/thank-you',
+  path: '/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuoteRoute = QuoteRouteImport.update({
+  id: '/quote',
+  path: '/quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HeadstonesMarkersRoute = HeadstonesMarkersRouteImport.update({
+  id: '/headstones-markers',
+  path: '/headstones-markers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GraniteColorsRoute = GraniteColorsRouteImport.update({
+  id: '/granite-colors',
+  path: '/granite-colors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +73,158 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
+  '/granite-colors': typeof GraniteColorsRoute
+  '/headstones-markers': typeof HeadstonesMarkersRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/quote': typeof QuoteRoute
+  '/reviews': typeof ReviewsRoute
+  '/thank-you': typeof ThankYouRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
+  '/granite-colors': typeof GraniteColorsRoute
+  '/headstones-markers': typeof HeadstonesMarkersRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/quote': typeof QuoteRoute
+  '/reviews': typeof ReviewsRoute
+  '/thank-you': typeof ThankYouRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
+  '/granite-colors': typeof GraniteColorsRoute
+  '/headstones-markers': typeof HeadstonesMarkersRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/quote': typeof QuoteRoute
+  '/reviews': typeof ReviewsRoute
+  '/thank-you': typeof ThankYouRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/faq'
+    | '/gallery'
+    | '/granite-colors'
+    | '/headstones-markers'
+    | '/how-it-works'
+    | '/quote'
+    | '/reviews'
+    | '/thank-you'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/faq'
+    | '/gallery'
+    | '/granite-colors'
+    | '/headstones-markers'
+    | '/how-it-works'
+    | '/quote'
+    | '/reviews'
+    | '/thank-you'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/faq'
+    | '/gallery'
+    | '/granite-colors'
+    | '/headstones-markers'
+    | '/how-it-works'
+    | '/quote'
+    | '/reviews'
+    | '/thank-you'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  FaqRoute: typeof FaqRoute
+  GalleryRoute: typeof GalleryRoute
+  GraniteColorsRoute: typeof GraniteColorsRoute
+  HeadstonesMarkersRoute: typeof HeadstonesMarkersRoute
+  HowItWorksRoute: typeof HowItWorksRoute
+  QuoteRoute: typeof QuoteRoute
+  ReviewsRoute: typeof ReviewsRoute
+  ThankYouRoute: typeof ThankYouRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/thank-you': {
+      id: '/thank-you'
+      path: '/thank-you'
+      fullPath: '/thank-you'
+      preLoaderRoute: typeof ThankYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quote': {
+      id: '/quote'
+      path: '/quote'
+      fullPath: '/quote'
+      preLoaderRoute: typeof QuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/headstones-markers': {
+      id: '/headstones-markers'
+      path: '/headstones-markers'
+      fullPath: '/headstones-markers'
+      preLoaderRoute: typeof HeadstonesMarkersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/granite-colors': {
+      id: '/granite-colors'
+      path: '/granite-colors'
+      fullPath: '/granite-colors'
+      preLoaderRoute: typeof GraniteColorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +237,16 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  FaqRoute: FaqRoute,
+  GalleryRoute: GalleryRoute,
+  GraniteColorsRoute: GraniteColorsRoute,
+  HeadstonesMarkersRoute: HeadstonesMarkersRoute,
+  HowItWorksRoute: HowItWorksRoute,
+  QuoteRoute: QuoteRoute,
+  ReviewsRoute: ReviewsRoute,
+  ThankYouRoute: ThankYouRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
