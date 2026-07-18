@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { Menu, X, MessageCircle, ArrowUpRight, ArrowRight, MapPin } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
