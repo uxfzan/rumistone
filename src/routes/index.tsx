@@ -14,7 +14,7 @@ import gGalaxy from "@/assets/granite-galaxy-black.jpg";
 import gBahama from "@/assets/granite-bahama-blue.jpg";
 import gIndia from "@/assets/granite-india-red.jpg";
 import gGray from "@/assets/granite-gray.jpg";
-import gBluePearl from "@/assets/blue-pearl.png.asset.json";
+import gBluePearl from "@/assets/Blue Pearl Granite.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
