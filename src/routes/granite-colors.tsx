@@ -5,10 +5,10 @@ import gGalaxy from "@/assets/granite-galaxy-black.jpg";
 import gBahama from "@/assets/granite-bahama-blue.jpg";
 import gIndia from "@/assets/granite-india-red.jpg";
 import gGray from "@/assets/granite-gray.jpg";
-import gHimalayan from "@/assets/himalayan-blue.png.asset.json";
-import gParadiso from "@/assets/paradiso.png.asset.json";
-import gBluePearl from "@/assets/blue-pearl.png.asset.json";
-import gAutumnRose from "@/assets/autumn-rose.png.asset.json";
+import gHimalayan from "@/assets/Himalyan.png";
+import gParadiso from "@/assets/Paradiso Granite.png";
+import gBluePearl from "@/assets/Blue Pearl Granite.png";
+import gAutumnRose from "@/assets/Autumn Rose.png";
 
 export const Route = createFileRoute("/granite-colors")({
   head: () => ({
