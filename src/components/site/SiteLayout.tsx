@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
-import { Menu, X, MessageCircle, ArrowUpRight, ArrowRight, MapPin } from "lucide-react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Menu, X, MessageCircle, ArrowUpRight, ArrowRight, MapPin, ChevronDown } from "lucide-react";
+
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export const PHONE = "(510) 555-0142";
@@ -23,6 +24,34 @@ export const NAV_LINKS: Array<[string, string]> = [
   ["FAQ", "/faq"],
 ];
 
+type NavItem =
+  | { kind: "link"; label: string; to: string; exact?: boolean }
+  | { kind: "menu"; label: string; items: Array<{ label: string; to: string; description?: string }> };
+
+const PRIMARY_NAV: NavItem[] = [
+  { kind: "link", label: "Home", to: "/", exact: true },
+  {
+    kind: "menu",
+    label: "Products",
+    items: [
+      { label: "Headstones & Markers", to: "/headstones-markers", description: "Flat markers & upright monuments" },
+      { label: "Granite Colors", to: "/granite-colors", description: "Explore our 9 premium stones" },
+    ],
+  },
+  {
+    kind: "menu",
+    label: "Resources",
+    items: [
+      { label: "About", to: "/about", description: "Our story & craftsmanship" },
+      { label: "How It Works", to: "/how-it-works", description: "Our 3-step process" },
+      { label: "Reviews", to: "/reviews", description: "What families say" },
+      { label: "FAQ", to: "/faq", description: "Common questions answered" },
+    ],
+  },
+  { kind: "link", label: "Gallery", to: "/gallery" },
+];
+
+
 export function Logo({ className = "" }: { className?: string }) {
   return (
     <Link to="/" className={`group flex items-center gap-3 ${className}`}>
@@ -37,23 +66,83 @@ export function Logo({ className = "" }: { className?: string }) {
   );
 }
 
+function DesktopMenu({ label, items }: { label: string; items: Array<{ label: string; to: string; description?: string }> }) {
+  const [open, setOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const cancelClose = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  };
+  const scheduleClose = () => {
+    cancelClose();
+    closeTimer.current = setTimeout(() => setOpen(false), 120);
+  };
+
+  useEffect(() => () => cancelClose(), []);
+
+  const isActive = items.some((i) => typeof window !== "undefined" && window.location.pathname === i.to);
+
+  return (
+    <div className="relative" onMouseEnter={() => { cancelClose(); setOpen(true); }} onMouseLeave={scheduleClose}>
+      <button
+        type="button"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+        onFocus={() => { cancelClose(); setOpen(true); }}
+        className={`relative inline-flex items-center gap-1 text-[13px] font-medium tracking-wide transition-colors hover:text-foreground ${isActive ? "text-foreground" : "text-foreground/70"}`}
+      >
+        {label}
+        <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+      </button>
+      <div
+        role="menu"
+        className={`absolute left-1/2 top-full z-50 mt-3 w-72 -translate-x-1/2 rounded-2xl glass-strong p-2 shadow-[0_20px_50px_-20px_oklch(0.22_0.02_250/0.35)] transition-all duration-200 ${open ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none -translate-y-1 opacity-0"}`}
+      >
+        {items.map((item) => (
+          <Link
+            key={item.to}
+            to={item.to}
+            role="menuitem"
+            onClick={() => setOpen(false)}
+            className="group flex flex-col rounded-xl px-3 py-2.5 transition-colors hover:bg-black/5 data-[status=active]:bg-black/5"
+          >
+            <span className="text-[13px] font-semibold text-foreground">{item.label}</span>
+            {item.description && (
+              <span className="mt-0.5 text-[11px] text-foreground/60">{item.description}</span>
+            )}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
   return (
     <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4">
       <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full glass-strong px-4 py-2.5 shadow-[0_10px_40px_-16px_oklch(0.22_0.02_250/0.25)]">
         <Logo />
-        <nav className="hidden items-center gap-5 xl:flex">
-          {NAV_LINKS.map(([label, to]) => (
-            <Link
-              key={to}
-              to={to}
-              activeOptions={{ exact: to === "/" }}
-              className="relative text-[13px] font-medium tracking-wide text-foreground/70 transition-colors hover:text-foreground data-[status=active]:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-[color:var(--gold)] after:transition-transform after:duration-500 hover:after:origin-left hover:after:scale-x-100 data-[status=active]:after:origin-left data-[status=active]:after:scale-x-100"
-            >
-              {label}
-            </Link>
-          ))}
+        <nav className="hidden items-center gap-6 xl:flex">
+          {PRIMARY_NAV.map((item) =>
+            item.kind === "link" ? (
+              <Link
+                key={item.to}
+                to={item.to}
+                activeOptions={{ exact: !!item.exact }}
+                className="relative text-[13px] font-medium tracking-wide text-foreground/70 transition-colors hover:text-foreground data-[status=active]:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-[color:var(--gold)] after:transition-transform after:duration-500 hover:after:origin-left hover:after:scale-x-100 data-[status=active]:after:origin-left data-[status=active]:after:scale-x-100"
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <DesktopMenu key={item.label} label={item.label} items={item.items} />
+            ),
+          )}
         </nav>
         <div className="hidden items-center gap-2 xl:flex">
           <a
@@ -83,17 +172,45 @@ export function Nav() {
       {open && (
         <div className="mx-auto mt-2 max-w-7xl rounded-3xl glass p-4 xl:hidden">
           <div className="flex flex-col gap-1">
-            {NAV_LINKS.map(([label, to]) => (
-              <Link
-                key={to}
-                to={to}
-                activeOptions={{ exact: to === "/" }}
-                onClick={() => setOpen(false)}
-                className="rounded-2xl px-3 py-2.5 text-base font-medium text-foreground/85 hover:bg-black/5 data-[status=active]:bg-black/5 data-[status=active]:text-foreground"
-              >
-                {label}
-              </Link>
-            ))}
+            {PRIMARY_NAV.map((item) =>
+              item.kind === "link" ? (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  activeOptions={{ exact: !!item.exact }}
+                  onClick={() => setOpen(false)}
+                  className="rounded-2xl px-3 py-2.5 text-base font-medium text-foreground/85 hover:bg-black/5 data-[status=active]:bg-black/5 data-[status=active]:text-foreground"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <div key={item.label} className="rounded-2xl">
+                  <button
+                    type="button"
+                    onClick={() => setOpenGroup((g) => (g === item.label ? null : item.label))}
+                    aria-expanded={openGroup === item.label}
+                    className="flex w-full items-center justify-between rounded-2xl px-3 py-2.5 text-base font-medium text-foreground/85 hover:bg-black/5"
+                  >
+                    {item.label}
+                    <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${openGroup === item.label ? "rotate-180" : ""}`} />
+                  </button>
+                  {openGroup === item.label && (
+                    <div className="mt-1 ml-2 flex flex-col gap-0.5 border-l border-border/60 pl-3">
+                      {item.items.map((sub) => (
+                        <Link
+                          key={sub.to}
+                          to={sub.to}
+                          onClick={() => { setOpen(false); setOpenGroup(null); }}
+                          className="rounded-xl px-3 py-2 text-[15px] font-medium text-foreground/80 hover:bg-black/5 data-[status=active]:bg-black/5 data-[status=active]:text-foreground"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ),
+            )}
             <div className="mt-2 grid grid-cols-2 gap-2">
               <a
                 href={WHATSAPP_HREF}
@@ -118,6 +235,7 @@ export function Nav() {
     </header>
   );
 }
+
 
 export function Footer() {
   return (
