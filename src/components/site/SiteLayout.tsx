@@ -32,7 +32,7 @@ const PRIMARY_NAV: NavItem[] = [
   { kind: "link", label: "Home", to: "/", exact: true },
   {
     kind: "menu",
-    label: "Products",
+    label: "Memorials",
     items: [
       { label: "Headstones & Markers", to: "/headstones-markers", description: "Flat markers & upright monuments" },
       { label: "Granite Colors", to: "/granite-colors", description: "Explore our 9 premium stones" },
@@ -93,14 +93,14 @@ function DesktopMenu({ label, items }: { label: string; items: Array<{ label: st
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
         onFocus={() => { cancelClose(); setOpen(true); }}
-        className={`relative inline-flex items-center gap-1 text-[13px] font-medium tracking-wide transition-colors hover:text-foreground ${isActive ? "text-foreground" : "text-foreground/70"}`}
+        className={`relative inline-flex items-center gap-1 text-[15px] font-medium tracking-wide transition-colors hover:text-foreground ${isActive ? "text-foreground" : "text-foreground/70"}`}
       >
         {label}
-        <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+        <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
       </button>
       <div
         role="menu"
-        className={`absolute left-1/2 top-full z-50 mt-3 w-72 -translate-x-1/2 rounded-2xl glass-strong p-2 shadow-[0_20px_50px_-20px_oklch(0.22_0.02_250/0.35)] transition-all duration-200 ${open ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none -translate-y-1 opacity-0"}`}
+        className={`absolute left-1/2 top-full z-50 mt-3 w-80 -translate-x-1/2 rounded-2xl border border-border/60 bg-white p-2 shadow-[0_24px_60px_-20px_oklch(0.22_0.02_250/0.35)] transition-all duration-200 ${open ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none -translate-y-1 opacity-0"}`}
       >
         {items.map((item) => (
           <Link
@@ -108,11 +108,11 @@ function DesktopMenu({ label, items }: { label: string; items: Array<{ label: st
             to={item.to}
             role="menuitem"
             onClick={() => setOpen(false)}
-            className="group flex flex-col rounded-xl px-3 py-2.5 transition-colors hover:bg-black/5 data-[status=active]:bg-black/5"
+            className="group flex flex-col rounded-xl px-3.5 py-3 transition-colors hover:bg-black/5 data-[status=active]:bg-black/5"
           >
-            <span className="text-[13px] font-semibold text-foreground">{item.label}</span>
+            <span className="text-[15px] font-semibold text-foreground">{item.label}</span>
             {item.description && (
-              <span className="mt-0.5 text-[11px] text-foreground/60">{item.description}</span>
+              <span className="mt-1 text-[13px] leading-snug text-foreground/70">{item.description}</span>
             )}
           </Link>
         ))}
@@ -135,7 +135,7 @@ export function Nav() {
                 key={item.to}
                 to={item.to}
                 activeOptions={{ exact: !!item.exact }}
-                className="relative text-[13px] font-medium tracking-wide text-foreground/70 transition-colors hover:text-foreground data-[status=active]:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-[color:var(--gold)] after:transition-transform after:duration-500 hover:after:origin-left hover:after:scale-x-100 data-[status=active]:after:origin-left data-[status=active]:after:scale-x-100"
+                className="relative text-[15px] font-medium tracking-wide text-foreground/70 transition-colors hover:text-foreground data-[status=active]:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-[color:var(--gold)] after:transition-transform after:duration-500 hover:after:origin-left hover:after:scale-x-100 data-[status=active]:after:origin-left data-[status=active]:after:scale-x-100"
               >
                 {item.label}
               </Link>
