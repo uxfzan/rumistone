@@ -24,6 +24,34 @@ export const NAV_LINKS: Array<[string, string]> = [
   ["FAQ", "/faq"],
 ];
 
+type NavItem =
+  | { kind: "link"; label: string; to: string; exact?: boolean }
+  | { kind: "menu"; label: string; items: Array<{ label: string; to: string; description?: string }> };
+
+const PRIMARY_NAV: NavItem[] = [
+  { kind: "link", label: "Home", to: "/", exact: true },
+  {
+    kind: "menu",
+    label: "Products",
+    items: [
+      { label: "Headstones & Markers", to: "/headstones-markers", description: "Flat markers & upright monuments" },
+      { label: "Granite Colors", to: "/granite-colors", description: "Explore our 9 premium stones" },
+    ],
+  },
+  {
+    kind: "menu",
+    label: "Resources",
+    items: [
+      { label: "About", to: "/about", description: "Our story & craftsmanship" },
+      { label: "How It Works", to: "/how-it-works", description: "Our 3-step process" },
+      { label: "Reviews", to: "/reviews", description: "What families say" },
+      { label: "FAQ", to: "/faq", description: "Common questions answered" },
+    ],
+  },
+  { kind: "link", label: "Gallery", to: "/gallery" },
+];
+
+
 export function Logo({ className = "" }: { className?: string }) {
   return (
     <Link to="/" className={`group flex items-center gap-3 ${className}`}>
