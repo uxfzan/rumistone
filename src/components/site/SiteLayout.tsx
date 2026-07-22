@@ -135,7 +135,7 @@ export function Nav() {
                 key={item.to}
                 to={item.to}
                 activeOptions={{ exact: !!item.exact }}
-                className="relative text-[13px] font-medium tracking-wide text-foreground/70 transition-colors hover:text-foreground data-[status=active]:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-[color:var(--gold)] after:transition-transform after:duration-500 hover:after:origin-left hover:after:scale-x-100 data-[status=active]:after:origin-left data-[status=active]:after:scale-x-100"
+                className="relative text-[15px] font-medium tracking-wide text-foreground/70 transition-colors hover:text-foreground data-[status=active]:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-[color:var(--gold)] after:transition-transform after:duration-500 hover:after:origin-left hover:after:scale-x-100 data-[status=active]:after:origin-left data-[status=active]:after:scale-x-100"
               >
                 {item.label}
               </Link>
