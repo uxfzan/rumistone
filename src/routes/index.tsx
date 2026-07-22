@@ -236,7 +236,7 @@ function GranitePreview() {
     { img: gGray, name: "Standard Gray" },
     { img: gIndia, name: "India Red" },
     { img: gBahama, name: "Bahama Blue" },
-    { img: gBluePearl.url, name: "Blue Pearl" },
+    { img: gBluePearl, name: "Blue Pearl" },
   ];
   return (
     <section className="container-px mx-auto max-w-7xl py-24 md:py-32">
