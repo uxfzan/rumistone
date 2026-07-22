@@ -32,7 +32,7 @@ const PRIMARY_NAV: NavItem[] = [
   { kind: "link", label: "Home", to: "/", exact: true },
   {
     kind: "menu",
-    label: "Products",
+    label: "Memorials",
     items: [
       { label: "Headstones & Markers", to: "/headstones-markers", description: "Flat markers & upright monuments" },
       { label: "Granite Colors", to: "/granite-colors", description: "Explore our 9 premium stones" },
