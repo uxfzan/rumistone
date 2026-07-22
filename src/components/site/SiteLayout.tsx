@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
-import { Menu, X, MessageCircle, ArrowUpRight, ArrowRight, MapPin } from "lucide-react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Menu, X, MessageCircle, ArrowUpRight, ArrowRight, MapPin, ChevronDown } from "lucide-react";
+
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export const PHONE = "(510) 555-0142";
