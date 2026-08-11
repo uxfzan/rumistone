@@ -73,10 +73,27 @@ function QuotePage() {
   name="quote"
   method="POST"
   data-netlify="true"
-  onSubmit={(e) => {
-    e.preventDefault();
+onSubmit={async (e) => {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+
+  try {
+    await fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams(formData as any).toString(),
+    });
+
     navigate({ to: "/thank-you" });
-  }}
+  } catch (error) {
+    console.error("Form submission failed:", error);
+    alert("There was a problem submitting your request. Please try again.");
+  }
+}}
   className="relative rounded-2xl border border-border bg-card p-7 shadow-[var(--shadow-elegant)] md:p-10"
 >
             <input type="hidden" name="form-name" value="quote" />
