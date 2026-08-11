@@ -79,6 +79,7 @@ function QuotePage() {
   }}
   className="relative rounded-2xl border border-border bg-card p-7 shadow-[var(--shadow-elegant)] md:p-10"
 >
+            <input type="hidden" name="form-name" value="quote" />
             <div className="pointer-events-none absolute -inset-px rounded-2xl bg-[linear-gradient(140deg,oklch(0.55_0.12_240/0.15),transparent_40%)]" />
             <h2 className="font-serif text-2xl text-foreground">Request My Free Quote</h2>
             <p className="mt-1 text-sm text-muted-foreground">All fields help us prepare an accurate estimate.</p>
