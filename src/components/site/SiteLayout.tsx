@@ -10,7 +10,7 @@ export const WHATSAPP_NUMBER = "15105550142";
 export const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   "Hi Rumi Stone, I'd like a quote for a memorial.",
 )}`;
-export const EMAIL = "hello@rumistone.com";
+export const EMAIL = "info@rumistone.com";
 export const SITE_URL = "https://rumistone.lovable.app";
 
 export const NAV_LINKS: Array<[string, string]> = [
