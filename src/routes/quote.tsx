@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { Phone, Mail, MapPin, MessageCircle, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, ArrowRight, Loader2 } from "lucide-react";
 import { EMAIL, PHONE, PHONE_HREF, SITE_URL, SiteShell, WHATSAPP_HREF } from "@/components/site/SiteLayout";
 
 export const Route = createFileRoute("/quote")({
@@ -23,6 +23,8 @@ export const Route = createFileRoute("/quote")({
 
 function QuotePage() {
   const navigate = useNavigate();
+  const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
   return (
     <SiteShell>
       <section className="relative isolate overflow-hidden pt-32 pb-16 md:pt-40 md:pb-20">
