@@ -70,33 +70,49 @@ function QuotePage() {
           </div>
 
           <form
-  name="quote"
-  method="POST"
-  data-netlify="true"
-onSubmit={async (e) => {
-  e.preventDefault();
+            name="quote"
+            method="POST"
+            action="/quote-form.html"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              if (status === "sending") return;
+              const form = e.currentTarget;
+              const formData = new FormData(form);
+              formData.set("form-name", "quote");
 
-  const form = e.currentTarget;
-  const formData = new FormData(form);
+              const body = new URLSearchParams();
+              formData.forEach((value, key) => {
+                if (typeof value === "string") body.append(key, value);
+              });
 
-  try {
-    await fetch("/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams(formData as any).toString(),
-    });
-
-    navigate({ to: "/thank-you" });
-  } catch (error) {
-    console.error("Form submission failed:", error);
-    alert("There was a problem submitting your request. Please try again.");
-  }
-}}
-  className="relative rounded-2xl border border-border bg-card p-7 shadow-[var(--shadow-elegant)] md:p-10"
->
+              setStatus("sending");
+              setError(null);
+              try {
+                const res = await fetch("/quote-form.html", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                  body: body.toString(),
+                });
+                if (!res.ok) throw new Error(`Request failed (${res.status})`);
+                form.reset();
+                setStatus("idle");
+                navigate({ to: "/thank-you" });
+              } catch (err) {
+                console.error("Form submission failed:", err);
+                setStatus("error");
+                setError("We couldn't send your request. Please try again, or call us directly.");
+              }
+            }}
+            className="relative rounded-2xl border border-border bg-card p-7 shadow-[var(--shadow-elegant)] md:p-10"
+          >
             <input type="hidden" name="form-name" value="quote" />
+            <p className="hidden">
+              <label>
+                Don't fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+              </label>
+            </p>
             <div className="pointer-events-none absolute -inset-px rounded-2xl bg-[linear-gradient(140deg,oklch(0.55_0.12_240/0.15),transparent_40%)]" />
             <h2 className="font-serif text-2xl text-foreground">Request My Free Quote</h2>
             <p className="mt-1 text-sm text-muted-foreground">All fields help us prepare an accurate estimate.</p>
@@ -117,10 +133,21 @@ onSubmit={async (e) => {
                 <textarea name="message" rows={4} className="mt-1.5 w-full rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm" placeholder="Share any details, inscriptions or design ideas…" />
               </div>
             </div>
-            <button type="submit" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-background transition-transform hover:-translate-y-0.5">
-              Request My Free Quote <ArrowRight className="h-4 w-4" />
+            {error && (
+              <p role="alert" className="mt-5 rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+                {error}
+              </p>
+            )}
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-background transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+            >
+              {status === "sending" ? "Sending…" : "Request My Free Quote"}
+              {status === "sending" ? <Loader2 className="h-4 w-4 animate-spin" /> : <ArrowRight className="h-4 w-4" />}
             </button>
           </form>
+
         </div>
       </section>
     </SiteShell>
