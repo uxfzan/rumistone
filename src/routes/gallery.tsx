@@ -107,9 +107,13 @@ function GalleryPage() {
                 <img
                   src={g.src}
                   alt={g.label}
-                  loading="lazy"
+                  loading={i < 3 ? "eager" : "lazy"}
+                  decoding="async"
+                  width={1000}
+                  height={750}
                   className="max-h-full max-w-full object-contain"
                 />
+
               </div>
             </figure>
           ))}
