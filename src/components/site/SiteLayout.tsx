@@ -4,9 +4,9 @@ import { Menu, X, MessageCircle, ArrowUpRight, ArrowRight, MapPin, ChevronDown }
 
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
-export const PHONE = "(510) 555-0142";
-export const PHONE_HREF = "tel:+15105550142";
-export const WHATSAPP_NUMBER = "15105550142";
+export const PHONE = "(510) 708-7254";
+export const PHONE_HREF = "tel:+15107087254";
+export const WHATSAPP_NUMBER = "15107087254";
 export const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   "Hi Rumi Stone, I'd like a quote for a memorial.",
 )}`;
