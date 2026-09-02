@@ -10,6 +10,7 @@ import {
   WHATSAPP_HREF,
 } from "@/components/site/SiteLayout";
 import heroImg from "@/assets/hero-memorial.jpg";
+import heroStoneImg from "@/assets/hero-headstone.jpg";
 import gGalaxy from "@/assets/granite-galaxy-black.jpg";
 import gBahama from "@/assets/granite-bahama-blue.jpg";
 import gIndia from "@/assets/granite-india-red.jpg";
