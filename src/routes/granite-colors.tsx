@@ -52,7 +52,7 @@ function GranitePage() {
         subtitle="Premium, weather-resistant colors that last for generations."
       />
 
-      <section className="container-px mx-auto max-w-7xl py-16 md:py-24">
+      <section className="container-px mx-auto max-w-[1600px] py-16 md:py-24">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {granites.map((g, i) => (
             <article

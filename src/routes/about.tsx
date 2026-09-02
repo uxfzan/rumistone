@@ -65,7 +65,7 @@ function AboutPage() {
       </section>
 
       <section className="bg-[color:var(--cream)] py-24 md:py-32">
-        <div className="container-px mx-auto max-w-7xl">
+        <div className="container-px mx-auto max-w-[1600px]">
           <SectionHeader eyebrow="What Guides Us" title="Our" accent="Values" />
           <div className="mt-16 grid gap-6 md:grid-cols-3">
             {values.map(({ icon: Icon, title, body }, i) => (

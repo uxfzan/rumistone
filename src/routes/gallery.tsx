@@ -94,7 +94,7 @@ function GalleryPage() {
         subtitle="Every piece below was designed alongside the family it honors."
       />
 
-      <section className="container-px mx-auto max-w-7xl py-16 md:py-20">
+      <section className="container-px mx-auto max-w-[1600px] py-16 md:py-20">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {gallery.map((g, i) => (
             <figure

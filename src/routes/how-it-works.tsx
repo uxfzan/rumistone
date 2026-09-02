@@ -37,7 +37,7 @@ function HowPage() {
         subtitle="Four caring steps from first call to final installation."
       />
 
-      <section className="container-px mx-auto max-w-7xl py-16 md:py-24">
+      <section className="container-px mx-auto max-w-[1600px] py-16 md:py-24">
         <SectionHeader eyebrow="Step by Step" title="How It" accent="Works" />
         <div className="mt-16 grid gap-9 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
           {steps.map(({ icon: Icon, title, body }, i) => (
