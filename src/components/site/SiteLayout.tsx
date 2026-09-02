@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Menu, X, MessageCircle, ArrowUpRight, ArrowRight, MapPin, ChevronDown } from "lucide-react";
 
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import logoMark from "@/assets/rumi-stone-logo.png";
 
 export const PHONE = "(510) 708-7254";
 export const PHONE_HREF = "tel:+15107087254";
