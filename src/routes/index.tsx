@@ -10,6 +10,7 @@ import {
   WHATSAPP_HREF,
 } from "@/components/site/SiteLayout";
 import heroImg from "@/assets/hero-memorial.jpg";
+import heroStoneImg from "@/assets/hero-headstone.jpg";
 import gGalaxy from "@/assets/granite-galaxy-black.jpg";
 import gBahama from "@/assets/granite-bahama-blue.jpg";
 import gIndia from "@/assets/granite-india-red.jpg";
@@ -68,65 +69,95 @@ function HomePage() {
   );
 }
 
+const heroStats = [
+  ["10+", "Years Crafting", "Over a decade of meaningful memorial craftsmanship."],
+  ["1000+", "Memorials Made", "Thousands of families served with care."],
+  ["Family-Owned", "Personal Service", "Built around personal service and care."],
+  ["Bay Area", "Local Craft", "Local craftsmanship, personal service."],
+];
+
 function Hero() {
   return (
-    <section className="relative isolate overflow-hidden pt-32 pb-24 md:pt-44 md:pb-32 lg:pt-52 lg:pb-40">
+    <section className="relative isolate overflow-hidden pt-24 pb-14 md:pt-32 md:pb-20">
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-mesh)" }} />
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.14]">
-        <img src={heroImg} alt="" className="h-full w-full object-cover blur-2xl scale-110" width={1920} height={1280} />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
-      </div>
-      <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-[oklch(0.82_0.08_235/0.35)] blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-40 right-0 -z-10 h-[500px] w-[500px] rounded-full bg-[oklch(0.9_0.05_65/0.35)] blur-3xl" />
+      <div className="pointer-events-none absolute -top-40 left-0 -z-10 h-[520px] w-[520px] rounded-full bg-[oklch(0.82_0.08_235/0.3)] blur-3xl" />
 
-      <div className="container-px mx-auto max-w-6xl">
-        <div className="mx-auto flex flex-col items-center text-center">
-          <div data-reveal className="reveal mb-8 inline-flex items-center gap-2.5 rounded-full glass px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.24em] text-foreground/75 shadow-[var(--shadow-xs)]">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--gold)] opacity-60" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[color:var(--gold)]" />
-            </span>
-            Family Atelier · Est. California
+      <div className="container-px mx-auto max-w-7xl">
+        <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
+          {/* Text column */}
+          <div className="min-w-0">
+            <div data-reveal className="reveal mb-6 inline-flex max-w-full items-start gap-2.5 rounded-full glass px-4 py-2 sm:items-center sm:py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/75 shadow-[var(--shadow-xs)] sm:text-[11px] sm:tracking-[0.24em]">
+              <span className="relative mt-[5px] flex h-1.5 w-1.5 shrink-0 sm:mt-0">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--gold)] opacity-60" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[color:var(--gold)]" />
+              </span>
+              <span className="text-left">Family-Owned • Serving Bay Area Families</span>
+            </div>
+
+            <h1
+              data-reveal
+              data-reveal-delay="80"
+              className="reveal text-balance"
+              style={{ fontSize: "clamp(2.15rem, 5vw, 4.25rem)" }}
+            >
+              <span className="text-gradient-light">Memorials Made With</span>{" "}
+              <span className="italic text-gradient-gold">Care.</span>
+            </h1>
+
+            <p data-reveal data-reveal-delay="180" className="reveal mt-5 max-w-xl text-[15.5px] leading-[1.7] text-foreground/65 md:text-[17px]">
+              Custom headstones and grave markers for Bay Area families — thoughtfully designed,
+              beautifully crafted, and priced with compassion.
+            </p>
+
+            <div data-reveal data-reveal-delay="260" className="reveal mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <Link
+                to="/quote"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-7 py-4 text-[13px] font-semibold tracking-wide text-background shadow-[0_12px_30px_-12px_oklch(0.2_0.02_250/0.55)] transition-all duration-300 hover:-translate-y-0.5 sm:w-auto"
+              >
+                Get a Free Quote
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+              <a
+                href={PHONE_HREF}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border bg-white/70 px-7 py-4 text-[13px] font-semibold tracking-wide text-foreground/85 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-[var(--shadow-soft)] sm:w-auto"
+              >
+                Call {PHONE}
+              </a>
+              <a
+                href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center justify-center gap-2 text-[12.5px] font-semibold tracking-wide text-[color:var(--gold)] underline-offset-4 hover:underline sm:px-2"
+              >
+                <MessageCircle className="h-4 w-4" strokeWidth={2.2} /> Chat on WhatsApp
+              </a>
+            </div>
           </div>
 
-          <h1 data-reveal data-reveal-delay="80" className="reveal max-w-5xl text-balance">
-            <span className="text-gradient-light">Affordable Headstones &</span>{" "}
-            <span className="italic text-gradient-gold">Grave Markers</span>{" "}
-            <span className="text-gradient-light">in the Bay Area</span>
-          </h1>
-
-          <p data-reveal data-reveal-delay="180" className="reveal mt-7 max-w-xl text-[17px] leading-[1.7] text-foreground/65 md:text-lg">
-            Beautiful, personalized memorials — crafted with care, priced with kindness.
-          </p>
-
-          <div data-reveal data-reveal-delay="260" className="reveal mt-10 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              to="/quote"
-              className="group inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-4 text-[13px] font-semibold tracking-wide text-background shadow-[0_12px_30px_-12px_oklch(0.2_0.02_250/0.55)] transition-all duration-300 hover:-translate-y-0.5"
-            >
-              Get a Free Quote
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
-            <a href={PHONE_HREF} className="inline-flex items-center gap-2 rounded-full border border-border bg-white/70 px-7 py-4 text-[13px] font-semibold tracking-wide text-foreground/85 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-[var(--shadow-soft)]">
-              Call {PHONE}
-            </a>
-            <a href={WHATSAPP_HREF} target="_blank" rel="noopener" aria-label="Chat on WhatsApp" className="btn-whatsapp hidden md:inline-flex items-center gap-2 rounded-full px-7 py-4 text-[13px] font-semibold tracking-wide">
-              <MessageCircle className="h-4 w-4" strokeWidth={2.4} /> WhatsApp
-            </a>
+          {/* Image column */}
+          <div data-reveal data-reveal-delay="180" className="reveal relative min-w-0 lg:-mr-8 xl:-mr-16">
+            <div className="relative overflow-hidden rounded-3xl ring-1 ring-black/5 shadow-[var(--shadow-elegant)]">
+              <img
+                src={heroStoneImg}
+                alt="Custom engraved granite headstone in a peaceful Bay Area cemetery"
+                width={1280}
+                height={1600}
+                fetchPriority="high"
+                className="h-[280px] w-full object-cover object-center sm:h-[360px] lg:h-[520px]"
+              />
+              <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/4 bg-gradient-to-r from-background/60 to-transparent lg:block" />
+            </div>
           </div>
         </div>
 
-        <div data-reveal data-reveal-delay="440" className="reveal mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-3xl glass-strong shadow-[var(--shadow-elegant)] md:grid-cols-4">
-          {[
-            ["10+", "Years Crafting"],
-            ["1000+", "Memorials Made"],
-            ["85%", "Returning Families"],
-            ["Statewide", "Delivery"],
-          ].map(([k, v]) => (
-            <div key={v} className="bg-white/60 p-6 text-center transition-colors duration-300 hover:bg-white md:p-8">
-              <div className="font-serif text-4xl italic text-gradient-gold md:text-[2.75rem]">{k}</div>
-              <div className="mt-1.5 text-[10px] uppercase tracking-[0.28em] text-muted-foreground">{v}</div>
+        {/* Trust panel */}
+        <div data-reveal data-reveal-delay="320" className="reveal mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-3xl glass-strong shadow-[var(--shadow-elegant)] sm:grid-cols-2 lg:grid-cols-4">
+          {heroStats.map(([k, label, body]) => (
+            <div key={label} className="min-w-0 bg-white/60 p-6 text-center transition-colors duration-300 hover:bg-white">
+              <div className="font-serif text-[1.75rem] italic text-gradient-gold sm:text-3xl">{k}</div>
+              <div className="mt-1.5 text-[10px] uppercase tracking-[0.24em] text-muted-foreground">{label}</div>
+              <p className="mt-2 text-[12.5px] leading-[1.6] text-foreground/60">{body}</p>
             </div>
           ))}
         </div>

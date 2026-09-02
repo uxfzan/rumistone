@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Menu, X, MessageCircle, ArrowUpRight, ArrowRight, MapPin, ChevronDown } from "lucide-react";
 
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import logoMark from "@/assets/rumi-stone-logo.png";
 
 export const PHONE = "(510) 708-7254";
 export const PHONE_HREF = "tel:+15107087254";
@@ -55,9 +56,13 @@ const PRIMARY_NAV: NavItem[] = [
 export function Logo({ className = "" }: { className?: string }) {
   return (
     <Link to="/" className={`group flex items-center gap-3 ${className}`}>
-      <span className="relative grid h-10 w-10 place-items-center rounded-full bg-[linear-gradient(135deg,oklch(0.55_0.12_240),oklch(0.35_0.09_250))] text-white shadow-[0_8px_24px_-8px_oklch(0.35_0.09_250/0.55)] ring-1 ring-white/30 transition-transform duration-500 group-hover:scale-105">
-        <span className="font-serif text-xl leading-none italic tracking-tight">R</span>
-      </span>
+      <img
+        src={logoMark}
+        alt="Rumi Stone logo"
+        width={40}
+        height={40}
+        className="h-10 w-10 shrink-0 object-contain drop-shadow-[0_6px_16px_oklch(0.35_0.09_250/0.35)] transition-transform duration-500 group-hover:scale-105"
+      />
       <span className="flex flex-col leading-tight">
         <span className="text-[15px] font-semibold tracking-tight text-foreground">Rumi Stone</span>
         <span className="text-[10px] uppercase tracking-[0.32em] text-muted-foreground">Memorial Atelier</span>
