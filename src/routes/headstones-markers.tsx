@@ -51,7 +51,7 @@ function HeadstonesPage() {
         subtitle="Two beautiful ways to remember — crafted, engraved, and delivered with care."
       />
 
-      <section className="container-px mx-auto max-w-7xl py-16 md:py-24">
+      <section className="container-px mx-auto max-w-[1600px] py-16 md:py-24">
         <div className="grid gap-8 md:grid-cols-2">
           {products.map(({ icon: Icon, title, img, body, features }, i) => (
             <article

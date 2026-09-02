@@ -27,7 +27,7 @@ function QuotePage() {
   const [error, setError] = useState<string | null>(null);
   return (
     <SiteShell>
-      <section className="relative isolate overflow-hidden pt-32 pb-16 md:pt-40 md:pb-20">
+      <section className="relative isolate overflow-hidden pt-14 pb-16 md:pt-20 md:pb-20">
         <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
         <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-mesh)" }} />
         <div className="container-px mx-auto max-w-4xl text-center">
@@ -46,7 +46,7 @@ function QuotePage() {
       </section>
 
       <section className="bg-[color:var(--cream)] py-16 md:py-24">
-        <div className="container-px mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr,1.3fr] lg:gap-16">
+        <div className="container-px mx-auto grid max-w-[1600px] gap-12 lg:grid-cols-[1fr,1.3fr] lg:gap-16">
           <div>
             <h2 className="font-serif text-3xl text-foreground md:text-4xl">Contact details</h2>
             <p className="mt-4 text-muted-foreground">Prefer to talk directly? Reach us any way you like.</p>

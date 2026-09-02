@@ -36,7 +36,7 @@ function ReviewsPage() {
         subtitle="85% of our work comes from returning families and referrals."
       />
 
-      <section className="container-px mx-auto max-w-7xl py-16 md:py-24">
+      <section className="container-px mx-auto max-w-[1600px] py-16 md:py-24">
         <div className="grid gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
             <figure

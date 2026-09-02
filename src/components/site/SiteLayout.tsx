@@ -131,7 +131,7 @@ export function Nav() {
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   return (
     <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4">
-      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full glass-strong px-4 py-2.5 shadow-[0_10px_40px_-16px_oklch(0.22_0.02_250/0.25)]">
+      <div className="mx-auto flex max-w-[1600px] items-center justify-between rounded-full glass-strong px-4 py-2.5 shadow-[0_10px_40px_-16px_oklch(0.22_0.02_250/0.25)]">
         <Logo />
         <nav className="hidden items-center gap-6 xl:flex">
           {PRIMARY_NAV.map((item) =>
@@ -175,7 +175,7 @@ export function Nav() {
         </button>
       </div>
       {open && (
-        <div className="mx-auto mt-2 max-w-7xl rounded-3xl glass p-4 xl:hidden">
+        <div className="mx-auto mt-2 max-w-[1600px] rounded-3xl glass p-4 xl:hidden">
           <div className="flex flex-col gap-1">
             {PRIMARY_NAV.map((item) =>
               item.kind === "link" ? (
@@ -245,7 +245,7 @@ export function Nav() {
 export function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container-px mx-auto max-w-7xl py-16">
+      <div className="container-px mx-auto max-w-[1600px] py-16">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-1">
             <Logo className="[&_span]:text-primary-foreground" />
@@ -351,7 +351,7 @@ export function PageHero({
   cta?: ReactNode;
 }) {
   return (
-    <section className="relative isolate overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24">
+    <section className="relative isolate overflow-hidden pt-14 pb-16 md:pt-20 md:pb-24">
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-mesh)" }} />
       <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[oklch(0.82_0.08_235/0.3)] blur-3xl" />

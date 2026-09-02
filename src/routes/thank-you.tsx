@@ -18,7 +18,7 @@ export const Route = createFileRoute("/thank-you")({
 function ThankYouPage() {
   return (
     <SiteShell>
-      <section className="relative isolate overflow-hidden pt-32 pb-24 md:pt-44 md:pb-32">
+      <section className="relative isolate overflow-hidden pt-14 pb-24 md:pt-24 md:pb-32">
         <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
         <div className="container-px mx-auto max-w-2xl text-center">
           <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-[color:var(--gold)] text-white shadow-[0_12px_30px_-10px_oklch(0.55_0.12_240/0.6)]">

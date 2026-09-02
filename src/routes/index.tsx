@@ -78,12 +78,12 @@ const heroStats = [
 
 function Hero() {
   return (
-    <section className="relative isolate overflow-hidden pt-24 pb-14 md:pt-32 md:pb-20">
+    <section className="relative isolate overflow-hidden pt-10 pb-14 md:pt-16 md:pb-20">
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-mesh)" }} />
       <div className="pointer-events-none absolute -top-40 left-0 -z-10 h-[520px] w-[520px] rounded-full bg-[oklch(0.82_0.08_235/0.3)] blur-3xl" />
 
-      <div className="container-px mx-auto max-w-7xl">
+      <div className="container-px mx-auto max-w-[1600px]">
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
           {/* Text column */}
           <div className="min-w-0">
@@ -174,7 +174,7 @@ const whyItems = [
 
 function WhyUs() {
   return (
-    <section className="container-px mx-auto max-w-7xl py-24 md:py-32">
+    <section className="container-px mx-auto max-w-[1600px] py-24 md:py-32">
       <SectionHeader eyebrow="Why Rumi Stone" title="Memorials Made" accent="Personal" />
       <div className="mt-16 grid gap-6 md:grid-cols-3">
         {whyItems.map(({ icon: Icon, title, body }, i) => (
@@ -211,7 +211,7 @@ function ProductsPreview() {
   ];
   return (
     <section className="bg-[color:var(--cream)] py-24 md:py-32">
-      <div className="container-px mx-auto max-w-7xl">
+      <div className="container-px mx-auto max-w-[1600px]">
         <SectionHeader eyebrow="What We Create" title="Two Beautiful Ways to" accent="Remember" />
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           {products.map(({ icon: Icon, title, body }, i) => (
@@ -248,7 +248,7 @@ function TrustBar() {
     ["All CA", "Cemeteries Served"],
   ];
   return (
-    <section className="container-px mx-auto max-w-7xl py-16">
+    <section className="container-px mx-auto max-w-[1600px] py-16">
       <div className="grid grid-cols-2 gap-6 rounded-3xl border border-border bg-white/70 p-8 shadow-[var(--shadow-soft)] backdrop-blur md:grid-cols-4">
         {items.map(([k, v]) => (
           <div key={v} className="text-center">
@@ -270,7 +270,7 @@ function GranitePreview() {
     { img: gBluePearl, name: "Blue Pearl" },
   ];
   return (
-    <section className="container-px mx-auto max-w-7xl py-24 md:py-32">
+    <section className="container-px mx-auto max-w-[1600px] py-24 md:py-32">
       <SectionHeader eyebrow="Granite Collection" title="Choose Your" accent="Granite" kicker="Explore rich, lasting colors — from classic Black to striking Blue Pearl." />
       <div className="mt-14 grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
         {previews.map((g, i) => (
