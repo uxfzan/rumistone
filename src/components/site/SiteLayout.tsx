@@ -176,7 +176,7 @@ export function Nav() {
         </button>
       </div>
       {open && (
-        <div className="mx-auto mt-2 max-w-[1600px] rounded-3xl glass p-4 xl:hidden">
+        <div className="mx-auto max-w-[1600px] border-t border-border/60 bg-white px-4 py-4 sm:px-6 xl:hidden">
           <div className="flex flex-col gap-1">
             {PRIMARY_NAV.map((item) =>
               item.kind === "link" ? (
