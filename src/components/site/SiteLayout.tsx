@@ -130,8 +130,9 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   return (
-    <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4">
-      <div className="mx-auto flex max-w-[1600px] items-center justify-between rounded-full glass-strong px-4 py-2.5 shadow-[0_10px_40px_-16px_oklch(0.22_0.02_250/0.25)]">
+    <header className="sticky top-0 z-40 w-full border-b border-border/70 bg-white/95 backdrop-blur-xl shadow-[0_1px_0_0_oklch(0.22_0.02_250/0.06)]">
+      <div className="mx-auto flex max-w-[1600px] items-center justify-between px-4 py-3 sm:px-6 lg:px-10">
+
         <Logo />
         <nav className="hidden items-center gap-6 xl:flex">
           {PRIMARY_NAV.map((item) =>
