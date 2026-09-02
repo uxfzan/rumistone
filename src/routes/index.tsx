@@ -87,12 +87,12 @@ function Hero() {
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
           {/* Text column */}
           <div className="min-w-0">
-            <div data-reveal className="reveal mb-6 inline-flex max-w-full items-center gap-2.5 rounded-full glass px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/75 shadow-[var(--shadow-xs)] sm:text-[11px] sm:tracking-[0.24em]">
-              <span className="relative flex h-1.5 w-1.5 shrink-0">
+            <div data-reveal className="reveal mb-6 inline-flex max-w-full items-start gap-2.5 rounded-full glass px-4 py-2 sm:items-center sm:py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/75 shadow-[var(--shadow-xs)] sm:text-[11px] sm:tracking-[0.24em]">
+              <span className="relative mt-[5px] flex h-1.5 w-1.5 shrink-0 sm:mt-0">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--gold)] opacity-60" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[color:var(--gold)]" />
               </span>
-              <span className="truncate">Family-Owned • Serving Bay Area Families</span>
+              <span className="text-left">Family-Owned • Serving Bay Area Families</span>
             </div>
 
             <h1
