@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, MessageCircle, Square, Mountain, Sparkles, Heart, DollarSign } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Square, Mountain, Sparkles, Heart, DollarSign } from "lucide-react";
 import {
   EMAIL,
   PHONE,
@@ -7,10 +7,9 @@ import {
   SITE_URL,
   SectionHeader,
   SiteShell,
-  WHATSAPP_HREF,
 } from "@/components/site/SiteLayout";
 import heroImg from "@/assets/hero-memorial.jpg";
-import heroGardenImg from "@/assets/hero-memorial-garden.jpg";
+import heroGardenImg from "@/assets/hero-memorial-garden-right.jpg";
 import heroFlowersImg from "@/assets/hero-flowers.png";
 import gGalaxy from "@/assets/granite-galaxy-black.jpg";
 import gBahama from "@/assets/granite-bahama-blue.jpg";
@@ -63,7 +62,6 @@ function HomePage() {
       <Hero />
       <WhyUs />
       <ProductsPreview />
-      <TrustBar />
       <GranitePreview />
       <ClosingCTA />
     </SiteShell>
@@ -91,8 +89,8 @@ function Hero() {
           className="h-full w-full object-cover object-center"
         />
       </div>
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(100deg,oklch(0.18_0.03_250/0.86)_0%,oklch(0.18_0.03_250/0.66)_42%,oklch(0.18_0.03_250/0.18)_72%,transparent_100%)]" />
-      <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-[linear-gradient(180deg,transparent,oklch(0.18_0.03_250/0.55))]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,oklch(0.17_0.025_250/0.9)_0%,oklch(0.18_0.025_250/0.76)_34%,oklch(0.2_0.025_250/0.3)_55%,transparent_76%)]" />
+      <div className="absolute inset-x-0 bottom-0 -z-10 h-44 bg-[linear-gradient(180deg,transparent,oklch(0.17_0.025_250/0.58))]" />
 
       {/* Flowers — gentle breeze on hover */}
       <img
@@ -102,11 +100,11 @@ function Hero() {
         loading="lazy"
         width={1024}
         height={768}
-        className="hero-flowers pointer-events-auto absolute -bottom-6 right-2 -z-10 hidden w-[220px] select-none opacity-95 drop-shadow-[0_18px_28px_oklch(0.2_0.03_250/0.35)] md:block lg:w-[300px]"
+        className="hero-flowers pointer-events-auto absolute -bottom-8 right-[3%] -z-10 hidden w-[210px] select-none opacity-90 mix-blend-multiply drop-shadow-[0_18px_28px_oklch(0.2_0.03_250/0.25)] md:block lg:w-[280px]"
       />
 
       <div className="container-px relative mx-auto max-w-[1600px] pt-16 pb-16 md:pt-24 md:pb-24">
-        <div className="max-w-2xl">
+        <div className="max-w-[43rem]">
           <div className="hero-in mb-6 inline-flex max-w-full items-start gap-2.5 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-white/85 backdrop-blur-md sm:items-center sm:py-1.5 sm:text-[12px] sm:tracking-[0.24em]" style={{ animationDelay: "80ms" }}>
             <span className="relative mt-[5px] flex h-1.5 w-1.5 shrink-0 sm:mt-0">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--gold)] opacity-60" />
@@ -116,13 +114,13 @@ function Hero() {
           </div>
 
           <h1
-            className="hero-in text-balance font-semibold text-white drop-shadow-[0_2px_18px_oklch(0.18_0.03_250/0.6)]"
-            style={{ fontSize: "clamp(2.35rem, 5.4vw, 4.5rem)", animationDelay: "220ms" }}
+            className="hero-in text-balance font-bold text-white drop-shadow-[0_2px_18px_oklch(0.18_0.03_250/0.6)]"
+            style={{ fontSize: "clamp(2.65rem, 5.7vw, 5rem)", animationDelay: "220ms" }}
           >
             Memorials Made With <span className="italic text-[color:var(--gold)]">Care.</span>
           </h1>
 
-          <p className="hero-in mt-5 max-w-xl text-[16px] leading-[1.75] text-white/85 md:text-[17.5px]" style={{ animationDelay: "400ms" }}>
+          <p className="hero-in mt-6 max-w-2xl text-[17px] leading-[1.8] text-white/90 md:text-[19px]" style={{ animationDelay: "400ms" }}>
             Custom headstones and grave markers for Bay Area families — thoughtfully designed,
             beautifully crafted, and priced with compassion.
           </p>
@@ -155,17 +153,6 @@ function Hero() {
           ))}
         </div>
 
-        {/* Circular WhatsApp action */}
-        <a
-          href={WHATSAPP_HREF}
-          target="_blank"
-          rel="noopener"
-          aria-label="Chat with Rumi Stone on WhatsApp"
-          className="btn-whatsapp hero-in absolute bottom-8 right-5 grid h-14 w-14 place-items-center rounded-full md:bottom-10 md:right-10 md:h-16 md:w-16"
-          style={{ animationDelay: "900ms" }}
-        >
-          <MessageCircle className="h-6 w-6 md:h-7 md:w-7" strokeWidth={2.1} />
-        </a>
       </div>
     </section>
   );
@@ -240,27 +227,6 @@ function ProductsPreview() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-function TrustBar() {
-  const items = [
-    ["10+", "Years of Craftsmanship"],
-    ["1,000+", "Memorials Created"],
-    ["85%", "Returning & Referrals"],
-    ["All CA", "Cemeteries Served"],
-  ];
-  return (
-    <section className="container-px mx-auto max-w-[1600px] py-16">
-      <div className="grid grid-cols-2 gap-6 rounded-3xl border border-border bg-white/70 p-8 shadow-[var(--shadow-soft)] backdrop-blur md:grid-cols-4">
-        {items.map(([k, v]) => (
-          <div key={v} className="text-center">
-            <div className="font-serif text-3xl italic text-gradient-gold md:text-4xl">{k}</div>
-            <div className="mt-1 text-[10px] uppercase tracking-[0.24em] text-muted-foreground">{v}</div>
-          </div>
-        ))}
       </div>
     </section>
   );
