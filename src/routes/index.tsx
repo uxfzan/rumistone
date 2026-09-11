@@ -78,89 +78,93 @@ const heroStats = [
 
 function Hero() {
   return (
-    <section className="relative isolate overflow-hidden pt-10 pb-14 md:pt-16 md:pb-20">
-      <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
-      <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-mesh)" }} />
-      <div className="pointer-events-none absolute -top-40 left-0 -z-10 h-[520px] w-[520px] rounded-full bg-[oklch(0.82_0.08_235/0.3)] blur-3xl" />
+    <section className="relative isolate overflow-hidden">
+      {/* Cinematic background */}
+      <div className="absolute inset-0 -z-20">
+        <img
+          src={heroGardenImg}
+          alt="Sunlit memorial garden with a crafted granite headstone surrounded by flowers"
+          width={1920}
+          height={1088}
+          fetchPriority="high"
+          className="h-full w-full object-cover object-center"
+        />
+      </div>
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(100deg,oklch(0.18_0.03_250/0.86)_0%,oklch(0.18_0.03_250/0.66)_42%,oklch(0.18_0.03_250/0.18)_72%,transparent_100%)]" />
+      <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-[linear-gradient(180deg,transparent,oklch(0.18_0.03_250/0.55))]" />
 
-      <div className="container-px mx-auto max-w-[1600px]">
-        <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
-          {/* Text column */}
-          <div className="min-w-0">
-            <div data-reveal className="reveal mb-6 inline-flex max-w-full items-start gap-2.5 rounded-full glass px-4 py-2 sm:items-center sm:py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/75 shadow-[var(--shadow-xs)] sm:text-[11px] sm:tracking-[0.24em]">
-              <span className="relative mt-[5px] flex h-1.5 w-1.5 shrink-0 sm:mt-0">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--gold)] opacity-60" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[color:var(--gold)]" />
-              </span>
-              <span className="text-left">Family-Owned • Serving Bay Area Families</span>
-            </div>
+      {/* Flowers — gentle breeze on hover */}
+      <img
+        src={heroFlowersImg}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        width={1024}
+        height={768}
+        className="hero-flowers pointer-events-auto absolute -bottom-6 right-2 -z-10 hidden w-[220px] select-none opacity-95 drop-shadow-[0_18px_28px_oklch(0.2_0.03_250/0.35)] md:block lg:w-[300px]"
+      />
 
-            <h1
-              data-reveal
-              data-reveal-delay="80"
-              className="reveal text-balance"
-              style={{ fontSize: "clamp(2.15rem, 5vw, 4.25rem)" }}
-            >
-              <span className="text-gradient-light">Memorials Made With</span>{" "}
-              <span className="italic text-gradient-gold">Care.</span>
-            </h1>
-
-            <p data-reveal data-reveal-delay="180" className="reveal mt-5 max-w-xl text-[15.5px] leading-[1.7] text-foreground/65 md:text-[17px]">
-              Custom headstones and grave markers for Bay Area families — thoughtfully designed,
-              beautifully crafted, and priced with compassion.
-            </p>
-
-            <div data-reveal data-reveal-delay="260" className="reveal mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-              <Link
-                to="/quote"
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-7 py-4 text-[13px] font-semibold tracking-wide text-background shadow-[0_12px_30px_-12px_oklch(0.2_0.02_250/0.55)] transition-all duration-300 hover:-translate-y-0.5 sm:w-auto"
-              >
-                Get a Free Quote
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-              <a
-                href={PHONE_HREF}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border bg-white/70 px-7 py-4 text-[13px] font-semibold tracking-wide text-foreground/85 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-[var(--shadow-soft)] sm:w-auto"
-              >
-                Call {PHONE}
-              </a>
-              <a
-                href={WHATSAPP_HREF}
-                target="_blank"
-                rel="noopener"
-                className="inline-flex items-center justify-center gap-2 text-[12.5px] font-semibold tracking-wide text-[color:var(--gold)] underline-offset-4 hover:underline sm:px-2"
-              >
-                <MessageCircle className="h-4 w-4" strokeWidth={2.2} /> Chat on WhatsApp
-              </a>
-            </div>
+      <div className="container-px relative mx-auto max-w-[1600px] pt-16 pb-16 md:pt-24 md:pb-24">
+        <div className="max-w-2xl">
+          <div className="hero-in mb-6 inline-flex max-w-full items-start gap-2.5 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-white/85 backdrop-blur-md sm:items-center sm:py-1.5 sm:text-[12px] sm:tracking-[0.24em]" style={{ animationDelay: "80ms" }}>
+            <span className="relative mt-[5px] flex h-1.5 w-1.5 shrink-0 sm:mt-0">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--gold)] opacity-60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[color:var(--gold)]" />
+            </span>
+            <span className="text-left">Family-Owned • Serving Bay Area Families</span>
           </div>
 
-          {/* Image column */}
-          <div data-reveal data-reveal-delay="180" className="reveal relative min-w-0 lg:-mr-8 xl:-mr-16">
-            <div className="relative overflow-hidden rounded-3xl ring-1 ring-black/5 shadow-[var(--shadow-elegant)]">
-              <img
-                src={heroStoneImg}
-                alt="Custom engraved granite headstone in a peaceful Bay Area cemetery"
-                width={1280}
-                height={1600}
-                fetchPriority="high"
-                className="h-[280px] w-full object-cover object-center sm:h-[360px] lg:h-[520px]"
-              />
-              <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/4 bg-gradient-to-r from-background/60 to-transparent lg:block" />
-            </div>
+          <h1
+            className="hero-in text-balance font-semibold text-white drop-shadow-[0_2px_18px_oklch(0.18_0.03_250/0.6)]"
+            style={{ fontSize: "clamp(2.35rem, 5.4vw, 4.5rem)", animationDelay: "220ms" }}
+          >
+            Memorials Made With <span className="italic text-[color:var(--gold)]">Care.</span>
+          </h1>
+
+          <p className="hero-in mt-5 max-w-xl text-[16px] leading-[1.75] text-white/85 md:text-[17.5px]" style={{ animationDelay: "400ms" }}>
+            Custom headstones and grave markers for Bay Area families — thoughtfully designed,
+            beautifully crafted, and priced with compassion.
+          </p>
+
+          <div className="hero-in mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center" style={{ animationDelay: "580ms" }}>
+            <Link
+              to="/quote"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-[14px] font-semibold tracking-wide text-foreground shadow-[0_14px_34px_-14px_oklch(0.18_0.03_250/0.7)] transition-all duration-300 hover:-translate-y-0.5 sm:w-auto"
+            >
+              Get a Free Quote
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+            <a
+              href={PHONE_HREF}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/35 bg-white/10 px-7 py-4 text-[14px] font-semibold tracking-wide text-white backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20 sm:w-auto"
+            >
+              Call {PHONE}
+            </a>
           </div>
         </div>
 
         {/* Trust panel */}
-        <div data-reveal data-reveal-delay="320" className="reveal mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-3xl glass-strong shadow-[var(--shadow-elegant)] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="hero-in mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-white/25 bg-white/20 shadow-[var(--shadow-elegant)] backdrop-blur-md sm:grid-cols-2 lg:grid-cols-4" style={{ animationDelay: "760ms" }}>
           {heroStats.map(([k, label, body]) => (
-            <div key={label} className="min-w-0 bg-white/60 p-6 text-center transition-colors duration-300 hover:bg-white">
+            <div key={label} className="min-w-0 bg-white/80 p-6 text-center transition-colors duration-300 hover:bg-white">
               <div className="font-serif text-[1.75rem] italic text-gradient-gold sm:text-3xl">{k}</div>
-              <div className="mt-1.5 text-[10px] uppercase tracking-[0.24em] text-muted-foreground">{label}</div>
-              <p className="mt-2 text-[12.5px] leading-[1.6] text-foreground/60">{body}</p>
+              <div className="mt-1.5 text-[11px] uppercase tracking-[0.24em] text-muted-foreground">{label}</div>
+              <p className="mt-2 text-[13px] leading-[1.6] text-foreground/70">{body}</p>
             </div>
           ))}
         </div>
+
+        {/* Circular WhatsApp action */}
+        <a
+          href={WHATSAPP_HREF}
+          target="_blank"
+          rel="noopener"
+          aria-label="Chat with Rumi Stone on WhatsApp"
+          className="btn-whatsapp hero-in absolute bottom-8 right-5 grid h-14 w-14 place-items-center rounded-full md:bottom-10 md:right-10 md:h-16 md:w-16"
+          style={{ animationDelay: "900ms" }}
+        >
+          <MessageCircle className="h-6 w-6 md:h-7 md:w-7" strokeWidth={2.1} />
+        </a>
       </div>
     </section>
   );
