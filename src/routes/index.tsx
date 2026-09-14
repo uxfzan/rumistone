@@ -144,12 +144,12 @@ function Hero() {
         </div>
 
         {/* Trust panel */}
-        <div className="hero-in mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-white/25 bg-white/20 shadow-[var(--shadow-elegant)] backdrop-blur-md sm:grid-cols-2 lg:grid-cols-4" style={{ animationDelay: "760ms" }}>
+        <div className="hero-in mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/25 bg-white/20 shadow-[var(--shadow-elegant)] backdrop-blur-md lg:mt-14 lg:grid-cols-4" style={{ animationDelay: "760ms" }}>
           {heroStats.map(([k, label, body]) => (
-            <div key={label} className="min-w-0 bg-white/80 p-6 text-center transition-colors duration-300 hover:bg-white">
-              <div className="font-serif text-[1.75rem] italic text-gradient-gold sm:text-3xl">{k}</div>
-              <div className="mt-1.5 text-[11px] uppercase tracking-[0.24em] text-muted-foreground">{label}</div>
-              <p className="mt-2 text-[13px] leading-[1.6] text-foreground/70">{body}</p>
+            <div key={label} className="min-w-0 bg-white/80 p-4 text-center transition-colors duration-300 hover:bg-white sm:p-6">
+              <div className="font-serif text-[1.35rem] italic text-gradient-gold sm:text-3xl">{k}</div>
+              <div className="mt-1.5 text-[10px] uppercase tracking-[0.16em] text-muted-foreground sm:text-[11px] sm:tracking-[0.24em]">{label}</div>
+              <p className="mt-2 text-[12px] leading-[1.5] text-foreground/70 sm:text-[13px] sm:leading-[1.6]">{body}</p>
             </div>
           ))}
         </div>
