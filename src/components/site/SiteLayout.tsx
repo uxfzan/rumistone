@@ -19,6 +19,7 @@ export const NAV_LINKS: Array<[string, string]> = [
   ["About", "/about"],
   ["Headstones & Markers", "/headstones-markers"],
   ["Granite Colors", "/granite-colors"],
+  ["Cemeteries", "/cemeteries"],
   ["Gallery", "/gallery"],
   ["How It Works", "/how-it-works"],
   ["Reviews", "/reviews"],
@@ -49,6 +50,7 @@ const PRIMARY_NAV: NavItem[] = [
       { label: "FAQ", to: "/faq", description: "Common questions answered" },
     ],
   },
+  { kind: "link", label: "Cemeteries", to: "/cemeteries" },
   { kind: "link", label: "Gallery", to: "/gallery" },
 ];
 
@@ -134,7 +136,7 @@ export function Nav() {
       <div className="mx-auto flex max-w-[1600px] items-center justify-between px-4 py-3 sm:px-6 lg:px-10">
 
         <Logo />
-        <nav className="hidden items-center gap-6 xl:flex">
+        <nav className="hidden items-center gap-8 xl:flex">
           {PRIMARY_NAV.map((item) =>
             item.kind === "link" ? (
               <Link
@@ -267,11 +269,13 @@ export function Footer() {
           <div>
             <div className="text-xs uppercase tracking-[0.25em] text-[color:var(--gold)]">Service Areas</div>
             <ul className="mt-4 space-y-2 text-sm text-white/80">
-              <li>San Francisco Bay Area</li>
-              <li>San Jose · Hayward · Fremont</li>
-              <li>Sacramento · Central Valley</li>
-              <li>Los Angeles</li>
-              <li>Statewide California</li>
+              <li>Alameda County</li>
+              <li>Contra Costa County</li>
+              <li>Marin County</li>
+              <li>San Mateo County</li>
+              <li>Santa Clara County</li>
+              <li>Solano County</li>
+              <li>Sonoma County</li>
             </ul>
           </div>
           <div>

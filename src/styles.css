@@ -273,11 +273,14 @@
 @utility hero-flowers {
   transform-origin: 58% 100%;
   transition: transform 1.4s cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover {
-    animation: hero-sway 5.2s ease-in-out infinite;
-  }
+  will-change: transform;
+}
+.hero-flower-zone:hover .hero-flowers,
+.hero-flowers:hover {
+  animation: hero-sway 3.8s ease-in-out infinite;
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-in { opacity: 1; animation: none; }
+  .hero-flower-zone:hover .hero-flowers,
   .hero-flowers:hover { animation: none; }
 }

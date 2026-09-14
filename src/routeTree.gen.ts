@@ -17,6 +17,7 @@ import { Route as HeadstonesMarkersRouteImport } from './routes/headstones-marke
 import { Route as GraniteColorsRouteImport } from './routes/granite-colors'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as CemeteriesRouteImport } from './routes/cemeteries'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -60,6 +61,11 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CemeteriesRoute = CemeteriesRouteImport.update({
+  id: '/cemeteries',
+  path: '/cemeteries',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -74,6 +80,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/cemeteries': typeof CemeteriesRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/granite-colors': typeof GraniteColorsRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/cemeteries': typeof CemeteriesRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/granite-colors': typeof GraniteColorsRoute
@@ -99,6 +107,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/cemeteries': typeof CemeteriesRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/granite-colors': typeof GraniteColorsRoute
@@ -113,6 +122,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/cemeteries'
     | '/faq'
     | '/gallery'
     | '/granite-colors'
@@ -125,6 +135,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/cemeteries'
     | '/faq'
     | '/gallery'
     | '/granite-colors'
@@ -137,6 +148,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/cemeteries'
     | '/faq'
     | '/gallery'
     | '/granite-colors'
@@ -150,6 +162,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CemeteriesRoute: typeof CemeteriesRoute
   FaqRoute: typeof FaqRoute
   GalleryRoute: typeof GalleryRoute
   GraniteColorsRoute: typeof GraniteColorsRoute
@@ -218,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cemeteries': {
+      id: '/cemeteries'
+      path: '/cemeteries'
+      fullPath: '/cemeteries'
+      preLoaderRoute: typeof CemeteriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -238,6 +258,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CemeteriesRoute: CemeteriesRoute,
   FaqRoute: FaqRoute,
   GalleryRoute: GalleryRoute,
   GraniteColorsRoute: GraniteColorsRoute,

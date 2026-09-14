@@ -77,20 +77,21 @@ const heroStats = [
 
 function Hero() {
   return (
-    <section className="relative isolate overflow-hidden">
+    <section className="hero-flower-zone relative isolate overflow-hidden bg-[oklch(0.17_0.025_250)]">
       {/* Cinematic background */}
-      <div className="absolute inset-0 -z-20">
+      <div className="relative aspect-[16/10] w-full sm:aspect-[16/8] md:absolute md:inset-0 md:-z-20 md:aspect-auto">
         <img
           src={heroGardenImg}
           alt="Sunlit memorial garden with a crafted granite headstone surrounded by flowers"
           width={1920}
           height={1088}
           fetchPriority="high"
-          className="h-full w-full object-cover object-center"
+          className="h-full w-full object-contain object-center md:object-cover md:object-center"
         />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,oklch(0.17_0.025_250/0.88)_100%)] md:hidden" />
       </div>
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,oklch(0.17_0.025_250/0.9)_0%,oklch(0.18_0.025_250/0.76)_34%,oklch(0.2_0.025_250/0.3)_55%,transparent_76%)]" />
-      <div className="absolute inset-x-0 bottom-0 -z-10 h-44 bg-[linear-gradient(180deg,transparent,oklch(0.17_0.025_250/0.58))]" />
+      <div className="absolute inset-0 -z-10 hidden bg-[linear-gradient(90deg,oklch(0.17_0.025_250/0.9)_0%,oklch(0.18_0.025_250/0.76)_34%,oklch(0.2_0.025_250/0.3)_55%,transparent_76%)] md:block" />
+      <div className="absolute inset-x-0 bottom-0 -z-10 hidden h-44 bg-[linear-gradient(180deg,transparent,oklch(0.17_0.025_250/0.58))] md:block" />
 
       {/* Flowers — gentle breeze on hover */}
       <img
@@ -100,10 +101,10 @@ function Hero() {
         loading="lazy"
         width={1024}
         height={768}
-        className="hero-flowers pointer-events-auto absolute -bottom-8 right-[3%] -z-10 hidden w-[210px] select-none opacity-90 mix-blend-multiply drop-shadow-[0_18px_28px_oklch(0.2_0.03_250/0.25)] md:block lg:w-[280px]"
+        className="hero-flowers pointer-events-auto absolute -bottom-8 right-[3%] z-10 hidden w-[210px] cursor-pointer select-none opacity-90 mix-blend-multiply drop-shadow-[0_18px_28px_oklch(0.2_0.03_250/0.25)] md:block lg:w-[280px]"
       />
 
-      <div className="container-px relative mx-auto max-w-[1600px] pt-16 pb-16 md:pt-24 md:pb-24">
+      <div className="container-px relative mx-auto max-w-[1600px] pt-10 pb-16 md:pt-24 md:pb-24">
         <div className="max-w-[43rem]">
           <div className="hero-in mb-6 inline-flex max-w-full items-start gap-2.5 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-white/85 backdrop-blur-md sm:items-center sm:py-1.5 sm:text-[12px] sm:tracking-[0.24em]" style={{ animationDelay: "80ms" }}>
             <span className="relative mt-[5px] flex h-1.5 w-1.5 shrink-0 sm:mt-0">
@@ -143,12 +144,12 @@ function Hero() {
         </div>
 
         {/* Trust panel */}
-        <div className="hero-in mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-white/25 bg-white/20 shadow-[var(--shadow-elegant)] backdrop-blur-md sm:grid-cols-2 lg:grid-cols-4" style={{ animationDelay: "760ms" }}>
+        <div className="hero-in mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/25 bg-white/20 shadow-[var(--shadow-elegant)] backdrop-blur-md lg:mt-14 lg:grid-cols-4" style={{ animationDelay: "760ms" }}>
           {heroStats.map(([k, label, body]) => (
-            <div key={label} className="min-w-0 bg-white/80 p-6 text-center transition-colors duration-300 hover:bg-white">
-              <div className="font-serif text-[1.75rem] italic text-gradient-gold sm:text-3xl">{k}</div>
-              <div className="mt-1.5 text-[11px] uppercase tracking-[0.24em] text-muted-foreground">{label}</div>
-              <p className="mt-2 text-[13px] leading-[1.6] text-foreground/70">{body}</p>
+            <div key={label} className="min-w-0 bg-white/80 p-4 text-center transition-colors duration-300 hover:bg-white sm:p-6">
+              <div className="font-serif text-[1.35rem] italic text-gradient-gold sm:text-3xl">{k}</div>
+              <div className="mt-1.5 text-[10px] uppercase tracking-[0.16em] text-muted-foreground sm:text-[11px] sm:tracking-[0.24em]">{label}</div>
+              <p className="mt-2 text-[12px] leading-[1.5] text-foreground/70 sm:text-[13px] sm:leading-[1.6]">{body}</p>
             </div>
           ))}
         </div>
