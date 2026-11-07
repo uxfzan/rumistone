@@ -245,7 +245,7 @@ function ProductsPreview() {
                 <Icon className="h-6 w-6" strokeWidth={1.75} />
               </div>
               <h3 className="text-[1.65rem] text-foreground">{title}</h3>
-              <p className="mt-3 text-[15px] leading-[1.7] text-muted-foreground">{body}</p>
+              <p className="mt-3 text-[17px] leading-[1.75] text-foreground/70 md:text-[18px]">{body}</p>
               <Link
                 to="/headstones-markers"
                 className="mt-6 inline-flex items-center gap-1.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-[color:var(--gold)]"
@@ -301,7 +301,7 @@ function ClosingCTA() {
         <h2 className="text-primary-foreground">
           Let's create something <span className="italic text-[color:var(--gold)]">beautiful together</span>.
         </h2>
-        <p className="mx-auto mt-5 max-w-lg text-[15.5px] leading-[1.75] text-white/75">
+        <p className="mx-auto mt-5 max-w-lg text-[17px] leading-[1.75] text-white/80 md:text-[18px]">
           Tell us about your loved one. We'll handle the rest — with care.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
