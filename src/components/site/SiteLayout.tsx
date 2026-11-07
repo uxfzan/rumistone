@@ -334,7 +334,7 @@ export function SectionHeader({
         {title} {accent && <span className="italic text-gradient-gold">{accent}</span>}
       </h2>
       {kicker && (
-        <p data-reveal data-reveal-delay="160" className="reveal mt-5 text-[15px] leading-[1.7] text-foreground/60 md:text-lg">
+        <p data-reveal data-reveal-delay="160" className="reveal mt-5 text-[17px] leading-[1.75] text-foreground/70 md:text-[19px]">
           {kicker}
         </p>
       )}
@@ -369,7 +369,7 @@ export function PageHero({
           <span className="text-gradient-light">{title}</span>{" "}
           {accent && <span className="italic text-gradient-gold">{accent}</span>}
         </h1>
-        <p data-reveal data-reveal-delay="180" className="reveal mx-auto mt-6 max-w-2xl text-[16px] leading-[1.7] text-foreground/65 md:text-lg">
+        <p data-reveal data-reveal-delay="180" className="reveal mx-auto mt-6 max-w-2xl text-[17px] leading-[1.75] text-foreground/70 md:text-[19px]">
           {subtitle}
         </p>
         {cta && <div data-reveal data-reveal-delay="260" className="reveal mt-9 flex flex-wrap items-center justify-center gap-3">{cta}</div>}
@@ -392,7 +392,7 @@ export function QuoteCTA({
           {heading.split(" ").slice(0, -2).join(" ")}{" "}
           <span className="italic text-gradient-gold">{heading.split(" ").slice(-2).join(" ")}</span>
         </h2>
-        <p data-reveal data-reveal-delay="80" className="reveal mx-auto mt-5 max-w-xl text-[15px] leading-[1.7] text-foreground/65 md:text-[16px]">
+        <p data-reveal data-reveal-delay="80" className="reveal mx-auto mt-5 max-w-xl text-[17px] leading-[1.75] text-foreground/70 md:text-[18px]">
           {body}
         </p>
         <div data-reveal data-reveal-delay="160" className="reveal mt-9 flex flex-wrap items-center justify-center gap-3">
