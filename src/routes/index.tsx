@@ -16,6 +16,7 @@ import gBahama from "@/assets/granite-bahama-blue.jpg";
 import gIndia from "@/assets/granite-india-red.jpg";
 import gGray from "@/assets/granite-gray.jpg";
 import gBluePearl from "@/assets/Blue Pearl Granite.webp";
+import craftsmanshipImg from "@/assets/gallery-engraving.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -167,23 +168,49 @@ const whyItems = [
 
 function WhyUs() {
   return (
-    <section className="container-px mx-auto max-w-[1600px] py-24 md:py-32">
-      <SectionHeader eyebrow="Why Rumi Stone" title="Memorials Made" accent="Personal" />
-      <div className="mt-16 grid gap-6 md:grid-cols-3">
-        {whyItems.map(({ icon: Icon, title, body }, i) => (
-          <div
-            key={title}
-            data-reveal
-            data-reveal-delay={i * 70}
-            className="reveal surface-card surface-card-hover group relative overflow-hidden rounded-2xl p-8"
-          >
-            <div className="mb-6 grid h-12 w-12 place-items-center rounded-xl border border-[color:var(--gold)]/25 bg-[linear-gradient(135deg,oklch(0.95_0.03_235),oklch(0.9_0.05_235))] text-[color:var(--gold)] shadow-[0_6px_16px_-8px_oklch(0.55_0.12_240/0.4)] transition-all duration-500 group-hover:scale-105 group-hover:bg-[color:var(--gold)] group-hover:text-white">
-              <Icon className="h-5 w-5" strokeWidth={1.75} />
-            </div>
-            <h3 className="text-[1.4rem] text-foreground">{title}</h3>
-            <p className="mt-3 text-[14.5px] leading-[1.7] text-muted-foreground">{body}</p>
+    <section className="bg-[color:var(--cream)] py-20 md:py-28">
+      <div className="container-px mx-auto grid max-w-[1600px] items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
+        <div>
+          <div data-reveal className="reveal mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-foreground/75 shadow-[var(--shadow-xs)]">
+            <Sparkles className="h-4 w-4 text-[color:var(--gold)]" strokeWidth={1.8} />
+            Why Rumi Stone
           </div>
-        ))}
+          <h2 data-reveal data-reveal-delay="80" className="reveal max-w-xl text-balance text-foreground">
+            Memorials Made <span className="italic text-gradient-gold">Personal</span>
+          </h2>
+          <p data-reveal data-reveal-delay="160" className="reveal mt-5 max-w-xl text-[18px] leading-[1.75] text-foreground/75 md:text-[20px]">
+            A more thoughtful, transparent, and supportive way to create a lasting memorial.
+          </p>
+          <div data-reveal data-reveal-delay="220" className="reveal img-zoom mt-9 overflow-hidden rounded-lg shadow-[var(--shadow-elegant)]">
+            <img
+              src={craftsmanshipImg}
+              alt="A memorial artisan carefully engraving a granite design by hand"
+              width={1200}
+              height={800}
+              loading="lazy"
+              className="aspect-[1.45] w-full object-cover"
+            />
+          </div>
+        </div>
+
+        <div className="divide-y divide-border/80">
+          {whyItems.map(({ icon: Icon, title, body }, i) => (
+            <div
+              key={title}
+              data-reveal
+              data-reveal-delay={i * 90}
+              className="reveal group flex gap-5 py-7 first:pt-0 last:pb-0 sm:gap-7 sm:py-9"
+            >
+              <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full border border-[color:var(--gold)]/15 bg-accent/70 text-[color:var(--gold)] transition-transform duration-500 group-hover:scale-105 sm:h-20 sm:w-20">
+                <Icon className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={1.7} />
+              </div>
+              <div className="min-w-0 pt-1">
+                <h3 className="text-[1.55rem] text-foreground sm:text-[1.8rem]">{title}</h3>
+                <p className="mt-2 text-[17px] leading-[1.7] text-foreground/75 md:text-[18px]">{body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
